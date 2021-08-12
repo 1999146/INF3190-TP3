@@ -16,7 +16,7 @@ export class SectionParentProfilComponent implements OnInit {
   ficheParent: ModuleFicheParent.IFicheParent;
 
   constructor(public authService: AuthService) {
-    this.ficheParent = authService.user;
+    this.ficheParent = authService.ficheParent;
     this.parent = this.ficheParent.parent;
 
     // this.parent1.enfants.push(new Enfant(

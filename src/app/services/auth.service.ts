@@ -1,17 +1,21 @@
 // import * as dossiersParents from '../../data/dossier_parent.json';
 // let parents = dossiersParents;
 
+import * as fichesParentsJson from "../../data/fiches-parents.json";
+import * as gabaritProgrammeJson from "../../data/gabarit-programmes.json";
+
 import { ModuleFicheParent } from "../classes/module-json/module-fiche-parent";
-import * as fichesParents from "../../data/fiches-parents.json";
 import { ModuleProgramme } from "../classes/module-json/module-programme";
-let parents: ModuleFicheParent.IFicheParent[] = fichesParents;
+
+let parents: ModuleFicheParent.IFicheParent[] = fichesParentsJson;
 
 export class AuthService {
   isAuth: boolean = false;
   isAdmin: boolean = false;
   indiceParent: number = 0;
-  user: ModuleFicheParent.IFicheParent = parents[this.indiceParent];
-  // gabaritProgrammes: ModuleProgramme.IGabaritProgramme[];
+
+  ficheParent: ModuleFicheParent.IFicheParent = parents[this.indiceParent];
+  gabaritProgrammes: ModuleProgramme.IGabaritProgramme[] = gabaritProgrammeJson;
 
   signIn(username: String, password: String) {
     if (username == "admin" && password == "admin") {

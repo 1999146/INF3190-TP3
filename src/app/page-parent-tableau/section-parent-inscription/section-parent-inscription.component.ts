@@ -24,7 +24,7 @@ export class SectionParentInscriptionComponent implements OnInit {
   ficheParent: ModuleFicheParent.IFicheParent;
 
   constructor(public authService: AuthService) {
-    this.ficheParent = authService.user;
+    this.ficheParent = authService.ficheParent;
     this.parent = this.ficheParent.parent;
 
 
@@ -33,21 +33,22 @@ export class SectionParentInscriptionComponent implements OnInit {
 
     this.gabaritProgrammes.push(new GabaritProgramme(
       "G0",
-      "Le classique",
-      "Un peu de tout"
+      "Classique",
+      "Le classique comprend chaque jour un bloc d’activités de type sportif et un autre avec une activité de type art et une activité de type science."
     ));
 
     this.gabaritProgrammes.push(new GabaritProgramme(
       "G1",
-      "L'enfant actif",
-      "Que du sport"
+      "Enfant actif",
+      "Le programme athlétique est un camp de jour sportif intensif pour les enfants très actifs. Il comprend au moins quatre activités quotidiennes dont le basketball, le tennis, le soccer, le ballon chasseur, le baseball, etc."
     ));
 
     this.gabaritProgrammes.push(new GabaritProgramme(
-      "G0",
+      "G2",
       "Arts et sciences",
-      "Un remue-meninge"
+      "Le programme arts et science comprend plusieurs activités d'arts culinaires, d'arts visuels, d'arts plastiques, de chimie, de biologie et de physique. Il ne possède pas d’activité physique, cependant une activité matinale est réservée pour pratiquer le yoga ou jouer à un jeu de course comme le ballon chasseur."
     ));
+
 
     // Session
 
@@ -95,5 +96,11 @@ export class SectionParentInscriptionComponent implements OnInit {
     if ( date > this.dateMaintenant ) return "week-ongoing";
     else return "week-passed";
   }
+
+  exportJson() {
+    const data = JSON.stringify(this.gabaritProgrammes);
+    console.log(data);
+  }
+
 
 }
