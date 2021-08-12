@@ -1,6 +1,6 @@
-import { FicheParent } from "./module-json/fiche-parent";
+import { ModuleFicheParent } from "./module-json/module-fiche-parent";
 
-export class Enfant implements FicheParent.IEnfant {
+export class Enfant implements ModuleFicheParent.IEnfant {
   public id: string;
   public nom: string;
   public prenom: string;

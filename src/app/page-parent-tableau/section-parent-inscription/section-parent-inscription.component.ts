@@ -5,6 +5,8 @@ import { Parent } from '../../classes/parent';
 import { GabaritProgramme } from '../../classes/gabarit-programme';
 import { Semaine } from '../../classes/semaine';
 import { Programme } from '../../classes/programme';
+import {AuthService} from "../../services/auth.service";
+import { ModuleFicheParent } from 'src/app/classes/module-json/module-fiche-parent';
 
 @Component({
   selector: 'app-section-parent-inscription',
@@ -14,45 +16,18 @@ import { Programme } from '../../classes/programme';
 export class SectionParentInscriptionComponent implements OnInit {
 
   dateMaintenant: Date = new Date();
-  parent: Parent;
   gabaritProgrammes: Array<GabaritProgramme> = new Array<GabaritProgramme>();
   sessionActuelle: Session;
   sessions: Array<Session> = new Array<Session>();
 
-  // array contenant des semaines
-    // contenant un array de programmes
+  parent: ModuleFicheParent.IParent;
+  ficheParent: ModuleFicheParent.IFicheParent;
 
-  constructor() {
+  constructor(public authService: AuthService) {
+    this.ficheParent = authService.user;
+    this.parent = this.ficheParent.parent;
 
-    // Parent enfant
 
-    this.parent = new Parent(
-      "0",
-      "Simpson",
-      "Homer",
-      "simpson.homer@gmail.com",
-      "123 rue Springfield",
-      "1960-04-08",
-      "../../assets/img/profil.png",
-    );
-
-    this.parent.enfants.push(new Enfant(
-      "1",
-      "Simpson",
-      "Lisa",
-      "1990-06-09",
-      "../../assets/img/profil.png",
-      "")
-    );
-
-    this.parent.enfants.push(new Enfant(
-      "2",
-      "Simpson",
-      "Bart",
-      "1994-08-21",
-      "../../assets/img/bart_mini.jpg",
-      "")
-    );
 
     // Gabarit Programme
 

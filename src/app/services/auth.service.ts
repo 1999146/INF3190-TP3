@@ -1,11 +1,15 @@
-import * as dossiersParents from '../../data/dossier_parent.json';
-let parents = dossiersParents;
+// import * as dossiersParents from '../../data/dossier_parent.json';
+// let parents = dossiersParents;
+
+import { ModuleFicheParent } from "../classes/module-json/module-fiche-parent";
+import * as fichesParents from "../../data/fiches-parents.json";
+let parents: ModuleFicheParent.IFicheParent[] = fichesParents;
 
 export class AuthService {
-  isAuth = false;
-  isAdmin = false;
-  indiceParent = 0;
-  user = parents[this.indiceParent];
+  isAuth: boolean = false;
+  isAdmin: boolean = false;
+  indiceParent: number = 0;
+  user: ModuleFicheParent.IFicheParent = parents[this.indiceParent];
 
   signIn(username: String, password: String) {
     if (username == "admin" && password == "admin") {
@@ -30,7 +34,7 @@ export class AuthService {
   verifyPassword(username: String, password: String): boolean{
     let authentifie = false;
     for(let i = 0; i < parents.length; i++){
-      if(parents[i].username == username && parents[i].motDePasse == password){
+      if(parents[i].username == username && parents[i].password == password){
         authentifie = true;
       }
     }

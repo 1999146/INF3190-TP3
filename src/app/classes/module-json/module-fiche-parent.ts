@@ -1,4 +1,4 @@
-export declare module FicheParent {
+export declare module ModuleFicheParent {
 
   export interface IParent {
     id: string;
@@ -18,6 +18,12 @@ export declare module FicheParent {
     dateNaissance: string;
     urlPhoto: string;
     note: string;
+  }
+
+  export interface IFicheParent {
+    username: string;
+    password: string;
+    parent: IParent;
   }
 
 }
