@@ -1,19 +1,16 @@
-import { Session } from "./session";
 import { Programme } from "./programme";
+import { ModuleProgramme } from "../module-json/module-programme";
 
-export class Semaine {
+export class Semaine implements ModuleProgramme.ISemaine {
   public id: string;
-  public session: Session;
   public noSemaine: number;
   public programmes: Array<Programme> = new Array<Programme>();
 
   constructor(
       id: string,
-      session: Session,
       noSemaine: number
   ) {
     this.id = id;
-    this.session = session;
     this.noSemaine = noSemaine;
   };
 

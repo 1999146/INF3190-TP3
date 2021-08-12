@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Session } from '../../classes/session';
-import { Enfant } from '../../classes/enfant';
-import { Parent } from '../../classes/parent';
-import { GabaritProgramme } from '../../classes/gabarit-programme';
-import { Semaine } from '../../classes/semaine';
-import { Programme } from '../../classes/programme';
+import { Session } from '../../classes/programme/session';
+import { Enfant } from '../../classes/fiche-parent/enfant';
+import { Parent } from '../../classes/fiche-parent/parent';
+import { GabaritProgramme } from '../../classes/programme/gabarit-programme';
+import { Semaine } from '../../classes/programme/semaine';
+import { Programme } from '../../classes/programme/programme';
 import {AuthService} from "../../services/auth.service";
 import { ModuleFicheParent } from 'src/app/classes/module-json/module-fiche-parent';
 
@@ -55,8 +55,8 @@ export class SectionParentInscriptionComponent implements OnInit {
       "S21",
       "Session 2021",
       "Session plein de plaisir",
-      new Date("2021-04-01"),
-      new Date("2021-08-01")
+      "2021-04-01",
+      "2021-08-01"
     );
 
     this.sessions.push(this.sessionActuelle);
@@ -64,27 +64,26 @@ export class SectionParentInscriptionComponent implements OnInit {
       "S20",
       "Session 2020",
       "Session plein de plaisir",
-      new Date("2020-04-01"),
-      new Date("2020-08-01")
+      "2020-04-01",
+      "2020-08-01"
     ));
 
     for(let i = 1; i <= 15; i++) {
       let semaineTmp: Semaine = new Semaine(
         "S" + i,
-        this.sessionActuelle,
         i
       );
 
-      for(let j = 1; j <= 3; j++) {
-        semaineTmp.ajouterProgramme( new Programme (
-          "P" + i + "-" + j,
-          this.gabaritProgrammes[j-1],
-          "Nos " + j + " amis.",
-          10 + (i * j)
-        ));
-      }
+      // for(let j = 1; j <= 3; j++) {
+      //   semaineTmp.ajouterProgramme( new Programme (
+      //     "P" + i + "-" + j,
+      //     this.gabaritProgrammes[j-1],
+      //     "Nos " + j + " amis.",
+      //     10 + (i * j)
+      //   ));
+      // }
 
-      this.sessionActuelle.ajouterSemaine(semaineTmp);
+      this.sessionActuelle.semaines.push(semaineTmp);
     }
 
   }

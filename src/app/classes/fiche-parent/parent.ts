@@ -1,5 +1,5 @@
 import { Enfant } from "./enfant";
-import { ModuleFicheParent } from "./module-json/module-fiche-parent";
+import { ModuleFicheParent } from "../module-json/module-fiche-parent";
 
 export class Parent implements ModuleFicheParent.IParent{
   public id: string;

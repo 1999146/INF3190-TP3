@@ -1,4 +1,6 @@
-export class TypeActivite {
+import { ModuleProgramme } from "../module-json/module-programme";
+
+export class TypeActivite implements ModuleProgramme.ITypeActivite {
   public id: string;
   public nom: string;
   public description: string;

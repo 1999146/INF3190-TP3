@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ModuleFicheParent } from 'src/app/classes/module-json/module-fiche-parent';
-import { Enfant } from '../../classes/enfant';
-import { Parent } from '../../classes/parent';
+import { Enfant } from '../../classes/fiche-parent/enfant';
+import { Parent } from '../../classes/fiche-parent/parent';
 import {AuthService} from "../../services/auth.service";
-import * as ficheParent from "../../../data/parent.json";
-import { FicheParent } from 'src/app/classes/fiche-parent';
+
 
 @Component({
   selector: 'app-section-parent-profil',

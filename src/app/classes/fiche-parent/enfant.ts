@@ -1,4 +1,4 @@
-import { ModuleFicheParent } from "./module-json/module-fiche-parent";
+import { ModuleFicheParent } from "../module-json/module-fiche-parent";
 
 export class Enfant implements ModuleFicheParent.IEnfant {
   public id: string;

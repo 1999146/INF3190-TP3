@@ -3,6 +3,7 @@
 
 import { ModuleFicheParent } from "../classes/module-json/module-fiche-parent";
 import * as fichesParents from "../../data/fiches-parents.json";
+import { ModuleProgramme } from "../classes/module-json/module-programme";
 let parents: ModuleFicheParent.IFicheParent[] = fichesParents;
 
 export class AuthService {
@@ -10,6 +11,7 @@ export class AuthService {
   isAdmin: boolean = false;
   indiceParent: number = 0;
   user: ModuleFicheParent.IFicheParent = parents[this.indiceParent];
+  // gabaritProgrammes: ModuleProgramme.IGabaritProgramme[];
 
   signIn(username: String, password: String) {
     if (username == "admin" && password == "admin") {

@@ -1,4 +1,4 @@
-import { ModuleProgramme } from "./module-json/module-programme";
+import { ModuleProgramme } from "../module-json/module-programme";
 
 export class GabaritProgramme implements ModuleProgramme.IGabaritProgramme {
   public id: string;
