@@ -1,14 +1,15 @@
 import { Enfant } from "./enfant";
+import { FicheParent } from "./module-json/fiche-parent";
 
-export class Parent {
+export class Parent implements FicheParent.IParent{
   public id: string;
   public nom: string;
   public prenom: string;
   public courriel: string;
   public adresse: string;
-  public dateNaissance: Date;
+  public dateNaissance: string;
   public urlPhoto: string;
-  public enfants: Array<Enfant> = new Array<Enfant>();
+  public enfants: Enfant[] = new Array<Enfant>();
 
   public constructor(
       id: string, 
@@ -16,7 +17,7 @@ export class Parent {
       prenom: string, 
       courriel: string, 
       adresse: string, 
-      dateNaissance: Date, 
+      dateNaissance: string, 
       urlPhoto: string, 
     ) {
     this.id = id;
@@ -26,10 +27,6 @@ export class Parent {
     this.adresse = adresse;
     this.dateNaissance = dateNaissance;
     this.urlPhoto = urlPhoto;
-  }
-
-  public ajouterEnfant(enfant: Enfant) {
-    this.enfants.push(enfant);
   }
   
 }

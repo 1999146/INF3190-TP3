@@ -32,24 +32,24 @@ export class SectionParentInscriptionComponent implements OnInit {
       "Homer",
       "simpson.homer@gmail.com",
       "123 rue Springfield",
-      new Date("1960-04-08"),
+      "1960-04-08",
       "../../assets/img/profil.png",
     );
 
-    this.parent.ajouterEnfant(new Enfant(
+    this.parent.enfants.push(new Enfant(
       "1",
       "Simpson",
       "Lisa",
-      new Date("1990-06-09"),
+      "1990-06-09",
       "../../assets/img/profil.png",
       "")
     );
 
-    this.parent.ajouterEnfant(new Enfant(
+    this.parent.enfants.push(new Enfant(
       "2",
       "Simpson",
       "Bart",
-      new Date("1994-08-21"),
+      "1994-08-21",
       "../../assets/img/bart_mini.jpg",
       "")
     );

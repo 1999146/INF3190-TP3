@@ -1,0 +1,27 @@
+{
+  "enfants":[
+    {
+      "id":"1",
+      "nom":"Simpson",
+      "prenom":"Lisa",
+      "dateNaissance":"1990-06-09",
+      "urlPhoto":"../../assets/img/profil.png",
+      "note":""
+    },
+    {
+      "id":"2",
+      "nom":"Simpson",
+      "prenom":"Bart",
+      "dateNaissance":"1994-08-21",
+      "urlPhoto":"../../assets/img/bart_mini.jpg",
+      "note":"Alergie aux crevettes. "
+    }
+  ],
+  "id":"0",
+  "nom":"Simpson",
+  "prenom":"Homer",
+  "courriel":"simpson.homer@gmail.com",
+  "adresse":"123 rue Springfield",
+  "dateNaissance":"1960-04-08",
+  "urlPhoto":"../../assets/img/profil.png"
+}
