@@ -13,12 +13,16 @@ import {AuthService} from "./services/auth.service";
 import {FormsModule} from "@angular/forms";
 import { PageDescriptionProgrammesComponent } from './page-description-programmes/page-description-programmes.component';
 import { PageInscriptionParentComponent } from './page-inscription-parent/page-inscription-parent.component';
+import { PageParentTableauComponent } from './page-parent-tableau/page-parent-tableau.component';
+import { SectionParentProfilComponent } from './section-parent-profil/section-parent-profil.component';
+import { SectionParentInscriptionComponent } from './section-parent-inscription/section-parent-inscription.component';
 
 const appRoutes: Routes = [
   { path: '', component:  PageAccueilComponent},
   { path: 'descriptionProgrammes', component: PageDescriptionProgrammesComponent},
   { path: 'contact', component:  PageContactComponent},
-  { path: 'inscriptionParent', component:  PageInscriptionParentComponent}
+  { path: 'inscriptionParent', component:  PageInscriptionParentComponent},
+  { path: 'tableauBordParent', component:  PageParentTableauComponent}
 ];
 
 @NgModule({
@@ -30,7 +34,10 @@ const appRoutes: Routes = [
     PageAccueilComponent,
     PageContactComponent,
     PageDescriptionProgrammesComponent,
-    PageInscriptionParentComponent
+    PageInscriptionParentComponent,
+    PageParentTableauComponent,
+    SectionParentProfilComponent,
+    SectionParentInscriptionComponent
   ],
   imports: [
     BrowserModule,
