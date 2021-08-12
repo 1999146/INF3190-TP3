@@ -9,15 +9,17 @@ class Parent{
   public photo: string;
   public enfants: [];
 
-  public constructor(id: string,
-                     prenom: string,
-                     courriel: string,
-                     username: string,
-                     motDePasse: string,
-                     adresse: string,
-                     dateNaissance: string,
-                     photo: string,
-                     enfants: []){
+  public constructor(
+      id: string,
+      prenom: string,
+      courriel: string,
+      username: string,
+      motDePasse: string,
+      adresse: string,
+      dateNaissance: string,
+      photo: string,
+      enfants: []
+    ) {
     this.id = id;
     this.prenom = prenom;
     this.courriel = courriel;
