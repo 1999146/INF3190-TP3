@@ -1,36 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
 
-  authStatus!: boolean;
-  adminStatus!: boolean;
+export class HeaderComponent {
+
   username!: String;
+  password!: String;
+  erreur!: String;
 
-  constructor(private authService: AuthService) { }
-
-  ngOnInit() {
-    this.authStatus = this.authService.isAuth;
-    this.adminStatus = this.authService.isAdmin;
-  }
+  constructor(public authService: AuthService, private router: Router) { }
 
   onSignIn() {
-    console.log("sign in");
-    this.authService.signIn(this.username);
-    this.authStatus = this.authService.isAuth;
-    this.adminStatus = this.authService.isAdmin;
+    this.authService.signIn(this.username, this.password);
+
+    if (this.authService.isAuth && !this.authService.isAdmin) {
+      this.router.navigate(['contact']);
+    } else if (this.authService.isAuth && this.authService.isAdmin) {
+
+    } else {
+      this.erreur = "Authentification échoué";
+    }
   }
 
   onSignOut() {
     this.username = "";
-    console.log("sign out");
+    this.password = "";
+    this.erreur = "";
     this.authService.signOut();
-    this.authStatus = this.authService.isAuth;
+    this.router.navigate(['']);
   }
 
 }

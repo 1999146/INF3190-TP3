@@ -1,0 +1,73 @@
+[
+  {
+    "id": "Marsh, Randy",
+    "nom": "Marsh",
+    "prenom": "Randy",
+    "courriel": "randymarsh@southpark.com",
+    "username": "randy",
+    "motDePasse": "randy",
+    "adresse": "260 Avenue de los Mexicanos, Southpark",
+    "dateNaissance": "08/04/1949",
+    "photo": "../img/randy_mini.jpg",
+    "enfants": [
+      {
+        "id": "Marsh, Stanley",
+        "nom": "Marsh",
+        "prenom": "Stanley",
+        "dateNaissance": "19/10/2011",
+        "photo": "../img/stan_mini.jpg",
+        "parent": "Marsh, Randy"
+      }
+    ]
+  },
+  {
+    "id": "Cartman, Liane",
+    "nom": "Cartman",
+    "prenom": "Liane",
+    "courriel": "lianecartman@southpark.com",
+    "username": "liane",
+    "motDePasse": "liane",
+    "adresse": "28201 E. Bonanza St., Southpark",
+    "dateNaissance": "12/02/1974",
+    "photo": "../img/liane_cartman_mini.jpg",
+    "enfants": [
+      {
+        "id": "Cartman, Eric",
+        "nom": "Cartman",
+        "prenom": "Eric",
+        "dateNaissance": "01/08/2011",
+        "photo": "../img/cartman_mini.jpg",
+        "parent": "Cartman, Liane"
+      }
+    ]
+  },
+  {
+    "id": "Simpson, Homer",
+    "nom": "Simpson",
+    "prenom": "Homer",
+    "courriel": "chunkylover53@aol.com",
+    "username": "homer",
+    "motDePasse": "doh",
+    "adresse": "742 Evergreen Terrace, Springfield",
+    "dateNaissance": "12/05/1956",
+    "photo": "../img/homer_mini.jpg",
+    "enfants": [
+      {
+        "id": "Simpson, Bart",
+        "nom": "Simpson",
+        "prenom": "Bart",
+        "dateNaissance": "01/04/2011",
+        "photo": "../img/bart_mini.jpg",
+        "parent": "Simpson, Homer"
+      },
+      {
+        "id": "Simpson, Lisa",
+        "nom": "Simpson",
+        "prenom": "Lisa",
+        "dateNaissance": "09/05/2013",
+        "photo": "../img/lisa_mini.jpg",
+        "parent": "Simpson, Homer"
+      }
+    ]
+  }
+]

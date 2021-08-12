@@ -4,6 +4,8 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "resolveJsonModule": true, //Lire fichiers JSON
+    "esModuleInterop": true, //Lire fichiers JSON
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitReturns": true,
@@ -21,6 +23,7 @@
       "dom"
     ]
   },
+  "allowSyntheticDefaultImports": true, //Lire fichiers JSON
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
