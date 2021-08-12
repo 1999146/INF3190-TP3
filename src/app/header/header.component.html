@@ -44,8 +44,8 @@
       <a *ngIf="authService.isAuth && authService.isAdmin" class="nav-link active" aria-current="page" routerLink="">
         Voir les inscriptions
       </a>
-      <a *ngIf="authService.isAuth && !authService.isAdmin" class="nav-link active" aria-current="page" routerLink="">
-        Tableau de bord {{authService.user.nom}}
+      <a *ngIf="authService.isAuth && !authService.isAdmin" class="nav-link active" aria-current="page" routerLink="tableauBordParent">
+        Tableau de bord
       </a>
       <a *ngIf="authService.isAuth" class="nav-link active" aria-current="page" (click)="onSignOut()">
         <strong>Déconnexion</strong>

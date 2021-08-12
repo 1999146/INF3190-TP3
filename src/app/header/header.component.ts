@@ -20,9 +20,9 @@ export class HeaderComponent {
     this.authService.signIn(this.username, this.password);
 
     if (this.authService.isAuth && !this.authService.isAdmin) {
-      this.router.navigate(['contact']);
+      this.router.navigate(['tableauBordParent']);
     } else if (this.authService.isAuth && this.authService.isAdmin) {
-
+      this.router.navigate(['']);
     } else {
       this.erreur = "Authentification échoué";
     }

@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PremierComponent } from './premier/premier.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { PageAccueilComponent } from './page-accueil/page-accueil.component';
@@ -14,8 +13,8 @@ import {FormsModule} from "@angular/forms";
 import { PageDescriptionProgrammesComponent } from './page-description-programmes/page-description-programmes.component';
 import { PageInscriptionParentComponent } from './page-inscription-parent/page-inscription-parent.component';
 import { PageParentTableauComponent } from './page-parent-tableau/page-parent-tableau.component';
-import { SectionParentProfilComponent } from './section-parent-profil/section-parent-profil.component';
-import { SectionParentInscriptionComponent } from './section-parent-inscription/section-parent-inscription.component';
+import { SectionParentProfilComponent } from './page-parent-tableau/section-parent-profil/section-parent-profil.component';
+import { SectionParentInscriptionComponent } from './page-parent-tableau/section-parent-inscription/section-parent-inscription.component';
 
 const appRoutes: Routes = [
   { path: '', component:  PageAccueilComponent},
@@ -28,7 +27,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    PremierComponent,
     HeaderComponent,
     FooterComponent,
     PageAccueilComponent,
