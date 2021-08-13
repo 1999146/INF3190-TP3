@@ -1,16 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Parent } from '../../classes/fiche-parent/parent';
-import {AuthService} from "../../services/auth.service";
+import { AuthService } from "../../services/auth.service";
 import { FicheParent } from 'src/app/classes/fiche-parent/fiche-parent';
 import { IGabaritProgramme } from 'src/app/classes/module-json/module-programme';
-import { ISessionCamp } from 'src/app/classes/module-json/module-programme';
-// import { ISession } from 'src/app/classes/module-json/ISession';
-// import { Session } from '../../classes/programme/session';
-
-// import { Semaine } from 'src/app/classes/programme/semaine';
-// import { Programme } from 'src/app/classes/programme/programme';
-
-import sessionsJson from "../../../data/sessions";
+import { ISession } from 'src/app/classes/module-json/module-programme';
 
 
 @Component({
@@ -26,28 +19,18 @@ export class SectionParentInscriptionComponent implements OnInit {
   ficheParent!: FicheParent;
 
   gabaritProgrammes!: IGabaritProgramme[];
-  sessionsCamp: ISessionCamp[] = sessionsJson;
-  sessionActuelle: ISessionCamp = this.sessionsCamp[0]
+  sessions!: ISession[];
+  idSessionActuelle!: string;
 
-  constructor(public authService: AuthService) {
-
-    
-    // this.ficheParent = authService.ficheParent;
-    // this.parent = this.ficheParent.parent;
-    // this.gabaritProgrammes = authService.gabaritProgrammes;
-    // this.sessions = authService.sessions;
-    // this.sessionActuelle = this.sessions[0];
-  }
+  constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
     this.ficheParent = this.authService.ficheParent;
     this.parent = this.ficheParent.parent;
+
     this.gabaritProgrammes = this.authService.gabaritProgrammes;
-    // this.sessionsCamp = this.authService.sessionsCamp;
-    // this.sessionActuelle = this.sessionsCamp[0];
-    console.log("session get");
-    // this.sessionsCamp.forEach(s => console.log(s));
-    console.log(this.sessionsCamp);
+    this.sessions = this.authService.sessions;
+    this.idSessionActuelle = this.sessions[0].id;
   }
 
   estEnCours(date: Date): string {
@@ -55,17 +38,27 @@ export class SectionParentInscriptionComponent implements OnInit {
     else return "week-passed";
   }
 
-  exportJson() {
-    const data = JSON.stringify(this.sessionsCamp);
-    console.log(data);
+  // exportJson() {
+  //   const data = JSON.stringify(this.sessions);
+  //   console.log(data);
+  // }
+
+  getSessionById(sessionId: string): ISession {
+    for (let session of this.sessions) if (sessionId == session.id) return session;
+    return this.sessions[0];
   }
 
-  test() {
-    for (let i = 0; i < 3; i++) {
-      console.log(this.sessionsCamp[i].nom);
-    }
-
+  getSessionActuelle(): ISession {
+    return this.getSessionById(this.idSessionActuelle);
   }
+
+  getGabaritProgrammeById(idGabaritProgramme: string): IGabaritProgramme {
+    for (let gabarit of this.gabaritProgrammes) if (idGabaritProgramme == gabarit.id) return gabarit;
+    return this.gabaritProgrammes[0];
+  }
+
+
+
 
 
 }

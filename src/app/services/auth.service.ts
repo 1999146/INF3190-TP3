@@ -3,9 +3,10 @@
 
 import fichesParentsJson from "../../data/fiches-parents";
 import gabaritProgrammeJson from "../../data/gabarit-programmes";
+import sessionsJson from "../../data/sessions";
 
 import { IFicheParent } from "../classes/module-json/module-fiche-parent";
-import { IGabaritProgramme } from "../classes/module-json/module-programme";
+import { IGabaritProgramme, ISession } from "../classes/module-json/module-programme";
 
 let parents: IFicheParent[] = fichesParentsJson;
 
@@ -16,6 +17,7 @@ export class AuthService {
 
   ficheParent: IFicheParent = parents[0];
   gabaritProgrammes: IGabaritProgramme[] = gabaritProgrammeJson;
+  sessions: ISession[] = sessionsJson;
 
   signIn(username: string, password: string) {
     if (username == "admin" && password == "admin") {

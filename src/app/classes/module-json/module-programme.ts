@@ -1,4 +1,4 @@
-  export declare interface ISessionCamp {
+  export interface ISession {
     id: string;
     nom: string;
     description: string;
