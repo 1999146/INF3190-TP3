@@ -1,16 +1,18 @@
 export class InscriptionSemaine {
+  idEnfant: string;
   idProgramme: string;
   idSemaine: string;
   estPaye: boolean;
 
-  constructor(  
+  constructor(
+      idEnfant: string,
       idProgramme: string,
-      idSemaine: string, 
-      estPaye: boolean
+      idSemaine: string
     ) {
+    this.idEnfant = idEnfant;
     this.idProgramme = idProgramme;
     this.idSemaine = idSemaine;
-    this.estPaye = estPaye;
+    this.estPaye = false;
   }
   
 }

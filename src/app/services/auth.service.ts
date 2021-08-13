@@ -4,11 +4,13 @@
 import fichesParentsJson from "../../data/fiches-parents";
 import gabaritProgrammeJson from "../../data/gabarit-programmes";
 import sessionsJson from "../../data/sessions";
+import inscriptionParentJson from "../../data/inscription-parent";
 
-import { IFicheParent } from "../classes/module-json/module-fiche-parent";
+import { IFicheParent, IInscriptionParent } from "../classes/module-json/module-fiche-parent";
 import { IGabaritProgramme, ISession } from "../classes/module-json/module-programme";
 
 let parents: IFicheParent[] = fichesParentsJson;
+let inscriptionParents: IInscriptionParent[] = inscriptionParentJson;
 
 export class AuthService {
   isAuth: boolean = false;
@@ -16,6 +18,7 @@ export class AuthService {
   indiceParent: number = 0;
 
   ficheParent: IFicheParent = parents[0];
+  inscriptionParent: IInscriptionParent = inscriptionParents[0];
   gabaritProgrammes: IGabaritProgramme[] = gabaritProgrammeJson;
   sessions: ISession[] = sessionsJson;
 
@@ -50,10 +53,15 @@ export class AuthService {
   }
 
   logParent(username: string){
-    for(let i = 0; i < parents.length; i++){
+    for(let i = 0; i < parents.length; i++) {
       if(parents[i].username == username){
           this.indiceParent = i;
           this.ficheParent = parents[i];
+      }
+    }
+    for(let inscription of inscriptionParents) {
+      if(this.ficheParent.parent.id = inscription.idParent) {
+        this.inscriptionParent = inscription;
       }
     }
   }

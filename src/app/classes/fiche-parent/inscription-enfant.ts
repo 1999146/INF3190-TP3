@@ -2,15 +2,16 @@ import { Enfant } from "./enfant";
 import { InscriptionSemaine } from "./inscription-semaine";
 
 export class InscriptionEnfant {
-  idEnfant: string;
+  // idEnfant: string;
+  idSession: string;
   inscriptionsSemaines: Array<InscriptionSemaine> = new Array<InscriptionSemaine>();
 
   constructor(
-      idEnfant: string,
-      inscriptionsSemaines: Array<InscriptionSemaine>
+      // idEnfant: string,
+      idSession: string
   ) {
-    this.idEnfant = idEnfant;
-    this.inscriptionsSemaines = inscriptionsSemaines;
+    // this.idEnfant = idEnfant;
+    this.idSession = idSession;
   }
 
 }

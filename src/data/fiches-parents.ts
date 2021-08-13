@@ -22,7 +22,7 @@ export default
               "note":"Alergie Crevette."
            }
         ],
-        "id":"0",
+        "id":"homer",
         "nom":"Simpson",
         "prenom":"Homer",
         "courriel":"simpson.homer@gmail.com",
@@ -53,7 +53,7 @@ export default
               "note":""
            }
         ],
-        "id":"0",
+        "id":"ned",
         "nom":"Flanders",
         "prenom":"Ned",
         "courriel":"flanders.ned@gmail.com",
