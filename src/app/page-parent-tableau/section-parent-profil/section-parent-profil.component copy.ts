@@ -6,6 +6,8 @@
 // import * as ficheParent from "../../../data/parent.json";
 // import { FicheParent } from 'src/app/classes/fiche-parent';
 
+import inscriptionParent from "src/data/inscription-parent";
+
 // @Component({
 //   selector: 'app-section-parent-profil',
 //   templateUrl: './section-parent-profil.component.html',
@@ -188,3 +190,49 @@
     //     sess.semaines.push(semaineTmp);
     //   }
     // }
+
+
+
+
+
+//     inscriptionParent
+
+//     this.inscriptionParents.push(new InscriptionParent("homer"));
+//     this.inscriptionParents[0].inscriptionEnfant.push(new InscriptionEnfant("S20"));
+//       this.inscriptionParents[0].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("1","P0_S7_S20", "S7_S20"));
+//       this.inscriptionParents[0].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("1","P1_S8_S20", "S8_S20"));
+//       this.inscriptionParents[0].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("1","P0_S9_S20", "S9_S20"));
+//       this.inscriptionParents[0].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("1","P2_S10_S20", "S10_S20"));
+//       this.inscriptionParents[0].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("1","P1_S11_S20", "S11_S20"));
+
+//       this.inscriptionParents[0].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("2","P0_S4_S20", "S4_S20"));
+//       this.inscriptionParents[0].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("2","P1_S5_S20", "S5_S20"));
+//       this.inscriptionParents[0].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("2","P0_S6_S20", "S6_S20"));
+//       this.inscriptionParents[0].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("2","P0_S10_S20", "S10_S20"));
+//       this.inscriptionParents[0].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("2","P2_S11_S20", "S11_S20"));
+
+//     this.inscriptionParents[0].inscriptionEnfant.push(new InscriptionEnfant("S21"));
+//       this.inscriptionParents[0].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("2","P0_S1_S20", "S1_S21"));
+//       this.inscriptionParents[0].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("2","P1_S5_S20", "S5_S21"));
+//       this.inscriptionParents[0].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("2","P0_S6_S20", "S6_S21"));
+//       this.inscriptionParents[0].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("1","P0_S6_S20", "S6_S21"));
+//       this.inscriptionParents[0].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("2","P0_S10_S20", "S10_S21"));
+//       this.inscriptionParents[0].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("2","P2_S14_S20", "S14_S21"));
+
+//   this.inscriptionParents.push(new InscriptionParent("ned"));
+//   this.inscriptionParents[1].inscriptionEnfant.push(new InscriptionEnfant("S20"));
+//     this.inscriptionParents[1].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("11","P0_S7_S20", "S7_S20"));
+//     this.inscriptionParents[1].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("11","P1_S8_S20", "S8_S20"));
+//     this.inscriptionParents[1].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("11","P0_S9_S20", "S9_S20"));
+//     this.inscriptionParents[1].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("11","P1_S11_S20", "S11_S20"));
+
+//     this.inscriptionParents[1].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("12","P0_S4_S20", "S4_S20"));
+//     this.inscriptionParents[1].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("12","P0_S10_S20", "S10_S20"));
+//     this.inscriptionParents[1].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("12","P2_S11_S20", "S11_S20"));
+
+//   this.inscriptionParents[1].inscriptionEnfant.push(new InscriptionEnfant("S21"));
+//     this.inscriptionParents[1].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("12","P0_S1_S20", "S1_S21"));
+//     this.inscriptionParents[1].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("12","P0_S6_S20", "S6_S21"));
+//     this.inscriptionParents[1].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("11","P0_S6_S20", "S6_S21"));
+//     this.inscriptionParents[1].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("12","P0_S10_S20", "S10_S21"));
+//     this.inscriptionParents[1].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("12","P2_S14_S20", "S14_S21"));

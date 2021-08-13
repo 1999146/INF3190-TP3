@@ -7,6 +7,7 @@ import { ISession } from 'src/app/classes/module-json/module-programme';
 import { InscriptionParent } from 'src/app/classes/fiche-parent/inscription-parent';
 import { InscriptionEnfant } from 'src/app/classes/fiche-parent/inscription-enfant';
 import { InscriptionSemaine } from 'src/app/classes/fiche-parent/inscription-semaine';
+import { IInscriptionEnfant, IInscriptionParent, IInscriptionSemaine } from 'src/app/classes/module-json/module-fiche-parent';
 
 
 @Component({
@@ -20,61 +21,14 @@ export class SectionParentInscriptionComponent implements OnInit {
 
   parent!:Parent;
   ficheParent!: FicheParent;
+  inscriptionParent!: InscriptionParent;
 
   gabaritProgrammes!: IGabaritProgramme[];
   sessions!: ISession[];
   idSessionActuelle!: string;
-
-  // export json
-
-  inscriptionParents: InscriptionParent[] = new Array<InscriptionParent>();
-
-
-  // inscriptionParentB: InscriptionParent;
-
   
 
   constructor(public authService: AuthService) {
-    this.inscriptionParents.push(new InscriptionParent("homer"));
-      this.inscriptionParents[0].inscriptionEnfant.push(new InscriptionEnfant("S20"));
-        this.inscriptionParents[0].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("1","P0_S7_S20", "S7_S20"));
-        this.inscriptionParents[0].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("1","P1_S8_S20", "S8_S20"));
-        this.inscriptionParents[0].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("1","P0_S9_S20", "S9_S20"));
-        this.inscriptionParents[0].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("1","P2_S10_S20", "S10_S20"));
-        this.inscriptionParents[0].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("1","P1_S11_S20", "S11_S20"));
-
-        this.inscriptionParents[0].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("2","P0_S4_S20", "S4_S20"));
-        this.inscriptionParents[0].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("2","P1_S5_S20", "S5_S20"));
-        this.inscriptionParents[0].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("2","P0_S6_S20", "S6_S20"));
-        this.inscriptionParents[0].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("2","P0_S10_S20", "S10_S20"));
-        this.inscriptionParents[0].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("2","P2_S11_S20", "S11_S20"));
-
-      this.inscriptionParents[0].inscriptionEnfant.push(new InscriptionEnfant("S21"));
-        this.inscriptionParents[0].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("2","P0_S1_S20", "S1_S21"));
-        this.inscriptionParents[0].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("2","P1_S5_S20", "S5_S21"));
-        this.inscriptionParents[0].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("2","P0_S6_S20", "S6_S21"));
-        this.inscriptionParents[0].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("1","P0_S6_S20", "S6_S21"));
-        this.inscriptionParents[0].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("2","P0_S10_S20", "S10_S21"));
-        this.inscriptionParents[0].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("2","P2_S14_S20", "S14_S21"));
-
-    this.inscriptionParents.push(new InscriptionParent("ned"));
-    this.inscriptionParents[1].inscriptionEnfant.push(new InscriptionEnfant("S20"));
-      this.inscriptionParents[1].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("11","P0_S7_S20", "S7_S20"));
-      this.inscriptionParents[1].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("11","P1_S8_S20", "S8_S20"));
-      this.inscriptionParents[1].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("11","P0_S9_S20", "S9_S20"));
-      this.inscriptionParents[1].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("11","P1_S11_S20", "S11_S20"));
-
-      this.inscriptionParents[1].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("12","P0_S4_S20", "S4_S20"));
-      this.inscriptionParents[1].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("12","P0_S10_S20", "S10_S20"));
-      this.inscriptionParents[1].inscriptionEnfant[0].inscriptionsSemaines.push(new InscriptionSemaine("12","P2_S11_S20", "S11_S20"));
-
-    this.inscriptionParents[1].inscriptionEnfant.push(new InscriptionEnfant("S21"));
-      this.inscriptionParents[1].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("12","P0_S1_S20", "S1_S21"));
-      this.inscriptionParents[1].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("12","P0_S6_S20", "S6_S21"));
-      this.inscriptionParents[1].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("11","P0_S6_S20", "S6_S21"));
-      this.inscriptionParents[1].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("12","P0_S10_S20", "S10_S21"));
-      this.inscriptionParents[1].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("12","P2_S14_S20", "S14_S21"));
-    
   }
 
   ngOnInit(): void {
@@ -84,6 +38,7 @@ export class SectionParentInscriptionComponent implements OnInit {
     this.gabaritProgrammes = this.authService.gabaritProgrammes;
     this.sessions = this.authService.sessions;
     this.idSessionActuelle = this.sessions[0].id;
+    this.inscriptionParent = this.authService.inscriptionParent;
   }
 
   estEnCours(date: Date): string {
@@ -91,10 +46,10 @@ export class SectionParentInscriptionComponent implements OnInit {
     else return "week-passed";
   }
 
-  exportJson() {
-    const data = JSON.stringify(this.inscriptionParents);
-    console.log(data);
-  }
+  // exportJson() {
+  //   const data = JSON.stringify(this.inscriptionParents);
+  //   console.log(data);
+  // }
 
   getSessionById(sessionId: string): ISession {
     for (let session of this.sessions) if (sessionId == session.id) return session;
@@ -107,8 +62,24 @@ export class SectionParentInscriptionComponent implements OnInit {
 
   getGabaritProgrammeById(idGabaritProgramme: string): IGabaritProgramme {
     for (let gabarit of this.gabaritProgrammes) if (idGabaritProgramme == gabarit.id) return gabarit;
-    return this.gabaritProgrammes[0];
+    return this.gabaritProgrammes[0]; // renplacer par undefined
   }
+
+  getInscriptionSession(): IInscriptionEnfant {
+    for(let inscription of this.inscriptionParent.inscriptionEnfant) {
+      if(inscription.idSession == this.idSessionActuelle) return inscription;
+    }
+    return new InscriptionEnfant(this.idSessionActuelle); // remplacer par undefined
+  }
+
+  getInscriptionSemaine(idSemaine: string, idEnfant: string): IInscriptionSemaine {
+    for(let inscription of this.getInscriptionSession().inscriptionsSemaines) {
+      if (inscription.idEnfant == idEnfant && inscription.idSemaine == idSemaine) return inscription;
+    }
+    return new InscriptionSemaine(idEnfant, this.idSessionActuelle, idSemaine);
+  }
+
+
 
 
 
