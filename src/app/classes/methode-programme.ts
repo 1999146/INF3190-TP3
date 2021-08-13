@@ -14,18 +14,21 @@ export class MProgramme {
     return gabaritProgrammes[0]; // renplacer par undefined
   }
 
-  static getInscriptionSession(inscriptionParent: IInscriptionParent, idSessionActuelle: string): IInscriptionEnfant {
+  static getInscriptionSession(inscriptionParent: IInscriptionParent, idSessionActuelle: string): IInscriptionEnfant | undefined {
     for(let inscription of inscriptionParent.inscriptionEnfant) {
       if(inscription.idSession == idSessionActuelle) return inscription;
     }
-    return new InscriptionEnfant(idSessionActuelle); // remplacer par undefined
+    return undefined; // remplacer par undefined
   }
 
-  static getInscriptionSemaine(inscriptionParent: IInscriptionParent, idSessionActuelle: string, idSemaine: string, idEnfant: string): IInscriptionSemaine {
-    for(let inscription of this.getInscriptionSession(inscriptionParent, idSessionActuelle).inscriptionsSemaines) {
-      if (inscription.idEnfant == idEnfant && inscription.idSemaine == idSemaine) return inscription;
+  static getInscriptionSemaine(inscriptionParent: IInscriptionParent, idSessionActuelle: string, idSemaine: string, idEnfant: string): IInscriptionSemaine | undefined {
+    let inscriptionEnfant: IInscriptionEnfant | undefined = this.getInscriptionSession(inscriptionParent, idSessionActuelle);
+    if (inscriptionEnfant != undefined) {
+      for(let inscription of inscriptionEnfant.inscriptionsSemaines) {
+        if (inscription.idEnfant == idEnfant && inscription.idSemaine == idSemaine) return inscription;
+      }
     }
-    return new InscriptionSemaine(idEnfant, idSessionActuelle, idSemaine); // remplacer par undefined
+    return undefined; // remplacer par undefined
   }
 
   static getProgrammeById(session: ISession, idSemaine: string, idProgramme: string): IProgramme {
@@ -45,20 +48,24 @@ export class MProgramme {
       inscriptionParent: IInscriptionParent, 
       idSemaine: string, 
       idEnfant: string
-    ): IGabaritProgramme {
-    return this.getGabaritProgrammeById(
-      gabaritProgrammes, 
-      this.getProgrammeById(
-        session, 
-        idSemaine, 
-        this.getInscriptionSemaine(
-          inscriptionParent, 
-          session.id, 
-          idSemaine, 
-          idEnfant
-        ).idProgramme
-      ).idGabaritProgramme
+    ): IGabaritProgramme | undefined {
+    let inscriptionSemaine: IInscriptionSemaine | undefined = this.getInscriptionSemaine(
+      inscriptionParent, 
+      session.id, 
+      idSemaine, 
+      idEnfant
     );
+    if (inscriptionSemaine != undefined) {
+      return this.getGabaritProgrammeById(
+        gabaritProgrammes, 
+        this.getProgrammeById(
+          session, 
+          idSemaine, 
+          inscriptionSemaine.idProgramme
+        ).idGabaritProgramme
+      );
+    }
+    return undefined;
   }
 }
 

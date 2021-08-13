@@ -58,30 +58,40 @@ export class SectionParentInscriptionComponent implements OnInit {
     return MProgramme.getSessionById(this.sessions, this.idSessionActuelle);
   }
 
-  getGabaritProgrammeById(idGabaritProgramme: string): IGabaritProgramme {
-    return MProgramme.getGabaritProgrammeById(this.gabaritProgrammes, idGabaritProgramme);
+  getNomGabaritProgrammeById(idGabaritProgramme: string): string {
+    let gabaritProgramme: IGabaritProgramme | undefined = MProgramme.getGabaritProgrammeById(this.gabaritProgrammes, idGabaritProgramme);
+    if (gabaritProgramme != undefined) return gabaritProgramme.titre;
+    return "undefined";
   }
 
-  getInscriptionSession(): IInscriptionEnfant {
+  getInscriptionSession(): IInscriptionEnfant | undefined {
     return MProgramme.getInscriptionSession(this.inscriptionParent, this.idSessionActuelle);
   }
 
-  getInscriptionSemaine(idSemaine: string, idEnfant: string): IInscriptionSemaine {
-    return MProgramme.getInscriptionSemaine(this.inscriptionParent, this.idSessionActuelle, idSemaine, idEnfant);
-  }
+  // getInscriptionSemaine(idSemaine: string, idEnfant: string): IInscriptionSemaine | undefined {
+  //   return MProgramme.getInscriptionSemaine(this.inscriptionParent, this.idSessionActuelle, idSemaine, idEnfant);
+  // }
 
   getProgrammeById(idSemaine: string, idProgramme: string): IProgramme {
     return MProgramme.getProgrammeById(this.getSessionActuelle(), idSemaine, idProgramme);
   }
 
-  getGabaritProgramme(idSemaine: string, idEnfant: string): IGabaritProgramme {
-    return MProgramme.getGabaritProgramme(
+  getNomGabaritProgrammePaye(idSemaine: string, idEnfant: string): string {
+    let gabaritProgramme: IGabaritProgramme | undefined = MProgramme.getGabaritProgramme(
       this.getSessionActuelle(), 
       this.gabaritProgrammes, 
       this.inscriptionParent, 
       idSemaine, 
       idEnfant
     );
+    if (gabaritProgramme != undefined) return gabaritProgramme.titre;
+    return "undefined";
+  }
+
+  estPaye(idSemaine: string, idEnfant: string): boolean {
+    let inscriptionSemaine: IInscriptionSemaine | undefined = MProgramme.getInscriptionSemaine(this.inscriptionParent, this.idSessionActuelle, idSemaine, idEnfant);
+    if (inscriptionSemaine == undefined) return false;
+    else return inscriptionSemaine.estPaye;
   }
 
 

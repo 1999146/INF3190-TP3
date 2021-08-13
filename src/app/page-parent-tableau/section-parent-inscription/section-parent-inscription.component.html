@@ -40,21 +40,25 @@
             <td>{{enfant.nom}}, {{enfant.prenom}}</td>
             <td>
 
-              <select *ngIf="!getInscriptionSemaine(semaine.id, enfant.id).estPaye; else elseBlock" name="" class="form-control" id="">
+              <select *ngIf="!estPaye(semaine.id, enfant.id); else elseBlock" name="" class="form-control" id="">
                 <option selected value="">Choisir Programme</option>
                 <option *ngFor="let programme of semaine.programmes" [value]="programme.idGabaritProgramme">
-                  {{getGabaritProgrammeById(programme.idGabaritProgramme).titre}}
+                  {{getNomGabaritProgrammeById(programme.idGabaritProgramme)}}
+                  <!-- .titre -->
                 </option>
               </select>
 
               <ng-template #elseBlock>
                 <select disabled name="" class="form-control" id="">
-                  <option selected value="">{{getGabaritProgramme(semaine.id, enfant.id).titre}}</option>
+                  <option selected value="">{{getNomGabaritProgrammePaye(semaine.id, enfant.id)}}</option>
+                  <!-- .titre -->
                 </select>
               </ng-template>
 
             </td>
-            <td>bouton</td>
+            <td>
+              <ng-container>{{estPaye(semaine.id, enfant.id)}}</ng-container>
+            </td>
           </tr>
         </ng-container>
 
