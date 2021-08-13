@@ -10,6 +10,7 @@ import { InscriptionSemaine } from 'src/app/classes/fiche-parent/inscription-sem
 import { IInscriptionEnfant, IInscriptionParent, IInscriptionSemaine } from 'src/app/classes/module-json/module-fiche-parent';
 import { Programme } from 'src/app/classes/programme/programme';
 import { Semaine } from 'src/app/classes/programme/semaine';
+import { MProgramme } from 'src/app/classes/methode-programme';
 
 
 @Component({
@@ -53,49 +54,34 @@ export class SectionParentInscriptionComponent implements OnInit {
   //   console.log(data);
   // }
 
-  getSessionById(sessionId: string): ISession {
-    for (let session of this.sessions) if (sessionId == session.id) return session;
-    return this.sessions[0];
-  }
-
   getSessionActuelle(): ISession {
-    return this.getSessionById(this.idSessionActuelle);
+    return MProgramme.getSessionById(this.sessions, this.idSessionActuelle);
   }
 
   getGabaritProgrammeById(idGabaritProgramme: string): IGabaritProgramme {
-    for (let gabarit of this.gabaritProgrammes) if (idGabaritProgramme == gabarit.id) return gabarit;
-    return this.gabaritProgrammes[0]; // renplacer par undefined
+    return MProgramme.getGabaritProgrammeById(this.gabaritProgrammes, idGabaritProgramme);
   }
 
-
-
   getInscriptionSession(): IInscriptionEnfant {
-    for(let inscription of this.inscriptionParent.inscriptionEnfant) {
-      if(inscription.idSession == this.idSessionActuelle) return inscription;
-    }
-    return new InscriptionEnfant(this.idSessionActuelle); // remplacer par undefined
+    return MProgramme.getInscriptionSession(this.inscriptionParent, this.idSessionActuelle);
   }
 
   getInscriptionSemaine(idSemaine: string, idEnfant: string): IInscriptionSemaine {
-    for(let inscription of this.getInscriptionSession().inscriptionsSemaines) {
-      if (inscription.idEnfant == idEnfant && inscription.idSemaine == idSemaine) return inscription;
-    }
-    return new InscriptionSemaine(idEnfant, this.idSessionActuelle, idSemaine);
+    return MProgramme.getInscriptionSemaine(this.inscriptionParent, this.idSessionActuelle, idSemaine, idEnfant);
   }
 
   getProgrammeById(idSemaine: string, idProgramme: string): IProgramme {
-    for (let semaine of this.getSessionActuelle().semaines) {
-      if (semaine.id == idSemaine) {
-        for (let programme of semaine.programmes) {
-          if (idProgramme == programme.id) return programme;
-        }
-      }
-    }
-    return this.getSessionActuelle().semaines[0].programmes[0];
+    return MProgramme.getProgrammeById(this.getSessionActuelle(), idSemaine, idProgramme);
   }
 
   getGabaritProgramme(idSemaine: string, idEnfant: string): IGabaritProgramme {
-    return this.getGabaritProgrammeById(this.getProgrammeById(idSemaine, this.getInscriptionSemaine(idSemaine, idEnfant).idProgramme).idGabaritProgramme);
+    return MProgramme.getGabaritProgramme(
+      this.getSessionActuelle(), 
+      this.gabaritProgrammes, 
+      this.inscriptionParent, 
+      idSemaine, 
+      idEnfant
+    );
   }
 
 
