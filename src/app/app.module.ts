@@ -15,13 +15,16 @@ import { PageInscriptionParentComponent } from './page-inscription-parent/page-i
 import { PageParentTableauComponent } from './page-parent-tableau/page-parent-tableau.component';
 import { SectionParentProfilComponent } from './page-parent-tableau/section-parent-profil/section-parent-profil.component';
 import { SectionParentInscriptionComponent } from './page-parent-tableau/section-parent-inscription/section-parent-inscription.component';
+import { TableauAdminComponent } from './tableau-admin/tableau-admin.component';
+import { TableauAdminModalComponent } from './tableau-admin-modal/tableau-admin-modal.component';
 
 const appRoutes: Routes = [
   { path: '', component:  PageAccueilComponent},
   { path: 'descriptionProgrammes', component: PageDescriptionProgrammesComponent},
   { path: 'contact', component:  PageContactComponent},
   { path: 'inscriptionParent', component:  PageInscriptionParentComponent},
-  { path: 'tableauBordParent', component:  PageParentTableauComponent}
+  { path: 'tableauBordParent', component:  PageParentTableauComponent},
+  { path: 'tableauAdmin', component: TableauAdminComponent}
 ];
 
 @NgModule({
@@ -35,7 +38,9 @@ const appRoutes: Routes = [
     PageInscriptionParentComponent,
     PageParentTableauComponent,
     SectionParentProfilComponent,
-    SectionParentInscriptionComponent
+    SectionParentInscriptionComponent,
+    TableauAdminComponent,
+    TableauAdminModalComponent
   ],
   imports: [
     BrowserModule,
