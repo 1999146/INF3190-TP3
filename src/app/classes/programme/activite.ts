@@ -1,6 +1,6 @@
-import { ModuleProgramme } from "../module-json/module-programme";
+import { IActivite } from "../module-json/module-programme";
 
-export class Activite implements ModuleProgramme.IActivite {
+export class Activite implements IActivite {
   public id: string;
   public nom: string;
   public idTypeActivite: string;

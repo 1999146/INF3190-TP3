@@ -119,3 +119,72 @@
 //   }
 
 // }
+
+
+// this.gabaritProgrammes.push(new GabaritProgramme(
+//   "G0",
+//   "Classique",
+//   "Le classique comprend chaque jour un bloc d’activités de type sportif et un autre avec une activité de type art et une activité de type science."
+// ));
+
+// this.gabaritProgrammes.push(new GabaritProgramme(
+//   "G1",
+//   "Enfant actif",
+//   "Le programme athlétique est un camp de jour sportif intensif pour les enfants très actifs. Il comprend au moins quatre activités quotidiennes dont le basketball, le tennis, le soccer, le ballon chasseur, le baseball, etc."
+// ));
+
+// this.gabaritProgrammes.push(new GabaritProgramme(
+//   "G2",
+//   "Arts et sciences",
+//   "Le programme arts et science comprend plusieurs activités d'arts culinaires, d'arts visuels, d'arts plastiques, de chimie, de biologie et de physique. Il ne possède pas d’activité physique, cependant une activité matinale est réservée pour pratiquer le yoga ou jouer à un jeu de course comme le ballon chasseur."
+// ));
+
+
+
+
+    // // Session
+
+    // this.sessionActuelle = new Session(
+    //   "S21",
+    //   "Session 2021",
+    //   "Session plein de plaisir",
+    //   "2021-04-01",
+    //   "2021-08-01"
+    // );
+
+    // this.sessions.push(this.sessionActuelle);
+    // this.sessions.push(new Session(
+    //   "S20",
+    //   "Session 2020",
+    //   "Session plein de plaisir",
+    //   "2020-04-01",
+    //   "2020-08-01"
+    // ));
+
+    // this.sessions.push(new Session(
+    //   "S22",
+    //   "Session 2022",
+    //   "Session plein de plaisir",
+    //   "2022-04-01",
+    //   "2022-08-01"
+    // ));
+
+    // for(let sess of this.sessions) {
+    //   for(let i = 1; i <= 15; i++) {
+    //     let semaineTmp: Semaine = new Semaine(
+    //       "S" + i + "_" + sess.id,
+    //       i
+    //     );
+  
+    //     for(let j = 0; j < 3; j++) {
+    //       semaineTmp.ajouterProgramme( new Programme (
+    //         "P" + j + "_" + semaineTmp.id,
+    //         "G" + j,
+    //         "Nos " + j + " amis.",
+    //         10 + (i * j)
+    //       ));
+    //     }
+  
+    //     sess.semaines.push(semaineTmp);
+    //   }
+    // }

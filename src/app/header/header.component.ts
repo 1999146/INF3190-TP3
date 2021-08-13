@@ -10,9 +10,9 @@ import {Router} from "@angular/router";
 
 export class HeaderComponent {
 
-  username!: String;
-  password!: String;
-  erreur!: String;
+  username!: string;
+  password!: string;
+  erreur!: string;
 
   constructor(public authService: AuthService, private router: Router) { }
 

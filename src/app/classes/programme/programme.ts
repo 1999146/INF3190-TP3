@@ -1,6 +1,6 @@
-import { ModuleProgramme } from "../module-json/module-programme";
+import { IProgramme } from "../module-json/module-programme";
 
-export class Programme implements ModuleProgramme.IProgramme {
+export class Programme implements IProgramme {
   public id: string;
   public idGabaritProgramme: string;
   public animateur: string;

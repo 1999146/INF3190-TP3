@@ -1,7 +1,7 @@
-import { ModuleProgramme } from "../module-json/module-programme";
+import { ISession } from "../module-json/module-programme";
 import { Semaine } from "./semaine";
 
-export class Session implements ModuleProgramme.ISession {
+export class Session implements ISession {
   public id: string;
   public nom: string;
   public description: string;
