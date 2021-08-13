@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Parent } from '../../classes/fiche-parent/parent';
 import { AuthService } from "../../services/auth.service";
 import { FicheParent } from 'src/app/classes/fiche-parent/fiche-parent';
-import { IGabaritProgramme } from 'src/app/classes/module-json/module-programme';
+import { IGabaritProgramme, IProgramme } from 'src/app/classes/module-json/module-programme';
 import { ISession } from 'src/app/classes/module-json/module-programme';
 import { InscriptionParent } from 'src/app/classes/fiche-parent/inscription-parent';
 import { InscriptionEnfant } from 'src/app/classes/fiche-parent/inscription-enfant';
 import { InscriptionSemaine } from 'src/app/classes/fiche-parent/inscription-semaine';
 import { IInscriptionEnfant, IInscriptionParent, IInscriptionSemaine } from 'src/app/classes/module-json/module-fiche-parent';
+import { Programme } from 'src/app/classes/programme/programme';
+import { Semaine } from 'src/app/classes/programme/semaine';
 
 
 @Component({
@@ -65,6 +67,8 @@ export class SectionParentInscriptionComponent implements OnInit {
     return this.gabaritProgrammes[0]; // renplacer par undefined
   }
 
+
+
   getInscriptionSession(): IInscriptionEnfant {
     for(let inscription of this.inscriptionParent.inscriptionEnfant) {
       if(inscription.idSession == this.idSessionActuelle) return inscription;
@@ -79,6 +83,20 @@ export class SectionParentInscriptionComponent implements OnInit {
     return new InscriptionSemaine(idEnfant, this.idSessionActuelle, idSemaine);
   }
 
+  getProgrammeById(idSemaine: string, idProgramme: string): IProgramme {
+    for (let semaine of this.getSessionActuelle().semaines) {
+      if (semaine.id == idSemaine) {
+        for (let programme of semaine.programmes) {
+          if (idProgramme == programme.id) return programme;
+        }
+      }
+    }
+    return this.getSessionActuelle().semaines[0].programmes[0];
+  }
+
+  getGabaritProgramme(idSemaine: string, idEnfant: string): IGabaritProgramme {
+    return this.getGabaritProgrammeById(this.getProgrammeById(idSemaine, this.getInscriptionSemaine(idSemaine, idEnfant).idProgramme).idGabaritProgramme);
+  }
 
 
 

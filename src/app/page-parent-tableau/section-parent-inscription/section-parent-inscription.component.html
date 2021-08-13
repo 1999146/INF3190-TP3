@@ -39,7 +39,7 @@
             <td *ngIf="enfant == parent.enfants[0]" [attr.rowspan]="parent.enfants.length">{{semaine.noSemaine}}</td>
             <td>{{enfant.nom}}, {{enfant.prenom}}</td>
             <td>
-              
+
               <select *ngIf="!getInscriptionSemaine(semaine.id, enfant.id).estPaye; else elseBlock" name="" class="form-control" id="">
                 <option selected value="">Choisir Programme</option>
                 <option *ngFor="let programme of semaine.programmes" [value]="programme.idGabaritProgramme">
@@ -49,7 +49,7 @@
 
               <ng-template #elseBlock>
                 <select disabled name="" class="form-control" id="">
-                  <option selected value="">{{getInscriptionSemaine(semaine.id, enfant.id).idProgramme}}</option>
+                  <option selected value="">{{getGabaritProgramme(semaine.id, enfant.id).titre}}</option>
                 </select>
               </ng-template>
 
