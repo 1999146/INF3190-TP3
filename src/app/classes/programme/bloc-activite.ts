@@ -1,7 +1,7 @@
 import { Activite } from "./activite";
-import { ModuleProgramme } from "../module-json/module-programme";
+import { IBlocActivite } from "../module-json/module-programme";
 
-export class BlocActivite implements ModuleProgramme.IBlocActivite {
+export class BlocActivite implements IBlocActivite {
   public id: string;
   public nom: string;
   public activites: Array<Activite>;

@@ -1,6 +1,15 @@
-<!-- <button class="btn btn-danger mb-4" (click)="exportJson()">clic_json</button> -->
+<!-- <button class="btn btn-danger mb-4" (click)="exportJson()">clic_json</button>
+<button class="btn btn-danger mb-4" (click)="test()">test</button> -->
 
-<div *ngIf="null != parent.enfants" class="card mb-4">
+<!-- <div>boi {{sessionsCamp[0].nom}} {{sessionActuelle.nom}} </div> -->
+
+
+<!-- 
+<ng-container *ngFor="let patate of sessionsCamp">
+  <span>{{patate.nom}}</span>
+</ng-container> -->
+
+<div *ngIf="undefined != parent.enfants" class="card mb-4">
   <div class="card-header">
     <div class="row mb-2 mt-2">
       <div class="col-8">
@@ -10,15 +19,28 @@
       </div>
       <div class="col-2 d-flex align-items-center justify-content-end">Sélection : </div>
       <div class="col-2 d-flex align-items-end justify-content-end">
-        <form method="POST" onchange="this.form.submit()">
+        <form method="POST" onchange="">
 
-          <select name="numSession" class="form-control" onchange="this.form.submit()">
-            <ng-container *ngFor="let session of sessions;">
-              <option *ngIf="session == this.sessionActuelle" value="session.id">{{session.nom}}</option>
+          <select name="numSession" class="form-control" onchange="">
+            <!-- <ng-container *ngFor="let session of sessionsCamp">
+              <option value="session.id">{{session.nom}}</option>
+            </ng-container> -->
+
+
+            <option *ngFor="let session of sessionsCamp" value="session.id">{{session.nom}}</option>
+
+            <!-- <option value="session.id">{{sessionsCamp[0].nom}}</option>
+            <option value="session.id">{{sessionsCamp[1].nom}}</option>
+            <option value="session.id">{{sessionsCamp[2].nom}}</option> -->
+
+
+
+            <!-- <ng-container *ngFor="let session of sessionsCamp">
+              <option *ngIf="session == sessionActuelle" value="session.id">{{session.nom}}</option>
             </ng-container>
-            <ng-container *ngFor="let session of sessions;">
-              <option *ngIf="session != this.sessionActuelle" value="session.id">{{session.nom}}</option>
-            </ng-container>
+            <ng-container *ngFor="let session of sessionsCamp">
+              <option *ngIf="session != sessionActuelle" value="session.id">{{session.nom}}</option>
+            </ng-container> -->
           </select>
           
         </form>
@@ -109,7 +131,7 @@
       <div class="row">
         <div class="col-9"></div>
         <div class="col-3 d-flex align-items-end justify-content-end">
-          <form method="POST" action="<?=Util::getChemin()?>/parent/payer">
+          <form method="POST" action="">
             <button class="btn btn-sm btn-success" type="submit">Payer getPrixTotal()</button>
           </form>
         </div>

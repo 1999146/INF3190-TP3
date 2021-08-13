@@ -1,6 +1,3 @@
-export declare module ModuleFicheParent {
-
-  // Parent
 
   export interface IFicheParent {
     username: string;
@@ -41,10 +38,6 @@ export declare module ModuleFicheParent {
     idSemaine: string;
     estPaye: boolean;
   }
-
-}
-
-
 
 
 

@@ -1,7 +1,7 @@
 import { Programme } from "./programme";
-import { ModuleProgramme } from "../module-json/module-programme";
+import { ISemaine } from "../module-json/module-programme";
 
-export class Semaine implements ModuleProgramme.ISemaine {
+export class Semaine implements ISemaine {
   public id: string;
   public noSemaine: number;
   public programmes: Array<Programme> = new Array<Programme>();

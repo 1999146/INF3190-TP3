@@ -1,23 +1,23 @@
 // import * as dossiersParents from '../../data/dossier_parent.json';
 // let parents = dossiersParents;
 
-import * as fichesParentsJson from "../../data/fiches-parents.json";
-import * as gabaritProgrammeJson from "../../data/gabarit-programmes.json";
+import fichesParentsJson from "../../data/fiches-parents";
+import gabaritProgrammeJson from "../../data/gabarit-programmes";
 
-import { ModuleFicheParent } from "../classes/module-json/module-fiche-parent";
-import { ModuleProgramme } from "../classes/module-json/module-programme";
+import { IFicheParent } from "../classes/module-json/module-fiche-parent";
+import { IGabaritProgramme } from "../classes/module-json/module-programme";
 
-let parents: ModuleFicheParent.IFicheParent[] = fichesParentsJson;
+let parents: IFicheParent[] = fichesParentsJson;
 
 export class AuthService {
   isAuth: boolean = false;
   isAdmin: boolean = false;
   indiceParent: number = 0;
 
-  ficheParent: ModuleFicheParent.IFicheParent = parents[this.indiceParent];
-  gabaritProgrammes: ModuleProgramme.IGabaritProgramme[] = gabaritProgrammeJson;
+  ficheParent: IFicheParent = parents[0];
+  gabaritProgrammes: IGabaritProgramme[] = gabaritProgrammeJson;
 
-  signIn(username: String, password: String) {
+  signIn(username: string, password: string) {
     if (username == "admin" && password == "admin") {
       this.isAuth = true;
       this.isAdmin = true;
@@ -37,7 +37,7 @@ export class AuthService {
     this.isAdmin = false;
   }
 
-  verifyPassword(username: String, password: String): boolean{
+  verifyPassword(username: string, password: string): boolean{
     let authentifie = false;
     for(let i = 0; i < parents.length; i++){
       if(parents[i].username == username && parents[i].password == password){
@@ -47,10 +47,11 @@ export class AuthService {
     return authentifie;
   }
 
-  logParent(username: String){
-    for(let i = 0; i < 3; i++){
+  logParent(username: string){
+    for(let i = 0; i < parents.length; i++){
       if(parents[i].username == username){
           this.indiceParent = i;
+          this.ficheParent = parents[i];
       }
     }
   }

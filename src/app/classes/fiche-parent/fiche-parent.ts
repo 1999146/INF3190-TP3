@@ -1,7 +1,7 @@
 import { Parent } from "./parent";
-import { ModuleFicheParent } from "../module-json/module-fiche-parent";
+import { IFicheParent } from "../module-json/module-fiche-parent";
 
-export class FicheParent implements ModuleFicheParent.IFicheParent {
+export class FicheParent implements IFicheParent {
   username: string;
   password: string;
   parent: Parent;

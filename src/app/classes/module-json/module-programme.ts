@@ -1,8 +1,4 @@
-export declare module ModuleProgramme {
-
-  // Session
-
-  export interface ISession {
+  export declare interface ISessionCamp {
     id: string;
     nom: string;
     description: string;
@@ -52,6 +48,3 @@ export declare module ModuleProgramme {
     description: string;
   }
 
-
-
-}

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ModuleFicheParent } from 'src/app/classes/module-json/module-fiche-parent';
+import { IParent } from 'src/app/classes/module-json/module-fiche-parent';
+import { IFicheParent } from 'src/app/classes/module-json/module-fiche-parent';
 import { Enfant } from '../../classes/fiche-parent/enfant';
 import { Parent } from '../../classes/fiche-parent/parent';
-import {AuthService} from "../../services/auth.service";
+import { AuthService } from "../../services/auth.service";
 
 
 @Component({
@@ -12,8 +13,8 @@ import {AuthService} from "../../services/auth.service";
 })
 export class SectionParentProfilComponent implements OnInit {
 
-  parent: ModuleFicheParent.IParent;
-  ficheParent: ModuleFicheParent.IFicheParent;
+  parent!: IParent;
+  ficheParent!: IFicheParent;
 
   constructor(public authService: AuthService) {
     this.ficheParent = authService.ficheParent;
