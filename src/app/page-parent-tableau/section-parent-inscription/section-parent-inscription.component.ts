@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Parent } from '../../classes/parent';
+import { InscriptionEnfant, Parent } from '../../classes/parent';
 import { AuthService } from "../../services/auth.service";
-import { IGabaritProgramme, IProgramme } from 'src/app/classes/interface-json/interface-session';
+import { IGabaritProgramme, IProgramme, ISemaine } from 'src/app/classes/interface-json/interface-session';
 import { ISession } from 'src/app/classes/interface-json/interface-session';
 import { InscriptionParent } from '../../classes/parent';
-import { IInscriptionEnfant, IInscriptionParent } from 'src/app/classes/interface-json/interface-parent';
+import { IEnfant, IInscriptionEnfant, IInscriptionParent } from 'src/app/classes/interface-json/interface-parent';
 import { Join } from 'src/app/classes/methode-join';
 import { Router } from '@angular/router';
 import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/util';
@@ -25,6 +25,7 @@ export class SectionParentInscriptionComponent implements OnInit {
   gabaritProgrammes!: IGabaritProgramme[];
   sessions!: ISession[];
   idSessionActuelle!: string;
+  selectAjoutPanier!: IProgramme;
   
 
   constructor(public authService: AuthService, private router: Router) {
@@ -61,6 +62,13 @@ export class SectionParentInscriptionComponent implements OnInit {
     return "undefined";
   }
 
+
+  getGabaritProgrammeById(idGabaritProgramme: string): IGabaritProgramme | undefined {
+    let gabaritProgramme: IGabaritProgramme | undefined = Join.getGabaritProgrammeById(this.gabaritProgrammes, idGabaritProgramme);
+    if (gabaritProgramme != undefined) return gabaritProgramme;
+    return undefined;
+  }
+
   getInscriptionsEnfants(): IInscriptionEnfant[] | undefined {
     return Join.getInscriptionsEnfants(this.inscriptionsParents, this.idSessionActuelle);
   }
@@ -75,7 +83,7 @@ export class SectionParentInscriptionComponent implements OnInit {
   //   return 
   // }
 
-  getNomGabaritProgrammePaye(idSemaine: string, idEnfant: string): string {
+  getNomGabaritProgrammeInscrit(idSemaine: string, idEnfant: string): string {
     let gabaritProgramme: IGabaritProgramme | undefined = Join.getGabaritProgramme(
       this.getSessionActuelle(), 
       this.gabaritProgrammes, 
@@ -85,6 +93,18 @@ export class SectionParentInscriptionComponent implements OnInit {
     );
     if (gabaritProgramme != undefined) return gabaritProgramme.titre;
     return "undefined";
+  }
+
+  getGabaritProgrammeInscrit(idSemaine: string, idEnfant: string): IGabaritProgramme | undefined {
+    let gabaritProgramme: IGabaritProgramme | undefined = Join.getGabaritProgramme(
+      this.getSessionActuelle(), 
+      this.gabaritProgrammes, 
+      this.inscriptionsParents, 
+      idSemaine, 
+      idEnfant
+    );
+    if (gabaritProgramme != undefined) return gabaritProgramme;
+    return undefined;
   }
 
   estPaye(idSemaine: string, idEnfant: string): boolean {
@@ -103,6 +123,23 @@ export class SectionParentInscriptionComponent implements OnInit {
       idSemaine, 
       idEnfant
     );
+  }
+
+  inscrire(semaine: ISemaine, enfant: IEnfant, event: any) {
+    // console.log(this.selectAjoutPanier.idGabaritProgramme);
+    let idProgramme: string = event.target.value;
+    console.log(enfant.prenom);
+    console.log(semaine.noSemaine);
+    console.log(idProgramme);
+    let inscriptionEnfant: IInscriptionEnfant | undefined = Join.getInscriptionEnfant(this.inscriptionsParents, this.idSessionActuelle, semaine.id, enfant.id);
+    if (inscriptionEnfant == undefined && idProgramme != "") {
+      inscriptionEnfant = new InscriptionEnfant(enfant.id, idProgramme, semaine.id);
+      this.getInscriptionsEnfants()?.push(inscriptionEnfant);
+    } else if (inscriptionEnfant != undefined && idProgramme != "") {
+      inscriptionEnfant.estInscrit = true;
+    } else if (inscriptionEnfant != undefined && idProgramme == "") {
+      inscriptionEnfant.estInscrit = false;
+    }
   }
 
   // getIdGabaritProgrammeInscrit(idSemaine: string, idEnfant: string): string | undefined {

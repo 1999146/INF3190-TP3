@@ -29,7 +29,7 @@
           <th>Semaine</th>
           <th>Enfant</th>
           <th>Programme</th>
-          <th>Status</th>
+          <th>Statut</th>
         </tr>
       </thead>
 
@@ -40,24 +40,40 @@
             <td>{{enfant.nom}}, {{enfant.prenom}}</td>
             <td>
 
-              <select *ngIf="!estPaye(semaine.id, enfant.id); else elseBlock" name="" class="form-control" id="">
-                <option selected value="">Choisir Programme</option>
-                <option *ngFor="let programme of semaine.programmes" [value]="programme.idGabaritProgramme">
+              <select *ngIf="!estPaye(semaine.id, enfant.id) && estInscrit(semaine.id, enfant.id)" name="" class="form-control" id="" (change)="inscrire(semaine, enfant, $event)">
+                <option selected [value]="">{{getNomGabaritProgrammeInscrit(semaine.id, enfant.id)}}</option>
+                <ng-container *ngFor="let programme of semaine.programmes">
+                  <ng-container *ngIf="getGabaritProgrammeById(programme.idGabaritProgramme) != getGabaritProgrammeInscrit(semaine.id, enfant.id)">
+                    <option [value]="programme.id">
+                      {{getNomGabaritProgrammeById(programme.idGabaritProgramme)}}
+                    </option>
+                  </ng-container>
+                </ng-container>
+                <option value="">*</option>
+              </select>
+
+              <select *ngIf="!estPaye(semaine.id, enfant.id) && !estInscrit(semaine.id, enfant.id)" name="" class="form-control" id="" (change)="inscrire(semaine, enfant, $event)">
+                <option selected value="">*</option>
+                <option *ngFor="let programme of semaine.programmes" [value]="programme.id">
                   {{getNomGabaritProgrammeById(programme.idGabaritProgramme)}}
-                  <!-- .titre -->
                 </option>
               </select>
 
-              <ng-template #elseBlock>
-                <select disabled name="" class="form-control" id="">
-                  <option selected value="">{{getNomGabaritProgrammePaye(semaine.id, enfant.id)}}</option>
-                  <!-- .titre -->
-                </select>
-              </ng-template>
+              <select *ngIf="estPaye(semaine.id, enfant.id)" disabled name="" class="form-control" id="">
+                <option selected value="">{{getNomGabaritProgrammeInscrit(semaine.id, enfant.id)}}</option>
+              </select>
 
             </td>
             <td>
-              <ng-container>{{estPaye(semaine.id, enfant.id)}}</ng-container>
+              <button *ngIf="estPaye(semaine.id, enfant.id)" disabled class="btn btn-success"> 
+                <i class="fas fa-check-square"></i>
+              </button>
+              <button *ngIf="!estPaye(semaine.id, enfant.id) && estInscrit(semaine.id, enfant.id)" disabled class="btn btn-warning"> 
+                <i class="fas fa-cart-arrow-down"></i> 
+              </button>
+              <button *ngIf="!estPaye(semaine.id, enfant.id) && !estInscrit(semaine.id, enfant.id)" disabled class="btn btn-light border">
+                <i class="fas fa-cart-plus"></i>
+              </button>
             </td>
           </tr>
         </ng-container>
