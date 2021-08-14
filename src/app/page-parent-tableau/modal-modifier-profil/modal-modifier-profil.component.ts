@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-modal-modifier-profil',
@@ -25,5 +26,9 @@ export class ModalModifierProfilComponent implements OnInit {
     // @ts-ignore
     image.src = URL.createObjectURL(event.target.files[0]);
   };
+
+  onSubmit(form: NgForm) {
+
+  }
 
 }
