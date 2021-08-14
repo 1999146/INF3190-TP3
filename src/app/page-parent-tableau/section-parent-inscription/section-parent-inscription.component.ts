@@ -26,6 +26,8 @@ export class SectionParentInscriptionComponent implements OnInit {
   sessions!: ISession[];
   idSessionActuelle!: string;
   selectAjoutPanier!: IProgramme;
+
+  prixTotal!: number;
   
 
   constructor(public authService: AuthService, private router: Router) {
@@ -43,7 +45,7 @@ export class SectionParentInscriptionComponent implements OnInit {
   estEnCours(noSemaine: number): boolean {
     let dateSession: Date = new Date(this.getSessionActuelle().dateDebut);
     let dateSemaine: Date = new Date(dateSession.getTime() + (7 * (noSemaine)) * 1000 * 60 * 60 * 24); 
-    
+
     if ( dateSemaine > this.dateMaintenant ) return true;
     else return false;
   }
@@ -77,6 +79,12 @@ export class SectionParentInscriptionComponent implements OnInit {
     let gabaritProgramme: IGabaritProgramme | undefined = Join.getGabaritProgrammeById(this.gabaritProgrammes, idGabaritProgramme);
     if (gabaritProgramme != undefined) return gabaritProgramme;
     return undefined;
+  }
+
+  getNoSemaine(inscriptionEnfant: IInscriptionEnfant): number {
+    let semaine: ISemaine | undefined = Join.getSemaineById(this.getSessionActuelle(), inscriptionEnfant.idSemaine);
+    if (semaine != undefined) return semaine.noSemaine;
+    return 0;
   }
 
   getInscriptionsEnfants(): IInscriptionEnfant[] | undefined {
@@ -135,10 +143,29 @@ export class SectionParentInscriptionComponent implements OnInit {
     );
   }
 
+  estAuPanier(inscriptionEnfant: IInscriptionEnfant): boolean {
+    return this.estEnCours(this.getNoSemaine(inscriptionEnfant)) && 
+      !this.estPaye(inscriptionEnfant.idSemaine, inscriptionEnfant.idEnfant) &&
+      this.estInscrit(inscriptionEnfant.idSemaine, inscriptionEnfant.idEnfant);
+  }
+
   getPrixProgrammeInscrit(idSemaine: string, idEnfant: string): number {
     let programme: IProgramme | undefined = Join.getProgrammeInscrit(this.getSessionActuelle(), this.inscriptionsParents, idSemaine, idEnfant);
     if (programme != undefined) return programme.prix;
     return 0;
+  }
+
+  getPrixTotalInscrit(): number {
+    let total: number = 0;
+    let inscriptionsEnfants: IInscriptionEnfant[] | undefined = Join.getInscriptionsEnfants(this.inscriptionsParents, this.idSessionActuelle);
+    if (inscriptionsEnfants != undefined) {
+      for (let inscriptionEnfant of inscriptionsEnfants) {
+        let programme: IProgramme | undefined = Join.getProgrammeById(this.getSessionActuelle(), inscriptionEnfant.idSemaine, inscriptionEnfant.idProgramme);
+        if (programme != undefined && this.estAuPanier(inscriptionEnfant)) total += programme.prix;
+      }
+    }
+    this.prixTotal = total;
+    return total;
   }
 
   inscrire(semaine: ISemaine, enfant: IEnfant, event: any) {
@@ -157,9 +184,27 @@ export class SectionParentInscriptionComponent implements OnInit {
     }
   }
 
-  // getIdGabaritProgrammeInscrit(idSemaine: string, idEnfant: string): string | undefined {
+  getNomEnfant(idEnfant: string): string {
+    let enfant: IEnfant | undefined = Join.getEnfantById(this.parent, idEnfant);
+    if (enfant != undefined) return enfant.nom;
+    return "";
+  }
 
-  // }
+  getPrenomEnfant(idEnfant: string): string {
+    let enfant: IEnfant | undefined = Join.getEnfantById(this.parent, idEnfant);
+    if (enfant != undefined) return enfant.prenom;
+    return "";
+  }
+
+  payer() {
+    let inscriptionsEnfants: IInscriptionEnfant[] | undefined = Join.getInscriptionsEnfants(this.inscriptionsParents, this.idSessionActuelle);
+    if (inscriptionsEnfants != undefined) {
+      for (let inscriptionEnfant of inscriptionsEnfants) {
+        if (this.estAuPanier(inscriptionEnfant)) inscriptionEnfant.estPaye = true;
+      }
+    }
+    console.log("payer");
+  }
 
 
 

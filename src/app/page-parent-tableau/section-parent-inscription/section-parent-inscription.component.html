@@ -34,6 +34,7 @@
       </thead>
 
       <tbody>
+        
         <ng-container *ngFor="let semaine of getSessionActuelle().semaines">
           <tr *ngFor="let enfant of parent.enfants" [ngClass]="classeEnCours(semaine.noSemaine)">
             <td *ngIf="enfant == parent.enfants[0]" [attr.rowspan]="parent.enfants.length">{{semaine.noSemaine}}</td>
@@ -85,18 +86,6 @@
           </tr>
         </ng-container>
 
-
-        <!-- [class]="estEnCours(new Date)" -->
-
-
-
-        <!-- <tr class="week-passed">
-          <td [attr.rowspan]="parent.enfants.length">getNoSemaine()</td>
-          <td>getNomEnfant(), getPrenomEnfant()</td>
-          <td>afficherProgrammeSelection()</td>
-          <td>bouton</td>
-        </tr> -->
-
       </tbody>
     </table>
   </div>
@@ -112,7 +101,7 @@
           </h2>
         </div>
         <div class="col-6 d-flex align-items-end justify-content-end">
-          <p> <span id="dateFacture">dateActuelle()</span> </p>
+          <p> <span id="dateFacture"></span> </p>
         </div>
       </div>
     </div>
@@ -128,19 +117,22 @@
           </tr>
         </thead>
 
-        <tr>
-          <td>getNoSemaine()</td>
-          <td>getTitreGabarit()</td>
-          <td>getNomEnfant(), getPrenomEnfant()</td>
-          <td>getPrixProgrammeInscrit().00 $</td>
-        </tr>
+        <ng-container *ngFor="let inscriptionEnfant of getInscriptionsEnfants()">
+          <tr *ngIf="estAuPanier(inscriptionEnfant)">
+            <td>{{getNoSemaine(inscriptionEnfant)}}</td>
+            <td>{{getNomGabaritProgrammeInscrit(inscriptionEnfant.idSemaine, inscriptionEnfant.idEnfant)}}</td>
+            <td>{{getNomEnfant(inscriptionEnfant.idEnfant)}}, {{getPrenomEnfant(inscriptionEnfant.idEnfant)}}</td>
+            <td>{{getPrixProgrammeInscrit(inscriptionEnfant.idSemaine, inscriptionEnfant.idEnfant)}}.00 $</td>
+          </tr>
+        </ng-container>
+
 
         <tbody>
           <tr>
             <td></td>
             <td></td>
             <td class="fw-bold">Total :</td>
-            <td class="fw-bold grey">getPrixTotal()</td>
+            <td class="fw-bold grey">{{getPrixTotalInscrit()}}.00$</td>
           </tr>
         </tbody>
 
@@ -150,7 +142,7 @@
         <div class="col-9"></div>
         <div class="col-3 d-flex align-items-end justify-content-end">
           <form method="POST" action="">
-            <button class="btn btn-sm btn-success" type="submit">Payer getPrixTotal()</button>
+            <button class="btn btn-sm btn-success" type="submit" (click)="payer()">Payer {{prixTotal}}.00$</button>
           </form>
         </div>
       </div>

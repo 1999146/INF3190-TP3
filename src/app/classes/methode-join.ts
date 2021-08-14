@@ -1,6 +1,6 @@
 import { Inscription } from "./parent";
-import { IInscriptionParent, IInscriptionEnfant } from "./interface-json/interface-parent";
-import { IGabaritProgramme, ISession, IProgramme } from "./interface-json/interface-session";
+import { IInscriptionParent, IInscriptionEnfant, IEnfant, IParent } from "./interface-json/interface-parent";
+import { IGabaritProgramme, ISession, IProgramme, ISemaine } from "./interface-json/interface-session";
 
 export class Join {
   static getSessionById(sessions: ISession[], sessionId: string): ISession | undefined {
@@ -88,6 +88,7 @@ export class Join {
     return inscriptionsParentAuth;
   }
 
+  //pour admin
   static getInscriptions(inscriptionsParents: IInscriptionParent[]): Inscription[] {
     let inscriptions: Inscription[] = new Array<Inscription>();
     for (let inscriptionParent of inscriptionsParents) {
@@ -136,6 +137,20 @@ export class Join {
     );
     if (inscriptionEnfant == undefined) return false;
     else return inscriptionEnfant.estInscrit;
+  }
+
+  static getSemaineById(session: ISession, idSemaine: string): ISemaine | undefined {
+    for (let semaine of session.semaines) {
+      if (semaine.id == idSemaine) return semaine;
+    }
+    return undefined;
+  }
+
+  static getEnfantById(parent: IParent, idEnfant: string): IEnfant | undefined {
+    for (let enfant of parent.enfants) {
+      if (enfant.id == idEnfant) return enfant;
+    }
+    return undefined;
   }
 
 
