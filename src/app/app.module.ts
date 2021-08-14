@@ -17,6 +17,7 @@ import { SectionParentProfilComponent } from './page-parent-tableau/section-pare
 import { SectionParentInscriptionComponent } from './page-parent-tableau/section-parent-inscription/section-parent-inscription.component';
 import { TableauAdminComponent } from './tableau-admin/tableau-admin.component';
 import { TableauAdminModalComponent } from './tableau-admin-modal/tableau-admin-modal.component';
+import {ModalModifierProfilComponent} from "./page-parent-tableau/modal-modifier-profil/modal-modifier-profil.component";
 
 const appRoutes: Routes = [
   { path: '', component:  PageAccueilComponent},
@@ -41,6 +42,7 @@ const appRoutes: Routes = [
     SectionParentInscriptionComponent,
     TableauAdminComponent,
     TableauAdminModalComponent,
+    ModalModifierProfilComponent,
   ],
   imports: [
     BrowserModule,
