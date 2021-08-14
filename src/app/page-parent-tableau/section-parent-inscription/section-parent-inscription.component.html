@@ -35,43 +35,50 @@
 
       <tbody>
         <ng-container *ngFor="let semaine of getSessionActuelle().semaines">
-          <tr *ngFor="let enfant of parent.enfants" class="week-ongoing">
+          <tr *ngFor="let enfant of parent.enfants" [ngClass]="classeEnCours(semaine.noSemaine)">
             <td *ngIf="enfant == parent.enfants[0]" [attr.rowspan]="parent.enfants.length">{{semaine.noSemaine}}</td>
             <td>{{enfant.nom}}, {{enfant.prenom}}</td>
             <td>
 
-              <select *ngIf="!estPaye(semaine.id, enfant.id) && estInscrit(semaine.id, enfant.id)" name="" class="form-control" id="" (change)="inscrire(semaine, enfant, $event)">
-                <option selected [value]="">{{getNomGabaritProgrammeInscrit(semaine.id, enfant.id)}}</option>
-                <ng-container *ngFor="let programme of semaine.programmes">
-                  <ng-container *ngIf="getGabaritProgrammeById(programme.idGabaritProgramme) != getGabaritProgrammeInscrit(semaine.id, enfant.id)">
-                    <option [value]="programme.id">
-                      {{getNomGabaritProgrammeById(programme.idGabaritProgramme)}}
-                    </option>
-                  </ng-container>
-                </ng-container>
-                <option value="">*</option>
-              </select>
-
-              <select *ngIf="!estPaye(semaine.id, enfant.id) && !estInscrit(semaine.id, enfant.id)" name="" class="form-control" id="" (change)="inscrire(semaine, enfant, $event)">
-                <option selected value="">*</option>
-                <option *ngFor="let programme of semaine.programmes" [value]="programme.id">
-                  {{getNomGabaritProgrammeById(programme.idGabaritProgramme)}}
-                </option>
+              <select *ngIf="!estEnCours(semaine.noSemaine) && !estPaye(semaine.id, enfant.id)" disabled name="" class="form-control" id="">
+                <option selected value=""></option>
               </select>
 
               <select *ngIf="estPaye(semaine.id, enfant.id)" disabled name="" class="form-control" id="">
-                <option selected value="">{{getNomGabaritProgrammeInscrit(semaine.id, enfant.id)}}</option>
+                <option selected value="">{{getNomGabaritProgrammeInscrit(semaine.id, enfant.id)}} ({{getPrixProgrammeInscrit(semaine.id, enfant.id)}}.00$)</option>
+              </select>
+
+              <select *ngIf="estEnCours(semaine.noSemaine) && !estPaye(semaine.id, enfant.id) && estInscrit(semaine.id, enfant.id)" name="" class="form-control" id="" (change)="inscrire(semaine, enfant, $event)">
+                <option selected [value]="">{{getNomGabaritProgrammeInscrit(semaine.id, enfant.id)}} ({{getPrixProgrammeInscrit(semaine.id, enfant.id)}}.00$)</option>
+                <ng-container *ngFor="let programme of semaine.programmes">
+                  <ng-container *ngIf="getGabaritProgrammeById(programme.idGabaritProgramme) != getGabaritProgrammeInscrit(semaine.id, enfant.id)">
+                    <option [value]="programme.id">
+                      {{getNomGabaritProgrammeById(programme.idGabaritProgramme)}} ({{programme.prix}}.00$)
+                    </option>
+                  </ng-container>
+                </ng-container>
+                <option value="">Aucun</option>
+              </select>
+
+              <select *ngIf="estEnCours(semaine.noSemaine) && !estPaye(semaine.id, enfant.id) && !estInscrit(semaine.id, enfant.id)" name="" class="form-control" id="" (change)="inscrire(semaine, enfant, $event)">
+                <option  selected value="">Aucun</option>
+                <option *ngFor="let programme of semaine.programmes" [value]="programme.id">
+                  {{getNomGabaritProgrammeById(programme.idGabaritProgramme)}} ({{programme.prix}}.00$)
+                </option>
               </select>
 
             </td>
             <td>
-              <button *ngIf="estPaye(semaine.id, enfant.id)" disabled class="btn btn-success"> 
-                <i class="fas fa-check-square"></i>
+              <button *ngIf="!estEnCours(semaine.noSemaine) && !estPaye(semaine.id, enfant.id)" disabled class="btn btn-light border"> 
+                <i class="fas fa-times-circle"></i>
               </button>
-              <button *ngIf="!estPaye(semaine.id, enfant.id) && estInscrit(semaine.id, enfant.id)" disabled class="btn btn-warning"> 
+              <button *ngIf="estPaye(semaine.id, enfant.id)" disabled class="btn btn-success"> 
+                <i class="fas fa-check-circle"></i>
+              </button>
+              <button *ngIf="estEnCours(semaine.noSemaine) && !estPaye(semaine.id, enfant.id) && estInscrit(semaine.id, enfant.id)" disabled class="btn btn-warning"> 
                 <i class="fas fa-cart-arrow-down"></i> 
               </button>
-              <button *ngIf="!estPaye(semaine.id, enfant.id) && !estInscrit(semaine.id, enfant.id)" disabled class="btn btn-light border">
+              <button *ngIf="estEnCours(semaine.noSemaine) && !estPaye(semaine.id, enfant.id) && !estInscrit(semaine.id, enfant.id)" disabled class="btn btn-light border">
                 <i class="fas fa-cart-plus"></i>
               </button>
             </td>

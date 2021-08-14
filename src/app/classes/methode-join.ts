@@ -41,6 +41,14 @@ export class Join {
     return undefined;
   }
 
+  static getProgrammeInscrit(session: ISession, inscriptionsParents: IInscriptionParent[], idSemaine: string, idEnfant: string): IProgramme | undefined {
+    let inscriptionEnfant: IInscriptionEnfant | undefined = Join.getInscriptionEnfant(inscriptionsParents, session.id, idSemaine, idEnfant);
+    if (inscriptionEnfant != undefined) {
+      return Join.getProgrammeById(session, idSemaine, inscriptionEnfant.idProgramme);
+    }
+    return undefined;
+  }
+
   static getGabaritProgramme(
       session: ISession, 
       gabaritProgrammes: IGabaritProgramme[], 

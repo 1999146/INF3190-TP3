@@ -40,10 +40,20 @@ export class SectionParentInscriptionComponent implements OnInit {
     this.inscriptionsParents = this.authService.inscriptionsParents;
   }
 
-  estEnCours(date: Date): string {
-    if ( date > this.dateMaintenant ) return "week-ongoing";
-    else return "week-passed";
+  estEnCours(noSemaine: number): boolean {
+    let dateSession: Date = new Date(this.getSessionActuelle().dateDebut);
+    let dateSemaine: Date = new Date(dateSession.getTime() + (7 * (noSemaine)) * 1000 * 60 * 60 * 24); 
+    
+    if ( dateSemaine > this.dateMaintenant ) return true;
+    else return false;
   }
+
+  classeEnCours(noSemaine: number) : string {
+    if ( this.estEnCours(noSemaine) ) return "week-ongoing";
+    else return "week-passed";   
+  }
+
+
 
   // exportJson() {
   //   const data = JSON.stringify(this.inscriptionParents);
@@ -125,8 +135,13 @@ export class SectionParentInscriptionComponent implements OnInit {
     );
   }
 
+  getPrixProgrammeInscrit(idSemaine: string, idEnfant: string): number {
+    let programme: IProgramme | undefined = Join.getProgrammeInscrit(this.getSessionActuelle(), this.inscriptionsParents, idSemaine, idEnfant);
+    if (programme != undefined) return programme.prix;
+    return 0;
+  }
+
   inscrire(semaine: ISemaine, enfant: IEnfant, event: any) {
-    // console.log(this.selectAjoutPanier.idGabaritProgramme);
     let idProgramme: string = event.target.value;
     console.log(enfant.prenom);
     console.log(semaine.noSemaine);
