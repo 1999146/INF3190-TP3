@@ -27,6 +27,7 @@ export class AuthService {
     if (username == "admin" && password == "admin") {
       this.isAuth = true;
       this.isAdmin = true;
+      this.inscriptionsParents = inscriptionsParents;
     } else {
       if(!this.verifyPassword(username, password)){
         //Connexion refusé, rediriger avec message d'erreur
