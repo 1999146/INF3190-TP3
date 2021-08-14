@@ -6,19 +6,20 @@ import gabaritProgrammeJson from "../../data/gabarit-programmes";
 import sessionsJson from "../../data/sessions";
 import inscriptionParentJson from "../../data/inscription-parent";
 
-import { IFicheParent, IInscriptionParent } from "../classes/module-json/module-fiche-parent";
-import { IGabaritProgramme, ISession } from "../classes/module-json/module-programme";
+import { IParent, IInscriptionParent } from "../classes/interface-json/interface-parent";
+import { IGabaritProgramme, ISession } from "../classes/interface-json/interface-session";
+import { Join } from "../classes/methode-join";
 
-let parents: IFicheParent[] = fichesParentsJson;
-let inscriptionParents: IInscriptionParent[] = inscriptionParentJson;
+let parents: IParent[] = fichesParentsJson;
+let inscriptionsParents: IInscriptionParent[] = inscriptionParentJson;
 
 export class AuthService {
   isAuth: boolean = false;
   isAdmin: boolean = false;
   indiceParent: number = 0;
 
-  ficheParent: IFicheParent = parents[0];
-  inscriptionParent: IInscriptionParent = inscriptionParents[0];
+  parent: IParent = parents[0];
+  inscriptionsParents: IInscriptionParent[] = Join.getInscriptionsParents(inscriptionsParents, this.parent.id);
   gabaritProgrammes: IGabaritProgramme[] = gabaritProgrammeJson;
   sessions: ISession[] = sessionsJson;
 
@@ -26,6 +27,7 @@ export class AuthService {
     if (username == "admin" && password == "admin") {
       this.isAuth = true;
       this.isAdmin = true;
+      this.inscriptionsParents = inscriptionsParents;
     } else {
       if(!this.verifyPassword(username, password)){
         //Connexion refusé, rediriger avec message d'erreur
@@ -56,14 +58,12 @@ export class AuthService {
     for(let i = 0; i < parents.length; i++) {
       if(parents[i].username == username){
           this.indiceParent = i;
-          this.ficheParent = parents[i];
+          this.parent = parents[i];
       }
     }
-    for(let inscription of inscriptionParents) {
-      if(this.ficheParent.parent.id = inscription.idParent) {
-        this.inscriptionParent = inscription;
-      }
-    }
+    this.inscriptionsParents = Join.getInscriptionsParents(inscriptionsParents, this.parent.id)
   }
+
+
 
 }

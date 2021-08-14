@@ -1,12 +1,8 @@
 
-  export interface IFicheParent {
-    username: string;
-    password: string;
-    parent: IParent;
-  }
-
   export interface IParent {
     id: string;
+    username: string;
+    password: string;
     nom: string;
     prenom: string;
     courriel: string;
@@ -30,19 +26,16 @@
 
   export interface IInscriptionParent {
     idParent: string;
-    inscriptionEnfant: IInscriptionEnfant[];
+    idSession: string;
+    inscriptionsEnfants: IInscriptionEnfant[];
   }
 
   export interface IInscriptionEnfant {
-    idSession: string;
-    inscriptionsSemaines: IInscriptionSemaine[];
-  }
-
-  export interface IInscriptionSemaine {
     idEnfant: string;
     idProgramme: string;
     idSemaine: string;
     estPaye: boolean;
+    estInscrit: boolean;
   }
 
 

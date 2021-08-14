@@ -1,65 +1,61 @@
 export default
 [
   {
-     "username":"homer",
-     "password":"beignes",
-     "parent":{
-        "enfants":[
-           {
-              "id":"1",
-              "nom":"Simpson",
-              "prenom":"Lisa",
-              "dateNaissance":"1990-06-09",
-              "urlPhoto":"../../assets/img/profil.png",
-              "note":""
-           },
-           {
-              "id":"2",
-              "nom":"Simpson",
-              "prenom":"Bart",
-              "dateNaissance":"1994-08-21",
-              "urlPhoto":"../../assets/img/bart_mini.jpg",
-              "note":"Alergie Crevette."
-           }
-        ],
-        "id":"homer",
-        "nom":"Simpson",
-        "prenom":"Homer",
-        "courriel":"simpson.homer@gmail.com",
-        "adresse":"123 rue Springfield",
-        "dateNaissance":"1960-04-08",
-        "urlPhoto":"../../assets/img/profil.png"
-     }
+     "enfants":[
+      {
+         "id":"1",
+         "nom":"Simpson",
+         "prenom":"Lisa",
+         "dateNaissance":"1990-06-09",
+         "urlPhoto":"../../assets/img/profil.png",
+         "note":""
+      },
+      {
+         "id":"2",
+         "nom":"Simpson",
+         "prenom":"Bart",
+         "dateNaissance":"1994-08-21",
+         "urlPhoto":"../../assets/img/bart_mini.jpg",
+         "note":"Alergie Crevette."
+      }
+   ],
+   "id":"homer",
+   "username":"homer",
+   "password":"beignes",
+   "nom":"Simpson",
+   "prenom":"Homer",
+   "courriel":"simpson.homer@gmail.com",
+   "adresse":"123 rue Springfield",
+   "dateNaissance":"1960-04-08",
+   "urlPhoto":"../../assets/img/profil.png"
   },
   {
-     "username":"ned",
-     "password":"jesus",
-     "parent":{
-        "enfants":[
-           {
-              "id":"11",
-              "nom":"Flanders",
-              "prenom":"Rod",
-              "dateNaissance":"1991-07-10",
-              "urlPhoto":"../../assets/img/profil.png",
-              "note":""
-           },
-           {
-              "id":"12",
-              "nom":"Flanders",
-              "prenom":"Todd",
-              "dateNaissance":"1995-02-27",
-              "urlPhoto":"../../assets/img/profil.png",
-              "note":""
-           }
-        ],
-        "id":"ned",
-        "nom":"Flanders",
-        "prenom":"Ned",
-        "courriel":"flanders.ned@gmail.com",
-        "adresse":"125 rue Springfield",
-        "dateNaissance":"1960-03-13",
-        "urlPhoto":"../../assets/img/profil.png"
-     }
+     "enfants":[
+      {
+         "id":"11",
+         "nom":"Flanders",
+         "prenom":"Rod",
+         "dateNaissance":"1991-07-10",
+         "urlPhoto":"../../assets/img/profil.png",
+         "note":""
+      },
+      {
+         "id":"12",
+         "nom":"Flanders",
+         "prenom":"Todd",
+         "dateNaissance":"1995-02-27",
+         "urlPhoto":"../../assets/img/profil.png",
+         "note":""
+      }
+   ],
+   "id":"ned",
+   "username":"ned",
+   "password":"jesus",
+   "nom":"Flanders",
+   "prenom":"Ned",
+   "courriel":"flanders.ned@gmail.com",
+   "adresse":"125 rue Springfield",
+   "dateNaissance":"1960-03-13",
+   "urlPhoto":"../../assets/img/profil.png"
   }
 ]

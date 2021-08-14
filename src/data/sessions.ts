@@ -366,8 +366,8 @@ export default
      "id":"S21",
      "nom":"Session 2021",
      "description":"Session plein de plaisir",
-     "dateDebut":"2021-04-01",
-     "dateFin":"2021-08-01"
+     "dateDebut":"2021-07-18",
+     "dateFin":"2021-12-18"
   },
   {
      "semaines":[

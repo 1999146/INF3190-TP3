@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IParent } from 'src/app/classes/module-json/module-fiche-parent';
-import { IFicheParent } from 'src/app/classes/module-json/module-fiche-parent';
-import { Enfant } from '../../classes/fiche-parent/enfant';
-import { Parent } from '../../classes/fiche-parent/parent';
+import { IParent } from 'src/app/classes/interface-json/interface-parent';
+import { Parent, Enfant } from '../../classes/parent';
 import { AuthService } from "../../services/auth.service";
 
 
@@ -14,13 +12,15 @@ import { AuthService } from "../../services/auth.service";
 export class SectionParentProfilComponent implements OnInit {
 
   parent!: IParent;
-  ficheParent!: IFicheParent;
 
   constructor(public authService: AuthService) {
-    this.ficheParent = authService.ficheParent;
-    this.parent = this.ficheParent.parent;
 
-    // this.parent1.enfants.push(new Enfant(
+  }
+
+  ngOnInit(): void {
+    this.parent = this.authService.parent;
+
+    // this.parent.enfants.push(new Enfant(
     //   "3",
     //   "Simpson",
     //   "Maggie",
@@ -28,10 +28,6 @@ export class SectionParentProfilComponent implements OnInit {
     //   "../../assets/img/profil.png",
     //   "")
     // );
-
-  }
-
-  ngOnInit(): void {
   }
 
   // exportJson() {
