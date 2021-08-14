@@ -1,0 +1,22 @@
+<div id="children" class="card mb-4">
+  <div class="card-header">
+    <div class="row mb-2 mt-2">
+      <div class="col-6">
+        <h2 class="mb-0">
+          Enfants à charge
+        </h2>
+      </div>
+      <div class="col-6 d-flex align-items-end justify-content-end">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#ajouterEnfant">
+          <i class="fas fa-plus"></i>
+          Ajouter un enfant
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div *ngFor="let enfant of enfants" class="card mb-4">
+      <app-fiche-enfant [enfant]="enfant" [adresse]="adresse"></app-fiche-enfant>
+    </div>
+  </div>
+</div>

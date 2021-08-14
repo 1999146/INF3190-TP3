@@ -19,10 +19,10 @@
         <li *ngIf="password.hasError('minlength')">
           Le mot de passe doit avoir au moins 5 caracteres</li>
         <li *ngIf="password.hasError('pattern')">
-          Le mot de passe doit contenir au moins un caractere non-alphanumerique</li>
+          Le mot de passe doit contenir au moins un caractere spécial</li>
       </ul>
     </div>
-    <div><button type="submit" [disabled]="loginForm.invalid" class="btn btn-dark me-2">Connexion</button></div>
+    <div><button type="submit" [disabled]="loginForm.invalid" class="btn btn-secondary me-2">Connexion</button></div>
     <div><a class="btn btn-secondary me-2" routerLink="">Inscription</a></div>
   </form>
   <div *ngIf="!username.dirty && !password.dirty" id="flash" class="erreur">{{erreur}}</div>
