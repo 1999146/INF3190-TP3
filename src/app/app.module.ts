@@ -40,7 +40,7 @@ const appRoutes: Routes = [
     SectionParentProfilComponent,
     SectionParentInscriptionComponent,
     TableauAdminComponent,
-    TableauAdminModalComponent
+    TableauAdminModalComponent,
   ],
   imports: [
     BrowserModule,
