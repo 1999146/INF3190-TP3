@@ -80,42 +80,42 @@ export default
   "inscriptionsEnfants":[
      {
         "idEnfant":"2",
-        "idProgramme":"P0_S1_S20",
+        "idProgramme":"P0_S1_S21",
         "idSemaine":"S1_S21",
         "estPaye":false,
         "estInscrit":true
      },
      {
         "idEnfant":"2",
-        "idProgramme":"P1_S5_S20",
+        "idProgramme":"P1_S5_S21",
         "idSemaine":"S5_S21",
         "estPaye":false,
         "estInscrit":true
      },
      {
         "idEnfant":"2",
-        "idProgramme":"P0_S6_S20",
+        "idProgramme":"P0_S6_S21",
         "idSemaine":"S6_S21",
         "estPaye":false,
         "estInscrit":true
      },
      {
         "idEnfant":"1",
-        "idProgramme":"P0_S6_S20",
+        "idProgramme":"P0_S6_S21",
         "idSemaine":"S6_S21",
         "estPaye":true,
         "estInscrit":true
      },
      {
         "idEnfant":"2",
-        "idProgramme":"P0_S10_S20",
+        "idProgramme":"P0_S10_S21",
         "idSemaine":"S10_S21",
         "estPaye":false,
         "estInscrit":true
      },
      {
         "idEnfant":"2",
-        "idProgramme":"P2_S14_S20",
+        "idProgramme":"P2_S14_S21",
         "idSemaine":"S14_S21",
         "estPaye":true,
         "estInscrit":true
@@ -183,35 +183,35 @@ export default
   "inscriptionsEnfants":[
      {
         "idEnfant":"12",
-        "idProgramme":"P0_S1_S20",
+        "idProgramme":"P0_S1_S21",
         "idSemaine":"S1_S21",
         "estPaye":false,
         "estInscrit":true
      },
      {
         "idEnfant":"12",
-        "idProgramme":"P0_S6_S20",
+        "idProgramme":"P0_S6_S21",
         "idSemaine":"S6_S21",
         "estPaye":false,
         "estInscrit":true
      },
      {
         "idEnfant":"11",
-        "idProgramme":"P0_S6_S20",
+        "idProgramme":"P0_S6_S21",
         "idSemaine":"S6_S21",
         "estPaye":false,
         "estInscrit":true
      },
      {
         "idEnfant":"12",
-        "idProgramme":"P0_S10_S20",
+        "idProgramme":"P0_S10_S21",
         "idSemaine":"S10_S21",
         "estPaye":false,
         "estInscrit":true
      },
      {
         "idEnfant":"12",
-        "idProgramme":"P2_S14_S20",
+        "idProgramme":"P2_S14_S21",
         "idSemaine":"S14_S21",
         "estPaye":false,
         "estInscrit":true

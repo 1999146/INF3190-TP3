@@ -7,6 +7,7 @@ import { InscriptionParent } from '../../classes/parent';
 import { IInscriptionEnfant, IInscriptionParent } from 'src/app/classes/interface-json/interface-parent';
 import { Join } from 'src/app/classes/methode-join';
 import { Router } from '@angular/router';
+import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/util';
 
 
 @Component({
@@ -49,7 +50,9 @@ export class SectionParentInscriptionComponent implements OnInit {
   // }
 
   getSessionActuelle(): ISession {
-    return Join.getSessionById(this.sessions, this.idSessionActuelle);
+    let session: ISession | undefined = Join.getSessionById(this.sessions, this.idSessionActuelle);
+    if (session != undefined) return session;
+    return this.sessions[0];
   }
 
   getNomGabaritProgrammeById(idGabaritProgramme: string): string {
@@ -66,9 +69,11 @@ export class SectionParentInscriptionComponent implements OnInit {
   //   return MProgramme.getInscriptionSemaine(this.inscriptionParent, this.idSessionActuelle, idSemaine, idEnfant);
   // }
 
-  getProgrammeById(idSemaine: string, idProgramme: string): IProgramme {
-    return Join.getProgrammeById(this.getSessionActuelle(), idSemaine, idProgramme);
-  }
+  // getProgrammeById(idSemaine: string, idProgramme: string): IProgramme {
+  //   let programme: IProgramme | undefined = Join.getProgrammeById(this.getSessionActuelle(), idSemaine, idProgramme);
+  //   if (programme != undefined) return programme;
+  //   return 
+  // }
 
   getNomGabaritProgrammePaye(idSemaine: string, idEnfant: string): string {
     let gabaritProgramme: IGabaritProgramme | undefined = Join.getGabaritProgramme(
@@ -83,10 +88,26 @@ export class SectionParentInscriptionComponent implements OnInit {
   }
 
   estPaye(idSemaine: string, idEnfant: string): boolean {
-    let inscriptionEnfant: IInscriptionEnfant | undefined = Join.getInscriptionEnfant(this.inscriptionsParents, this.idSessionActuelle, idSemaine, idEnfant);
-    if (inscriptionEnfant == undefined) return false;
-    else return inscriptionEnfant.estPaye;
+    return Join.estInscriptionPaye(
+      this.inscriptionsParents, 
+      this.idSessionActuelle, 
+      idSemaine, 
+      idEnfant
+    );
   }
+
+  estInscrit(idSemaine: string, idEnfant: string): boolean {
+    return Join.estInscriptionInscrit(
+      this.inscriptionsParents, 
+      this.idSessionActuelle, 
+      idSemaine, 
+      idEnfant
+    );
+  }
+
+  // getIdGabaritProgrammeInscrit(idSemaine: string, idEnfant: string): string | undefined {
+
+  // }
 
 
 
