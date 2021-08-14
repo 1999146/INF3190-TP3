@@ -1,7 +1,7 @@
 <span *ngIf="!authService.isAuth">
   <form class="d-flex" [formGroup]="loginForm" (ngSubmit)="onSubmitForm()">
-    <div class="form-group">
-      <input type="text" class="form-control me-2" id="username"
+    <div class="form-group me-2">
+      <input type="text" class="form-control" id="username" name="username"
              formControlName="username" placeholder="Nom d'utilisateur"/>
       <ul *ngIf="username.dirty && username.invalid" class="erreur">
         <li *ngIf="username.hasError('required')">
@@ -10,9 +10,9 @@
           Le nom d'utilisateur doit contenir seulement des caracters alphanumeriques</li>
       </ul>
     </div>
-    <div class="form-group">
-      <input type="text" class="form-control me-2 ng-valid" id="password"
-             formControlName="password" placeholder="Mot de passe"/>
+    <div class="form-group me-2">
+      <input type="password" class="form-control ng-valid" id="password"
+             formControlName="password" placeholder="Mot de passe" name="password"/>
       <ul *ngIf="password.dirty && password.invalid" class="erreur">
         <li *ngIf="password.hasError('required')">
           Champ requis</li>
@@ -23,6 +23,7 @@
       </ul>
     </div>
     <div><button type="submit" [disabled]="loginForm.invalid" class="btn btn-dark me-2">Connexion</button></div>
+    <div><a class="btn btn-secondary me-2" routerLink="">Inscription</a></div>
   </form>
   <div *ngIf="!username.dirty && !password.dirty" id="flash" class="erreur">{{erreur}}</div>
 </span>
