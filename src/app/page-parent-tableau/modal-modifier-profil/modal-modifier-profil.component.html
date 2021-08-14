@@ -1,0 +1,86 @@
+<button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modifierProfil">
+  <i class="fas fa-pen"></i> Modifier le profil
+</button>
+
+<!-- Modal Modifier Profil -->
+<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="modifierProfil" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <form>
+        <div class="modal-header">
+          <h5 class="modal-title">Modifier Profil</h5>
+          <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+        </div>
+
+        <div class="modal-body">
+
+            <div class="row pt-2">
+              <div class="col text-center">
+                <input accept="image/*" id="image" (change)="onLoadFile($event)" style="display: none" type="file"/>
+                <label class="form-label" for="image" style="cursor: pointer">
+                  <img class="rounded" id="uploadHomerImg" src="{{parent.urlPhoto}}" width="150"/>
+                  <p>Photo de profil</p>
+                  <span class="erreur">
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="row px-2">
+              <div class="col">
+                <label class="form-label" for="prenom">Prénom</label>
+                <input class="form-control" id="prenom" type="text" value="{{parent.prenom}}"/>
+                <span class="erreur"></span>
+              </div>
+              <div class="col">
+                <label class="form-label" for="nom">Nom</label>
+                <input class="form-control" id="nom" type="text" value="{{parent.nom}}"/>
+                <span class="erreur"></span>
+              </div>
+            </div>
+
+            <div class="row p-2">
+              <div class="col">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-control" id="email" type="email" value="{{parent.courriel}}"/>
+                <span class="erreur"></span>
+              </div>
+              <div class="col">
+                <label class="form-label" for="dateNaissance">Date de naissance</label>
+                <input class="form-control" id="dateNaissance" type="date" value="{{parent.dateNaissance}}"/>
+                <span class="erreur"></span>
+              </div>
+            </div>
+
+            <div class="form-group p-2">
+              <label class="form-label" for="adresse">Adresse complète</label>
+              <textarea class="form-control" id="adresse">{{parent.adresse}}</textarea>
+              <span class="erreur"></span>
+            </div>
+
+            <hr/>
+            <h5 class="card-title">Informations du compte</h5>
+
+            <div class="row p-2">
+              <div class="col">
+                <label class="form-label" for="username">Nom d'utilisateur</label>
+                <input class="form-control disabled" disabled id="username" type="text" value="{{parent.username}}"/>
+              </div>
+              <div class="col">
+                <label class="form-label" for="password">Changer mot de passe</label>
+                <input class="form-control" id="password" placeholder="" type="password"/>
+                <span class="erreur"></span>
+              </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Fermer</button>
+          <input class="btn btn-dark" type="submit" value="Modifier">
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+<!-- FIN Modal Modifier Profil -->

@@ -19,21 +19,6 @@ export class SectionParentProfilComponent implements OnInit {
 
   ngOnInit(): void {
     this.parent = this.authService.parent;
-
-    // this.parent.enfants.push(new Enfant(
-    //   "3",
-    //   "Simpson",
-    //   "Maggie",
-    //   "1999-05-12",
-    //   "../../assets/img/profil.png",
-    //   "")
-    // );
   }
-
-  // exportJson() {
-  //   // console.log(parent);
-  //   const data = JSON.stringify(this.fichesParents);
-  //   console.log(data);
-  // }
 
 }

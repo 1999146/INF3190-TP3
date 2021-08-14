@@ -7,7 +7,7 @@
         <h2 class="mb-0">{{ parent.nom }}, {{ parent.prenom }}</h2>
       </div>
       <div class="col-6 d-flex align-items-end justify-content-end">
-        <app-modal-modifier-profil></app-modal-modifier-profil>
+        <app-modal-modifier-profil [parent]="parent"></app-modal-modifier-profil>
       </div>
     </div>
   </div>
