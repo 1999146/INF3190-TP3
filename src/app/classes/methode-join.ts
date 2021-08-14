@@ -1,3 +1,4 @@
+import { Inscription } from "./fiche-parent/enfant";
 import { IInscriptionParent, IInscriptionEnfant } from "./interface-json/interface-parent";
 import { IGabaritProgramme, ISession, IProgramme } from "./interface-json/interface-programme";
 
@@ -72,6 +73,23 @@ export class Join {
       if (inscriptionParent.idParent == idParent) inscriptionsParentAuth.push(inscriptionParent);
     }
     return inscriptionsParentAuth;
+  }
+
+  static getInscriptions(inscriptionsParents: IInscriptionParent[]): Inscription[] {
+    let inscriptions: Inscription[] = new Array<Inscription>();
+    for (let inscriptionParent of inscriptionsParents) {
+      for (let inscriptionEnfant of inscriptionParent.inscriptionsEnfants) {
+        inscriptions.push(new Inscription (
+          inscriptionEnfant.idEnfant, 
+          inscriptionEnfant.idProgramme, 
+          inscriptionEnfant.idSemaine, 
+          inscriptionEnfant.estPaye, 
+          inscriptionParent.idParent, 
+          inscriptionParent.idSession
+        ));
+      }
+    }
+    return inscriptions;
   }
 
   static estInscritNomPaye() {

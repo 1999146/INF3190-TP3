@@ -58,13 +58,14 @@ export class Inscription {
       idEnfant: string,
       idProgramme: string,
       idSemaine: string,
+      estPaye: boolean,
       idParent: string,
       idSession: string
     ) {
     this.idEnfant = idEnfant;
     this.idProgramme = idProgramme;
     this.idSemaine = idSemaine;
-    this.estPaye = false;
+    this.estPaye = estPaye;
     this.idParent = idParent;
     this.idSession = idSession;
   }
