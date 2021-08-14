@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Parent } from '../../classes/fiche-parent/parent';
 import { AuthService } from "../../services/auth.service";
-import { FicheParent } from 'src/app/classes/fiche-parent/fiche-parent';
 import { IGabaritProgramme, IProgramme } from 'src/app/classes/module-json/module-programme';
 import { ISession } from 'src/app/classes/module-json/module-programme';
 import { InscriptionParent } from 'src/app/classes/fiche-parent/inscription-parent';
@@ -11,6 +10,7 @@ import { IInscriptionEnfant, IInscriptionParent, IInscriptionSemaine } from 'src
 import { Programme } from 'src/app/classes/programme/programme';
 import { Semaine } from 'src/app/classes/programme/semaine';
 import { MProgramme } from 'src/app/classes/methode-programme';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,7 +23,7 @@ export class SectionParentInscriptionComponent implements OnInit {
   dateMaintenant: Date = new Date();
 
   parent!:Parent;
-  ficheParent!: FicheParent;
+  // ficheParent!: FicheParent;
   inscriptionParent!: InscriptionParent;
 
   gabaritProgrammes!: IGabaritProgramme[];
@@ -31,13 +31,12 @@ export class SectionParentInscriptionComponent implements OnInit {
   idSessionActuelle!: string;
   
 
-  constructor(public authService: AuthService) {
+  constructor(public authService: AuthService, private router: Router) {
+    // if (!authService.isAuth) this.router.navigate(['']);
   }
 
   ngOnInit(): void {
-    this.ficheParent = this.authService.ficheParent;
-    this.parent = this.ficheParent.parent;
-
+    this.parent = this.authService.parent;
     this.gabaritProgrammes = this.authService.gabaritProgrammes;
     this.sessions = this.authService.sessions;
     this.idSessionActuelle = this.sessions[0].id;

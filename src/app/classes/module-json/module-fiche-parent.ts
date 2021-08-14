@@ -1,12 +1,8 @@
 
-  export interface IFicheParent {
-    username: string;
-    password: string;
-    parent: IParent;
-  }
-
   export interface IParent {
     id: string;
+    username: string;
+    password: string;
     nom: string;
     prenom: string;
     courriel: string;

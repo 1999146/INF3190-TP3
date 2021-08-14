@@ -67,5 +67,13 @@ export class MProgramme {
     }
     return undefined;
   }
+
+  static estInscritNomPaye() {
+  
+  }
+  
+
+
 }
+
 

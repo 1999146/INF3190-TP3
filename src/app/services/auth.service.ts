@@ -6,10 +6,10 @@ import gabaritProgrammeJson from "../../data/gabarit-programmes";
 import sessionsJson from "../../data/sessions";
 import inscriptionParentJson from "../../data/inscription-parent";
 
-import { IFicheParent, IInscriptionParent } from "../classes/module-json/module-fiche-parent";
+import { IParent, IInscriptionParent } from "../classes/module-json/module-fiche-parent";
 import { IGabaritProgramme, ISession } from "../classes/module-json/module-programme";
 
-let parents: IFicheParent[] = fichesParentsJson;
+let parents: IParent[] = fichesParentsJson;
 let inscriptionParents: IInscriptionParent[] = inscriptionParentJson;
 
 export class AuthService {
@@ -17,7 +17,7 @@ export class AuthService {
   isAdmin: boolean = false;
   indiceParent: number = 0;
 
-  ficheParent: IFicheParent = parents[0];
+  parent: IParent = parents[0];
   inscriptionParent: IInscriptionParent = inscriptionParents[0];
   gabaritProgrammes: IGabaritProgramme[] = gabaritProgrammeJson;
   sessions: ISession[] = sessionsJson;
@@ -56,11 +56,11 @@ export class AuthService {
     for(let i = 0; i < parents.length; i++) {
       if(parents[i].username == username){
           this.indiceParent = i;
-          this.ficheParent = parents[i];
+          this.parent = parents[i];
       }
     }
     for(let inscription of inscriptionParents) {
-      if(this.ficheParent.parent.id = inscription.idParent) {
+      if(this.parent.id = inscription.idParent) {
         this.inscriptionParent = inscription;
       }
     }
