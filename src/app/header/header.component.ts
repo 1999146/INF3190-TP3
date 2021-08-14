@@ -14,7 +14,8 @@ export class HeaderComponent {
   password!: string;
   erreur!: string;
 
-  constructor(public authService: AuthService, private router: Router) { }
+  constructor(public authService: AuthService, private router: Router) {
+  }
 
   onSignIn() {
     this.authService.signIn(this.username, this.password);

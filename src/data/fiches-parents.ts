@@ -9,14 +9,14 @@ export default
    "courriel":"simpson.homer@gmail.com",
    "adresse":"123 rue Springfield",
    "dateNaissance":"1960-04-08",
-   "urlPhoto":"../../assets/img/profil.png",
+   "urlPhoto":"../../assets/img/homer_mini.jpg",
     "enfants":[
       {
         "id":"1",
         "nom":"Simpson",
         "prenom":"Lisa",
         "dateNaissance":"1990-06-09",
-        "urlPhoto":"../../assets/img/profil.png",
+        "urlPhoto":"../../assets/img/lisa_mini.jpg",
         "note":""
       },
       {
