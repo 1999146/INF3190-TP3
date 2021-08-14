@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IEnfant} from "../../../classes/interface-json/interface-enfant";
+import {IEnfant} from "../../../classes/interface-json/interface-parent";
 
 @Component({
   selector: 'app-fiche-enfant',
