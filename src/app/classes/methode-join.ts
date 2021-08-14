@@ -13,15 +13,15 @@ export class Join {
     return gabaritProgrammes[0]; // renplacer par undefined
   }
 
-  static getInscriptionsEnfants(inscriptionParents: IInscriptionParent[], idSessionActuelle: string): IInscriptionEnfant[] | undefined {
-    for (let inscriptionParent of inscriptionParents) {
+  static getInscriptionsEnfants(inscriptionsParents: IInscriptionParent[], idSessionActuelle: string): IInscriptionEnfant[] | undefined {
+    for (let inscriptionParent of inscriptionsParents) {
       if (inscriptionParent.idSession == idSessionActuelle) return inscriptionParent.inscriptionsEnfants;
     }
     return undefined;
   }
 
-  static getInscriptionEnfant(inscriptionParent: IInscriptionParent[], idSessionActuelle: string, idSemaine: string, idEnfant: string): IInscriptionEnfant | undefined {
-    let inscriptionsEnfants: IInscriptionEnfant[] | undefined = this.getInscriptionsEnfants(inscriptionParent, idSessionActuelle);
+  static getInscriptionEnfant(inscriptionsParents: IInscriptionParent[], idSessionActuelle: string, idSemaine: string, idEnfant: string): IInscriptionEnfant | undefined {
+    let inscriptionsEnfants: IInscriptionEnfant[] | undefined = this.getInscriptionsEnfants(inscriptionsParents, idSessionActuelle);
     if (inscriptionsEnfants != undefined) {
       for(let inscriptionEnfant of inscriptionsEnfants) {
         if (inscriptionEnfant.idEnfant == idEnfant && inscriptionEnfant.idSemaine == idSemaine) return inscriptionEnfant;
@@ -44,12 +44,12 @@ export class Join {
   static getGabaritProgramme(
       session: ISession, 
       gabaritProgrammes: IGabaritProgramme[], 
-      inscriptionParent: IInscriptionParent[], 
+      inscriptionsParents: IInscriptionParent[], 
       idSemaine: string, 
       idEnfant: string
     ): IGabaritProgramme | undefined {
     let inscriptionEnfant: IInscriptionEnfant | undefined = this.getInscriptionEnfant(
-      inscriptionParent, 
+      inscriptionsParents, 
       session.id, 
       idSemaine, 
       idEnfant
@@ -92,7 +92,13 @@ export class Join {
     return inscriptions;
   }
 
-  static estInscritNomPaye() {
+  static estInscriptionPaye(inscriptionsParents: IInscriptionParent[], idSession: string, idSemaine: string, idEnfant: string): boolean {
+    let inscriptionEnfant: IInscriptionEnfant | undefined = Join.getInscriptionEnfant(inscriptionsParents, idSession, idSemaine, idEnfant);
+    if (inscriptionEnfant == undefined) return false;
+    else return inscriptionEnfant.estPaye;
+  }
+
+  static estInscriptionNonPaye(inscriptionsParents: IInscriptionParent[], dSemaine: string, idEnfant: string) {
   
   }
   

@@ -85,6 +85,7 @@ export class InscriptionEnfant implements IInscriptionEnfant {
   idProgramme: string;
   idSemaine: string;
   estPaye: boolean;
+  estInscrit: boolean;
 
   constructor(
       idEnfant: string,
@@ -95,6 +96,7 @@ export class InscriptionEnfant implements IInscriptionEnfant {
     this.idProgramme = idProgramme;
     this.idSemaine = idSemaine;
     this.estPaye = false;
+    this.estInscrit = true;
   }
   
 }

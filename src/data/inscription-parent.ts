@@ -6,61 +6,71 @@ export default
           "idEnfant":"1",
           "idProgramme":"P0_S7_S20",
           "idSemaine":"S7_S20",
-          "estPaye":false
+          "estPaye":false,
+          "estInscrit":true
        },
        {
           "idEnfant":"1",
           "idProgramme":"P1_S8_S20",
           "idSemaine":"S8_S20",
-          "estPaye":true
+          "estPaye":true,
+          "estInscrit":true
        },
        {
           "idEnfant":"1",
           "idProgramme":"P0_S9_S20",
           "idSemaine":"S9_S20",
-          "estPaye":false
+          "estPaye":false,
+          "estInscrit":true
        },
        {
           "idEnfant":"1",
           "idProgramme":"P2_S10_S20",
           "idSemaine":"S10_S20",
-          "estPaye":false
+          "estPaye":false,
+          "estInscrit":true
        },
        {
           "idEnfant":"1",
           "idProgramme":"P1_S11_S20",
           "idSemaine":"S11_S20",
-          "estPaye":false
+          "estPaye":false,
+          "estInscrit":true
        },
        {
           "idEnfant":"2",
           "idProgramme":"P0_S4_S20",
           "idSemaine":"S4_S20",
-          "estPaye":false
+          "estPaye":false,
+          "estInscrit":true
        },
        {
           "idEnfant":"2",
           "idProgramme":"P1_S5_S20",
           "idSemaine":"S5_S20",
-          "estPaye":true
+          "estPaye":true,
+          "estInscrit":true
        },
        {
           "idEnfant":"2",
           "idProgramme":"P0_S6_S20",
           "idSemaine":"S6_S20",
-          "estPaye":false
+          "estPaye":false,
+          "estInscrit":true
        },
        {
           "idEnfant":"2",
           "idProgramme":"P0_S10_S20",
           "idSemaine":"S10_S20",
-          "estPaye":false
+          "estPaye":false,
+          "estInscrit":true
        },
        {
           "idEnfant":"2",
           "idProgramme":"P2_S11_S20",
           "idSemaine":"S11_S20",
-          "estPaye":false
+          "estPaye":false,
+          "estInscrit":true
        }
     ],
     "idSession":"S20",
@@ -72,37 +82,43 @@ export default
         "idEnfant":"2",
         "idProgramme":"P0_S1_S20",
         "idSemaine":"S1_S21",
-        "estPaye":false
+        "estPaye":false,
+        "estInscrit":true
      },
      {
         "idEnfant":"2",
         "idProgramme":"P1_S5_S20",
         "idSemaine":"S5_S21",
-        "estPaye":false
+        "estPaye":false,
+        "estInscrit":true
      },
      {
         "idEnfant":"2",
         "idProgramme":"P0_S6_S20",
         "idSemaine":"S6_S21",
-        "estPaye":false
+        "estPaye":false,
+        "estInscrit":true
      },
      {
         "idEnfant":"1",
         "idProgramme":"P0_S6_S20",
         "idSemaine":"S6_S21",
-        "estPaye":true
+        "estPaye":true,
+        "estInscrit":true
      },
      {
         "idEnfant":"2",
         "idProgramme":"P0_S10_S20",
         "idSemaine":"S10_S21",
-        "estPaye":false
+        "estPaye":false,
+        "estInscrit":true
      },
      {
         "idEnfant":"2",
         "idProgramme":"P2_S14_S20",
         "idSemaine":"S14_S21",
-        "estPaye":true
+        "estPaye":true,
+        "estInscrit":true
      }
   ],
   "idSession":"S21",
@@ -114,43 +130,50 @@ export default
         "idEnfant":"11",
         "idProgramme":"P0_S7_S20",
         "idSemaine":"S7_S20",
-        "estPaye":true
+        "estPaye":true,
+        "estInscrit":true
      },
      {
         "idEnfant":"11",
         "idProgramme":"P1_S8_S20",
         "idSemaine":"S8_S20",
-        "estPaye":true
+        "estPaye":true,
+        "estInscrit":true
      },
      {
         "idEnfant":"11",
         "idProgramme":"P0_S9_S20",
         "idSemaine":"S9_S20",
-        "estPaye":true
+        "estPaye":true,
+        "estInscrit":true
      },
      {
         "idEnfant":"11",
         "idProgramme":"P1_S11_S20",
         "idSemaine":"S11_S20",
-        "estPaye":true
+        "estPaye":true,
+        "estInscrit":true
      },
      {
         "idEnfant":"12",
         "idProgramme":"P0_S4_S20",
         "idSemaine":"S4_S20",
-        "estPaye":true
+        "estPaye":true,
+        "estInscrit":true
      },
      {
         "idEnfant":"12",
         "idProgramme":"P0_S10_S20",
         "idSemaine":"S10_S20",
-        "estPaye":true
+        "estPaye":true,
+        "estInscrit":true
      },
      {
         "idEnfant":"12",
         "idProgramme":"P2_S11_S20",
         "idSemaine":"S11_S20",
-        "estPaye":true
+        "estPaye":true,
+        "estInscrit":true
      }
   ],
   "idSession":"S20",
@@ -162,31 +185,36 @@ export default
         "idEnfant":"12",
         "idProgramme":"P0_S1_S20",
         "idSemaine":"S1_S21",
-        "estPaye":false
+        "estPaye":false,
+        "estInscrit":true
      },
      {
         "idEnfant":"12",
         "idProgramme":"P0_S6_S20",
         "idSemaine":"S6_S21",
-        "estPaye":false
+        "estPaye":false,
+        "estInscrit":true
      },
      {
         "idEnfant":"11",
         "idProgramme":"P0_S6_S20",
         "idSemaine":"S6_S21",
-        "estPaye":false
+        "estPaye":false,
+        "estInscrit":true
      },
      {
         "idEnfant":"12",
         "idProgramme":"P0_S10_S20",
         "idSemaine":"S10_S21",
-        "estPaye":false
+        "estPaye":false,
+        "estInscrit":true
      },
      {
         "idEnfant":"12",
         "idProgramme":"P2_S14_S20",
         "idSemaine":"S14_S21",
-        "estPaye":false
+        "estPaye":false,
+        "estInscrit":true
      }
   ],
   "idSession":"S21",

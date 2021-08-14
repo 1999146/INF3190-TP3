@@ -35,6 +35,7 @@
     idProgramme: string;
     idSemaine: string;
     estPaye: boolean;
+    estInscrit: boolean;
   }
 
 

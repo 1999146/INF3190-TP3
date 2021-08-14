@@ -19,8 +19,7 @@ export class SectionParentInscriptionComponent implements OnInit {
   dateMaintenant: Date = new Date();
 
   parent!:Parent;
-  // ficheParent!: FicheParent;
-  inscriptionParent!: InscriptionParent[];
+  inscriptionsParents!: IInscriptionParent[];
 
   gabaritProgrammes!: IGabaritProgramme[];
   sessions!: ISession[];
@@ -36,7 +35,7 @@ export class SectionParentInscriptionComponent implements OnInit {
     this.gabaritProgrammes = this.authService.gabaritProgrammes;
     this.sessions = this.authService.sessions;
     this.idSessionActuelle = this.sessions[0].id;
-    this.inscriptionParent = this.authService.inscriptionsParents;
+    this.inscriptionsParents = this.authService.inscriptionsParents;
   }
 
   estEnCours(date: Date): string {
@@ -60,7 +59,7 @@ export class SectionParentInscriptionComponent implements OnInit {
   }
 
   getInscriptionsEnfants(): IInscriptionEnfant[] | undefined {
-    return Join.getInscriptionsEnfants(this.inscriptionParent, this.idSessionActuelle);
+    return Join.getInscriptionsEnfants(this.inscriptionsParents, this.idSessionActuelle);
   }
 
   // getInscriptionSemaine(idSemaine: string, idEnfant: string): IInscriptionSemaine | undefined {
@@ -75,7 +74,7 @@ export class SectionParentInscriptionComponent implements OnInit {
     let gabaritProgramme: IGabaritProgramme | undefined = Join.getGabaritProgramme(
       this.getSessionActuelle(), 
       this.gabaritProgrammes, 
-      this.inscriptionParent, 
+      this.inscriptionsParents, 
       idSemaine, 
       idEnfant
     );
@@ -84,7 +83,7 @@ export class SectionParentInscriptionComponent implements OnInit {
   }
 
   estPaye(idSemaine: string, idEnfant: string): boolean {
-    let inscriptionEnfant: IInscriptionEnfant | undefined = Join.getInscriptionEnfant(this.inscriptionParent, this.idSessionActuelle, idSemaine, idEnfant);
+    let inscriptionEnfant: IInscriptionEnfant | undefined = Join.getInscriptionEnfant(this.inscriptionsParents, this.idSessionActuelle, idSemaine, idEnfant);
     if (inscriptionEnfant == undefined) return false;
     else return inscriptionEnfant.estPaye;
   }

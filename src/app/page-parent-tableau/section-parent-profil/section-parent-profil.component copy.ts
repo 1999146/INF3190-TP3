@@ -236,3 +236,5 @@ import inscriptionParent from "src/data/inscription-parent";
 //     this.inscriptionParents[1].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("11","P0_S6_S20", "S6_S21"));
 //     this.inscriptionParents[1].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("12","P0_S10_S20", "S10_S21"));
 //     this.inscriptionParents[1].inscriptionEnfant[1].inscriptionsSemaines.push(new InscriptionSemaine("12","P2_S14_S20", "S14_S21"));
+
+
