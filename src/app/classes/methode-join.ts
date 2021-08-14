@@ -1,4 +1,4 @@
-import { Inscription } from "./fiche-parent/enfant";
+import { Inscription } from "./fiche-parent/parent";
 import { IInscriptionParent, IInscriptionEnfant } from "./interface-json/interface-parent";
 import { IGabaritProgramme, ISession, IProgramme } from "./interface-json/interface-programme";
 
