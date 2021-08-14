@@ -1,4 +1,4 @@
-import { ISession } from "../module-json/module-programme";
+import { ISession } from "../interface-json/interface-programme";
 import { Semaine } from "./semaine";
 
 export class Session implements ISession {

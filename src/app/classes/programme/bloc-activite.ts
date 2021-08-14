@@ -1,5 +1,5 @@
 import { Activite } from "./activite";
-import { IBlocActivite } from "../module-json/module-programme";
+import { IBlocActivite } from "../interface-json/interface-programme";
 
 export class BlocActivite implements IBlocActivite {
   public id: string;

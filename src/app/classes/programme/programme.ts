@@ -1,4 +1,4 @@
-import { IProgramme } from "../module-json/module-programme";
+import { IProgramme } from "../interface-json/interface-programme";
 
 export class Programme implements IProgramme {
   public id: string;

@@ -1,4 +1,4 @@
-import { ITypeActivite } from "../module-json/module-programme";
+import { ITypeActivite } from "../interface-json/interface-programme";
 
 export class TypeActivite implements ITypeActivite {
   public id: string;

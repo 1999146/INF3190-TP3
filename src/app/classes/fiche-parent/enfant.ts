@@ -1,4 +1,5 @@
-import { IEnfant } from "../module-json/module-fiche-parent";
+import { IEnfant } from "../interface-json/interface-parent";
+import { IInscriptionEnfant } from "../interface-json/interface-parent";
 
 export class Enfant implements IEnfant {
   public id: string;
@@ -23,4 +24,49 @@ export class Enfant implements IEnfant {
     this.urlPhoto = urlPhoto;
     this.note = note;
   }
+}
+
+export class InscriptionEnfant implements IInscriptionEnfant {
+  idEnfant: string;
+  idProgramme: string;
+  idSemaine: string;
+  estPaye: boolean;
+
+  constructor(
+      idEnfant: string,
+      idProgramme: string,
+      idSemaine: string
+    ) {
+    this.idEnfant = idEnfant;
+    this.idProgramme = idProgramme;
+    this.idSemaine = idSemaine;
+    this.estPaye = false;
+  }
+  
+}
+
+export class Inscription {
+  idEnfant: string;
+  idProgramme: string;
+  idSemaine: string;
+  estPaye: boolean;
+
+  idParent: string;
+  idSession: string;
+
+  constructor(
+      idEnfant: string,
+      idProgramme: string,
+      idSemaine: string,
+      idParent: string,
+      idSession: string
+    ) {
+    this.idEnfant = idEnfant;
+    this.idProgramme = idProgramme;
+    this.idSemaine = idSemaine;
+    this.estPaye = false;
+    this.idParent = idParent;
+    this.idSession = idSession;
+  }
+  
 }

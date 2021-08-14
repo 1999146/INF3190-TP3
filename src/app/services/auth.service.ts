@@ -6,11 +6,12 @@ import gabaritProgrammeJson from "../../data/gabarit-programmes";
 import sessionsJson from "../../data/sessions";
 import inscriptionParentJson from "../../data/inscription-parent";
 
-import { IParent, IInscriptionParent } from "../classes/module-json/module-fiche-parent";
-import { IGabaritProgramme, ISession } from "../classes/module-json/module-programme";
+import { IParent, IInscriptionParent } from "../classes/interface-json/interface-parent";
+import { IGabaritProgramme, ISession } from "../classes/interface-json/interface-programme";
+import { Join } from "../classes/methode-join";
 
 let parents: IParent[] = fichesParentsJson;
-let inscriptionParents: IInscriptionParent[] = inscriptionParentJson;
+let inscriptionsParents: IInscriptionParent[] = inscriptionParentJson;
 
 export class AuthService {
   isAuth: boolean = false;
@@ -18,7 +19,7 @@ export class AuthService {
   indiceParent: number = 0;
 
   parent: IParent = parents[0];
-  inscriptionParent: IInscriptionParent = inscriptionParents[0];
+  inscriptionsParents: IInscriptionParent[] = Join.getInscriptionsParents(inscriptionsParents, this.parent.id);
   gabaritProgrammes: IGabaritProgramme[] = gabaritProgrammeJson;
   sessions: ISession[] = sessionsJson;
 
@@ -59,11 +60,9 @@ export class AuthService {
           this.parent = parents[i];
       }
     }
-    for(let inscription of inscriptionParents) {
-      if(this.parent.id = inscription.idParent) {
-        this.inscriptionParent = inscription;
-      }
-    }
+    this.inscriptionsParents = Join.getInscriptionsParents(inscriptionsParents, this.parent.id)
   }
+
+
 
 }

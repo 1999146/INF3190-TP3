@@ -1,5 +1,7 @@
 import { Enfant } from "./enfant";
-import { IParent } from "../module-json/module-fiche-parent";
+import { IParent } from "../interface-json/interface-parent";
+import { InscriptionEnfant } from "./enfant";
+import { IInscriptionParent } from "../interface-json/interface-parent";
 
 export class Parent implements IParent{
   public id: string;
@@ -36,3 +38,19 @@ export class Parent implements IParent{
   }
   
 }
+
+export class InscriptionParent implements IInscriptionParent {
+  idParent: string;
+  idSession: string;
+  inscriptionsEnfants: InscriptionEnfant[] = new Array<InscriptionEnfant>();
+
+  constructor(
+      idParent: string,
+      idSession: string
+  ) {
+    this.idParent = idParent;
+    this.idSession = idSession;
+  }
+
+}
+

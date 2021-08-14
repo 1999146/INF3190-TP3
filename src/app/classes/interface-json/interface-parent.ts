@@ -26,15 +26,11 @@
 
   export interface IInscriptionParent {
     idParent: string;
-    inscriptionEnfant: IInscriptionEnfant[];
+    idSession: string;
+    inscriptionsEnfants: IInscriptionEnfant[];
   }
 
   export interface IInscriptionEnfant {
-    idSession: string;
-    inscriptionsSemaines: IInscriptionSemaine[];
-  }
-
-  export interface IInscriptionSemaine {
     idEnfant: string;
     idProgramme: string;
     idSemaine: string;
