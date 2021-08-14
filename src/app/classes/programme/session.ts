@@ -1,29 +1,26 @@
+import { ISession } from "../module-json/module-programme";
 import { Semaine } from "./semaine";
 
-export class Session {
+export class Session implements ISession {
   public id: string;
   public nom: string;
   public description: string;
-  public dateDebut: Date;
-  public dateFin: Date;
+  public dateDebut: string;
+  public dateFin: string;
   public semaines: Array<Semaine> = new Array<Semaine>();
 
   public constructor(
       id: string,
       nom: string,
       description: string,
-      dateDebut: Date,
-      dateFin: Date,
+      dateDebut: string,
+      dateFin: string
   ) {
     this.id = id;
     this.nom = nom;
     this.description = description;
     this.dateDebut = dateDebut;
     this.dateFin = dateFin;
-  }
-
-  public ajouterSemaine(semaine: Semaine) {
-    this.semaines.push(semaine);
   }
   
 }

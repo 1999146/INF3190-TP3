@@ -1,4 +1,6 @@
-<div *ngIf="null != parent.enfants" class="card mb-4">
+<!-- <button class="btn btn-danger mb-4" (click)="exportJson()">clic_json</button> -->
+
+<div *ngIf="undefined != parent.enfants" class="card mb-4">
   <div class="card-header">
     <div class="row mb-2 mt-2">
       <div class="col-8">
@@ -8,14 +10,11 @@
       </div>
       <div class="col-2 d-flex align-items-center justify-content-end">Sélection : </div>
       <div class="col-2 d-flex align-items-end justify-content-end">
-        <form method="POST" onchange="this.form.submit()">
+        <form method="POST" onchange="">
 
-          <select name="numSession" class="form-control" onchange="this.form.submit()">
-            <ng-container *ngFor="let session of sessions;">
-              <option *ngIf="session == this.sessionActuelle" value="session.id">{{session.nom}}</option>
-            </ng-container>
-            <ng-container *ngFor="let session of sessions;">
-              <option *ngIf="session != this.sessionActuelle" value="session.id">{{session.nom}}</option>
+          <select name="numSession" class="form-control" [(ngModel)]="idSessionActuelle">
+            <ng-container *ngFor="let session of sessions">
+              <option [value]="session.id">{{session.nom}}</option>
             </ng-container>
           </select>
           
@@ -35,14 +34,34 @@
       </thead>
 
       <tbody>
-        <ng-container *ngFor="let semaine of sessionActuelle.semaines">
+        <ng-container *ngFor="let semaine of getSessionActuelle().semaines">
           <tr *ngFor="let enfant of parent.enfants" class="week-ongoing">
             <td *ngIf="enfant == parent.enfants[0]" [attr.rowspan]="parent.enfants.length">{{semaine.noSemaine}}</td>
             <td>{{enfant.nom}}, {{enfant.prenom}}</td>
-            <td>afficherProgrammeSelection()</td>
-            <td>bouton</td>
+            <td>
+
+              <select *ngIf="!estPaye(semaine.id, enfant.id); else elseBlock" name="" class="form-control" id="">
+                <option selected value="">Choisir Programme</option>
+                <option *ngFor="let programme of semaine.programmes" [value]="programme.idGabaritProgramme">
+                  {{getNomGabaritProgrammeById(programme.idGabaritProgramme)}}
+                  <!-- .titre -->
+                </option>
+              </select>
+
+              <ng-template #elseBlock>
+                <select disabled name="" class="form-control" id="">
+                  <option selected value="">{{getNomGabaritProgrammePaye(semaine.id, enfant.id)}}</option>
+                  <!-- .titre -->
+                </select>
+              </ng-template>
+
+            </td>
+            <td>
+              <ng-container>{{estPaye(semaine.id, enfant.id)}}</ng-container>
+            </td>
           </tr>
         </ng-container>
+
 
         <!-- [class]="estEnCours(new Date)" -->
 
@@ -66,7 +85,7 @@
       <div class="row mb-2 mt-2">
         <div class="col-6">
           <h2 class="mb-0">
-            <i class="fas fa-shopping-cart"></i> Panier - {{sessionActuelle.nom}} 
+            <i class="fas fa-shopping-cart"></i> Panier - {{getSessionActuelle().nom}} 
           </h2>
         </div>
         <div class="col-6 d-flex align-items-end justify-content-end">
@@ -107,7 +126,7 @@
       <div class="row">
         <div class="col-9"></div>
         <div class="col-3 d-flex align-items-end justify-content-end">
-          <form method="POST" action="<?=Util::getChemin()?>/parent/payer">
+          <form method="POST" action="">
             <button class="btn btn-sm btn-success" type="submit">Payer getPrixTotal()</button>
           </form>
         </div>

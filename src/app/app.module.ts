@@ -15,7 +15,6 @@ import { PageInscriptionParentComponent } from './page-inscription-parent/page-i
 import { PageParentTableauComponent } from './page-parent-tableau/page-parent-tableau.component';
 import { SectionParentProfilComponent } from './page-parent-tableau/section-parent-profil/section-parent-profil.component';
 import { SectionParentInscriptionComponent } from './page-parent-tableau/section-parent-inscription/section-parent-inscription.component';
-import { ModalModifierProfilComponent } from './page-parent-tableau/modal-modifier-profil/modal-modifier-profil.component';
 
 const appRoutes: Routes = [
   { path: '', component:  PageAccueilComponent},
@@ -36,8 +35,7 @@ const appRoutes: Routes = [
     PageInscriptionParentComponent,
     PageParentTableauComponent,
     SectionParentProfilComponent,
-    SectionParentInscriptionComponent,
-    ModalModifierProfilComponent,
+    SectionParentInscriptionComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Enfant } from '../../classes/enfant';
-import { Parent } from '../../classes/parent';
-import {AuthService} from "../../services/auth.service";
+import { IParent } from 'src/app/classes/module-json/module-fiche-parent';
+import { IFicheParent } from 'src/app/classes/module-json/module-fiche-parent';
+import { Enfant } from '../../classes/fiche-parent/enfant';
+import { Parent } from '../../classes/fiche-parent/parent';
+import { AuthService } from "../../services/auth.service";
+
 
 @Component({
   selector: 'app-section-parent-profil',
@@ -10,42 +13,31 @@ import {AuthService} from "../../services/auth.service";
 })
 export class SectionParentProfilComponent implements OnInit {
 
-  parent!: any;
+  parent!: IParent;
+  ficheParent!: IFicheParent;
 
   constructor(public authService: AuthService) {
-    this.parent = authService.user;
-    /*
-    this.parent = new Parent(
-      "0",
-      "Simpson",
-      "Homer",
-      "simpson.homer@gmail.com",
-      "123 rue Springfield",
-      new Date("1960-04-08"),
-      "../../assets/img/profil.png",
-    );
+    this.ficheParent = authService.ficheParent;
+    this.parent = this.ficheParent.parent;
 
-    this.parent.ajouterEnfant(new Enfant(
-      "1",
-      "Simpson",
-      "Lisa",
-      new Date("1990-06-09"),
-      "../../assets/img/profil.png",
-      "")
-    );
+    // this.parent1.enfants.push(new Enfant(
+    //   "3",
+    //   "Simpson",
+    //   "Maggie",
+    //   "1999-05-12",
+    //   "../../assets/img/profil.png",
+    //   "")
+    // );
 
-    this.parent.ajouterEnfant(new Enfant(
-      "2",
-      "Simpson",
-      "Bart",
-      new Date("1994-08-21"),
-      "../../assets/img/bart_mini.jpg",
-      "")
-    );
-*/
   }
 
   ngOnInit(): void {
   }
+
+  // exportJson() {
+  //   // console.log(parent);
+  //   const data = JSON.stringify(this.fichesParents);
+  //   console.log(data);
+  // }
 
 }

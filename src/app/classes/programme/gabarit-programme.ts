@@ -1,4 +1,6 @@
-export class GabaritProgramme {
+import { IGabaritProgramme } from "../module-json/module-programme";
+
+export class GabaritProgramme implements IGabaritProgramme {
   public id: string;
   public titre: string;
   public description: string;

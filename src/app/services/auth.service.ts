@@ -1,13 +1,28 @@
-import * as dossiersParents from '../../data/dossier_parent.json';
-let parents = dossiersParents;
+// import * as dossiersParents from '../../data/dossier_parent.json';
+// let parents = dossiersParents;
+
+import fichesParentsJson from "../../data/fiches-parents";
+import gabaritProgrammeJson from "../../data/gabarit-programmes";
+import sessionsJson from "../../data/sessions";
+import inscriptionParentJson from "../../data/inscription-parent";
+
+import { IFicheParent, IInscriptionParent } from "../classes/module-json/module-fiche-parent";
+import { IGabaritProgramme, ISession } from "../classes/module-json/module-programme";
+
+let parents: IFicheParent[] = fichesParentsJson;
+let inscriptionParents: IInscriptionParent[] = inscriptionParentJson;
 
 export class AuthService {
-  isAuth = false;
-  isAdmin = false;
-  indiceParent = 0;
-  user = parents[this.indiceParent];
+  isAuth: boolean = false;
+  isAdmin: boolean = false;
+  indiceParent: number = 0;
 
-  signIn(username: String, password: String) {
+  ficheParent: IFicheParent = parents[0];
+  inscriptionParent: IInscriptionParent = inscriptionParents[0];
+  gabaritProgrammes: IGabaritProgramme[] = gabaritProgrammeJson;
+  sessions: ISession[] = sessionsJson;
+
+  signIn(username: string, password: string) {
     if (username == "admin" && password == "admin") {
       this.isAuth = true;
       this.isAdmin = true;
@@ -27,20 +42,26 @@ export class AuthService {
     this.isAdmin = false;
   }
 
-  verifyPassword(username: String, password: String): boolean{
+  verifyPassword(username: string, password: string): boolean{
     let authentifie = false;
     for(let i = 0; i < parents.length; i++){
-      if(parents[i].username == username && parents[i].motDePasse == password){
+      if(parents[i].username == username && parents[i].password == password){
         authentifie = true;
       }
     }
     return authentifie;
   }
 
-  logParent(username: String){
-    for(let i = 0; i < 3; i++){
+  logParent(username: string){
+    for(let i = 0; i < parents.length; i++) {
       if(parents[i].username == username){
           this.indiceParent = i;
+          this.ficheParent = parents[i];
+      }
+    }
+    for(let inscription of inscriptionParents) {
+      if(this.ficheParent.parent.id = inscription.idParent) {
+        this.inscriptionParent = inscription;
       }
     }
   }
