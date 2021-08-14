@@ -1,6 +1,6 @@
-import { Inscription } from "./fiche-parent/parent";
+import { Inscription } from "./parent";
 import { IInscriptionParent, IInscriptionEnfant } from "./interface-json/interface-parent";
-import { IGabaritProgramme, ISession, IProgramme } from "./interface-json/interface-programme";
+import { IGabaritProgramme, ISession, IProgramme } from "./interface-json/interface-session";
 
 export class Join {
   static getSessionById(sessions: ISession[], sessionId: string): ISession {

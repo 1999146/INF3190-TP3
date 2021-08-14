@@ -7,7 +7,7 @@ import sessionsJson from "../../data/sessions";
 import inscriptionParentJson from "../../data/inscription-parent";
 
 import { IParent, IInscriptionParent } from "../classes/interface-json/interface-parent";
-import { IGabaritProgramme, ISession } from "../classes/interface-json/interface-programme";
+import { IGabaritProgramme, ISession } from "../classes/interface-json/interface-session";
 import { Join } from "../classes/methode-join";
 
 let parents: IParent[] = fichesParentsJson;

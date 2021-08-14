@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Parent } from '../../classes/fiche-parent/parent';
+import { Parent } from '../../classes/parent';
 import { AuthService } from "../../services/auth.service";
-import { IGabaritProgramme, IProgramme } from 'src/app/classes/interface-json/interface-programme';
-import { ISession } from 'src/app/classes/interface-json/interface-programme';
-import { InscriptionParent } from '../../classes/fiche-parent/parent';
+import { IGabaritProgramme, IProgramme } from 'src/app/classes/interface-json/interface-session';
+import { ISession } from 'src/app/classes/interface-json/interface-session';
+import { InscriptionParent } from '../../classes/parent';
 import { IInscriptionEnfant, IInscriptionParent } from 'src/app/classes/interface-json/interface-parent';
-import { Programme } from 'src/app/classes/programme/programme';
-import { Semaine } from 'src/app/classes/programme/semaine';
 import { Join } from 'src/app/classes/methode-join';
 import { Router } from '@angular/router';
 

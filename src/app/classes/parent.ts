@@ -1,4 +1,4 @@
-import { IEnfant, IParent, IInscriptionEnfant, IInscriptionParent } from "../interface-json/interface-parent";
+import { IEnfant, IParent, IInscriptionEnfant, IInscriptionParent } from "./interface-json/interface-parent";
 
 // Parent
 

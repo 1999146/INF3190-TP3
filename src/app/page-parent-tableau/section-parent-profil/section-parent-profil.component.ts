@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IParent } from 'src/app/classes/interface-json/interface-parent';
-import { Parent, Enfant } from '../../classes/fiche-parent/parent';
+import { Parent, Enfant } from '../../classes/parent';
 import { AuthService } from "../../services/auth.service";
 
 
