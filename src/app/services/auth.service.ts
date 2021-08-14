@@ -24,14 +24,14 @@ export class AuthService {
   sessions: ISession[] = sessionsJson;
 
   signIn(username: string, password: string) {
-    if (username == "admin" && password == "admin") {
+    if (username == "admin" && password == "admin!") {
       this.isAuth = true;
       this.isAdmin = true;
       this.inscriptionsParents = inscriptionsParents;
     } else {
       if(!this.verifyPassword(username, password)){
         //Connexion refusé, rediriger avec message d'erreur
-        console.log("connexion reffuse");
+        console.log("connexion refusee");
       }else{
         this.logParent(username);
         this.isAuth = true;

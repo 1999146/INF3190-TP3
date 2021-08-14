@@ -9,7 +9,7 @@ import { PageAccueilComponent } from './page-accueil/page-accueil.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PageContactComponent } from './page-contact/page-contact.component';
 import { AuthService } from "./services/auth.service";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PageDescriptionProgrammesComponent } from './page-description-programmes/page-description-programmes.component';
 import { PageInscriptionParentComponent } from './page-inscription-parent/page-inscription-parent.component';
 import { PageParentTableauComponent } from './page-parent-tableau/page-parent-tableau.component';
@@ -18,6 +18,7 @@ import { SectionParentInscriptionComponent } from './page-parent-tableau/section
 import { TableauAdminComponent } from './tableau-admin/tableau-admin.component';
 import { TableauAdminModalComponent } from './tableau-admin-modal/tableau-admin-modal.component';
 import {ModalModifierProfilComponent} from "./page-parent-tableau/modal-modifier-profil/modal-modifier-profil.component";
+import { LoginFormComponent } from './login-form/login-form.component';
 
 const appRoutes: Routes = [
   { path: '', component:  PageAccueilComponent},
@@ -43,12 +44,14 @@ const appRoutes: Routes = [
     TableauAdminComponent,
     TableauAdminModalComponent,
     ModalModifierProfilComponent,
+    LoginFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     AuthService
