@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AuthService} from "../../../services/auth.service";
 import {NgForm} from "@angular/forms";
+import {IParent} from "../../../classes/interface-json/interface-parent";
 
 @Component({
   selector: 'app-modal-modifier-profil',
@@ -9,7 +10,7 @@ import {NgForm} from "@angular/forms";
 })
 export class ModalModifierProfilComponent implements OnInit {
 
-  @Input() parent: any;
+  @Input() parent!: IParent;
 
   constructor() {
 
