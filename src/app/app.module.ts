@@ -21,6 +21,7 @@ import {ModalModifierProfilComponent} from "./page-parent-tableau/section-parent
 import { LoginFormComponent } from './header/login-form/login-form.component';
 import { SectionEnfantsAChargeComponent } from './page-parent-tableau/section-enfants-a-charge/section-enfants-a-charge.component';
 import { FicheEnfantComponent } from './page-parent-tableau/section-enfants-a-charge/fiche-enfant/fiche-enfant.component';
+import { ModalAjouterEnfantComponent } from './page-parent-tableau/section-enfants-a-charge/modal-ajouter-enfant/modal-ajouter-enfant.component';
 
 const appRoutes: Routes = [
   { path: '', component:  PageAccueilComponent},
@@ -49,6 +50,7 @@ const appRoutes: Routes = [
     LoginFormComponent,
     SectionEnfantsAChargeComponent,
     FicheEnfantComponent,
+    ModalAjouterEnfantComponent,
   ],
   imports: [
     BrowserModule,
