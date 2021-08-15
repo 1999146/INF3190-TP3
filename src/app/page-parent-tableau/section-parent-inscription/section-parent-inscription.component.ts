@@ -45,7 +45,7 @@ export class SectionParentInscriptionComponent implements OnInit {
   estEnCours(noSemaine: number): boolean {
     let dateSession: Date = new Date(this.getSessionActuelle().dateDebut);
     let dateSemaine: Date = new Date(dateSession.getTime() + (7 * (noSemaine)) * 1000 * 60 * 60 * 24); 
-
+    // return true;
     if ( dateSemaine > this.dateMaintenant ) return true;
     else return false;
   }
@@ -57,10 +57,10 @@ export class SectionParentInscriptionComponent implements OnInit {
 
 
 
-  // exportJson() {
-  //   const data = JSON.stringify(this.inscriptionParents);
-  //   console.log(data);
-  // }
+  exportJson() {
+    const data = JSON.stringify(this.inscriptionsParents);
+    console.log(data);
+  }
 
   getSessionActuelle(): ISession {
     let session: ISession | undefined = Join.getSessionById(this.sessions, this.idSessionActuelle);
