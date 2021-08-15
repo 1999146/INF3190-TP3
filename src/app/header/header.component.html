@@ -36,7 +36,7 @@
       <a *ngIf="authService.isAuth && authService.isAdmin" class="nav-link active" aria-current="page" routerLink="">
         Gérer les programmes
       </a>
-      <a *ngIf="authService.isAuth && authService.isAdmin" class="nav-link active" aria-current="page" routerLink="">
+      <a *ngIf="authService.isAuth && authService.isAdmin" class="nav-link active" aria-current="page" routerLink="tableauAdmin">
         Voir les inscriptions
       </a>
       <a *ngIf="authService.isAuth && !authService.isAdmin" class="nav-link active" aria-current="page" routerLink="tableauBordParent">

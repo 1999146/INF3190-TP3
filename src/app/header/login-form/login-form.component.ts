@@ -31,10 +31,13 @@ export class LoginFormComponent implements OnInit {
     this.authService.signIn(formValue.username, formValue.password);
 
     if (this.authService.isAuth && !this.authService.isAdmin) {
+      //Parent
       this.router.navigate(['tableauBordParent']);
     } else if (this.authService.isAuth && this.authService.isAdmin) {
-      this.router.navigate(['']);
+      //Admin
+      this.router.navigate(['tableauAdmin']);
     } else {
+      //Invalide
       this.password.markAsPristine();
       this.username.markAsPristine();
       this.erreur = "Combinaison de Nom d'utilisateur et de Mot de passe invalide.";

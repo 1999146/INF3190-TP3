@@ -16,7 +16,6 @@ import {Session} from "../classes/session";
 })
 export class TableauAdminComponent implements OnInit {
 
-
   inscriptionsParents!: InscriptionParent[];
   inscriptions!: Inscription[];
   parents: IParent[] = fichesParentsJson;
@@ -26,6 +25,7 @@ export class TableauAdminComponent implements OnInit {
   inscriptionSelectionnee!: Inscription;
   parentSelectionnee!: IParent;
   enfantSelectionnee!: IEnfant | undefined;
+
   constructor(public authService: AuthService, private router: Router) {
     if (!authService.isAuth){
       this.router.navigate(['']);
@@ -34,9 +34,7 @@ export class TableauAdminComponent implements OnInit {
       this.inscriptions = Join.getInscriptions(this.inscriptionsParents);
       this.sessions = this.authService.sessions;
       this.programmes = this.authService.gabaritProgrammes;
-
     }
-
   }
 
   getNomParent(idParent: string){
@@ -99,9 +97,5 @@ export class TableauAdminComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
   }
-
-
-
 }

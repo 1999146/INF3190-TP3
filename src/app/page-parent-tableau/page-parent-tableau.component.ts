@@ -13,7 +13,7 @@ export class PageParentTableauComponent implements OnInit{
   parent!: IParent;
 
   constructor(public authService: AuthService, private router: Router) {
-    if(!this.authService.isAuth){
+    if(!this.authService.isAuth || this.authService.isAdmin){
       this.router.navigate(['']);
     }
   }

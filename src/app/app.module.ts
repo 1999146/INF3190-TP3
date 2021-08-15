@@ -22,6 +22,7 @@ import { LoginFormComponent } from './header/login-form/login-form.component';
 import { SectionEnfantsAChargeComponent } from './page-parent-tableau/section-enfants-a-charge/section-enfants-a-charge.component';
 import { FicheEnfantComponent } from './page-parent-tableau/section-enfants-a-charge/fiche-enfant/fiche-enfant.component';
 import { ModalAjouterEnfantComponent } from './page-parent-tableau/section-enfants-a-charge/modal-ajouter-enfant/modal-ajouter-enfant.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const appRoutes: Routes = [
   { path: '', component:  PageAccueilComponent},
@@ -29,7 +30,9 @@ const appRoutes: Routes = [
   { path: 'contact', component:  PageContactComponent},
   { path: 'inscriptionParent', component:  PageInscriptionParentComponent},
   { path: 'tableauBordParent', component:  PageParentTableauComponent},
-  { path: 'tableauAdmin', component: TableauAdminComponent}
+  { path: 'tableauAdmin', component: TableauAdminComponent},
+  {path: '404', component: NotFoundComponent},
+  {path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({
@@ -51,6 +54,7 @@ const appRoutes: Routes = [
     SectionEnfantsAChargeComponent,
     FicheEnfantComponent,
     ModalAjouterEnfantComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
