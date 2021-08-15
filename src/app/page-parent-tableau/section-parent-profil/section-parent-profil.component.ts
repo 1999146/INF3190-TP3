@@ -10,7 +10,8 @@ import { AuthService } from "../../services/auth.service";
 })
 export class SectionParentProfilComponent implements OnInit {
 
-  @Input() parent: any;
+  @Input()
+  parent!: IParent;
 
   constructor(public authService: AuthService) {
 

@@ -1,0 +1,66 @@
+<button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#ajouterEnfant">
+  <i class="fas fa-plus"></i>
+  Ajouter un enfant
+</button>
+
+<!-- Modal Ajouter un enfant -->
+<div class="modal fade" id="ajouterEnfant" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <form (ngSubmit)="onSubmit(fE)" #fE="ngForm">
+
+        <div class="modal-header">
+          <h5 class="modal-title">Ajouter un enfant</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+            <div class="row pt-2">
+              <div class="col text-center">
+                <input type="file" accept="image/*" name="photoEnfant" id="uploadChild" (change)="onLoadFile($event)" style="display: none"/>
+                <label for="uploadChild" style="cursor: pointer" class="form-label">
+                  <img id="uploadChildImg" width="150" src="../../assets/img/profil.png" class="rounded"/>
+                  <p>
+                    Photo de l'enfant<br>
+                    <span class="erreur"></span>
+                  </p>
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col">
+                <div class="form-group">
+                  <label class="col-form-label">Prénom:</label>
+                  <input type="text" class="form-control" id="prenomEnfant" name="prenomEnfant" ngModel required/>
+                </div>
+                <span class="erreur"></span>
+              </div>
+              <div class="form-group col">
+                <div class="form-group">
+                  <label class="col-form-label">Nom:</label>
+                  <input type="text" class="form-control" id="nomEnfant" name="nomEnfant" ngModel required/>
+                  <span class="erreur"></span>
+                </div>
+              </div>
+              <div class="form-group row mt-3">
+                <label class="form-label">Date de naissance</label>
+                <div class="col-10">
+                  <input class="form-control" type="date" name="dateNaissanceEnfant" ngModel required/>
+                  <span class="erreur"></span>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
+            Fermer
+          </button>
+          <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal" [disabled]="fE.invalid">Ajouter</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+<!-- FIN Modal Ajouter un enfant -->

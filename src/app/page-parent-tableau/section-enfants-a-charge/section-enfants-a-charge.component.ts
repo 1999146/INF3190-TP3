@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {IEnfant} from "../../classes/interface-json/interface-parent";
 
 @Component({
   selector: 'app-section-enfants-a-charge',
@@ -7,8 +8,8 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class SectionEnfantsAChargeComponent implements OnInit {
 
-  @Input() enfants: any;
-  @Input() adresse: any;
+  @Input() enfants: IEnfant[] = [];
+  @Input() adresse!: string;
 
   constructor() { }
 

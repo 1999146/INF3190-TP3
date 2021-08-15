@@ -13,15 +13,15 @@
     </tr>
     </thead>
     <tbody>
-    <tr class="clicable" *ngFor='let inscription of inscriptions' (click)="showModal(inscription)"
+    <tr class="clicable" *ngFor='let inscription of inscriptions; let i = index' (click)="showModal(inscription)"
         data-bs-toggle="modal" data-bs-target="#detail_inscription_modal">
-      <td>{{inscription.Enfant}}</td>
-      <td>{{inscription.Parent}}</td>
-      <td>{{inscription.Session}}</td>
-      <td>{{inscription.Programme}}</td>
-      <td>{{inscription.Semaine}}</td>
-      <td *ngIf="inscription.Paye"><i id="icone_paye" class="fas fa-check-circle"> </i></td>
-      <td *ngIf="!inscription.Paye"><i id="icone_impaye" class="fas fa-times-circle"></i></td>
+      <td>{{getNomParent(inscription.idParent)}}</td>
+      <td>{{getNomEnfant(inscription.idParent, inscription.idEnfant)}}</td>
+      <td>{{getNomSession(inscription.idSession)}}</td>
+      <td>{{getNomProgramme(inscription.idProgramme)}}</td>
+      <td>{{getSemaine(inscription.idSemaine)}}</td>
+      <td *ngIf="inscription.estPaye"><i id="icone_paye" class="fas fa-check-circle"> </i></td>
+      <td *ngIf="!inscription.estPaye"><i id="icone_impaye" class="fas fa-times-circle"></i></td>
     </tr>
     </tbody>
   </table>
@@ -33,7 +33,7 @@
           <div class="card-header">
             <div class="row mb-2 mt-2">
               <div class="col-6">
-                <h2 class="mb-0">Fiche Parent/Enfant</h2>
+                <h4 class="mb-0">Fiche Parent/Enfant</h4>
               </div>
               <div class="col-6 d-flex align-items-end justify-content-end">
                 <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
@@ -45,44 +45,44 @@
           <p id="modal_inscription_info_enfant">
           <div class="row">
             <div class="col-sm">
-              <img id="modal_inscription_image_enfant" [src]="enfantSelectionnee.photo" alt="photo profil enfant"/>
+              <img id="modal_inscription_image_enfant" [src]="enfantSelectionnee?.urlPhoto" alt="photo profil enfant"/>
             </div>
             <div class="col-sm">
               <h6 class="fw-bold mb-0 card-title">Nom</h6>
-              <p id="modal_nom_enfant" class="card-text">{{enfantSelectionnee.nom}}</p>
+              <p id="modal_nom_enfant" class="card-text">{{enfantSelectionnee?.nom}}</p>
               <h6 class="fw-bold mb-0 card-title">Prenom</h6>
-              <p id="modal_prenom_enfant" class="card-text">{{enfantSelectionnee.prenom}}</p>
+              <p id="modal_prenom_enfant" class="card-text">{{enfantSelectionnee?.prenom}}</p>
               <h6 class="fw-bold mb-0 card-title"></h6>
               <p class="card-text"></p>
             </div>
             <div class="col-sm">
               <h6 class="fw-bold mb-0 card-title">Date De Naissance</h6>
-              <p id="modal_date_naiss_enfant" class="card-text">{{enfantSelectionnee.dateNaissance}}</p>
+              <p id="modal_date_naiss_enfant" class="card-text">{{enfantSelectionnee?.dateNaissance}}</p>
               <h6 class="fw-bold mb-0 card-title">Programme</h6>
-              <p id="modal_programme_enfant" class="card-text">{{inscriptionSelectionnee.Programme}}</p>
+              <p id="modal_programme_enfant" class="card-text">{{getNomProgrammeModal(inscriptionSelectionnee?.idProgramme)}}</p>
             </div>
           </div>
           <hr class="dashed">
           <p id="modal_inscription_info_parent">
           <div class="row">
             <div class="col-sm">
-              <img id="modal_inscription_image_parent" [src]="parentSelectionnee.photo" alt="photo profil parent"/>
+              <img id="modal_inscription_image_parent" [src]="parentSelectionnee?.urlPhoto" alt="photo profil parent"/>
             </div>
             <div class="col-sm">
               <h6 class="fw-bold mb-0 card-title">Nom</h6>
-              <p id="modal_nom_parent" class="card-text">{{parentSelectionnee.nom}}</p>
+              <p id="modal_nom_parent" class="card-text">{{parentSelectionnee?.nom}}</p>
               <h6 class="fw-bold mb-0 card-title">Prenom</h6>
-              <p id="modal_prenom_parent" class="card-text">{{parentSelectionnee.prenom}}</p>
+              <p id="modal_prenom_parent" class="card-text">{{parentSelectionnee?.prenom}}</p>
               <h6 class="fw-bold mb-0 card-title"></h6>
               <p class="card-text"></p>
             </div>
             <div class="col-sm">
               <h6 class="fw-bold mb-0 card-title">Courriel</h6>
-              <p id="modal_courriel_parent" class="card-text">{{parentSelectionnee.courriel}}</p>
+              <p id="modal_courriel_parent" class="card-text">{{parentSelectionnee?.courriel}}</p>
               <h6 class="fw-bold mb-0 card-title">Adresse</h6>
-              <p id="modal_adresse_parent" class="card-text">{{parentSelectionnee.adresse}}</p>
+              <p id="modal_adresse_parent" class="card-text">{{parentSelectionnee?.adresse}}</p>
               <h6 class="fw-bold mb-0 card-title">Date De Naissance</h6>
-              <p id="modal_date_naiss_parent" class="card-text">{{parentSelectionnee.dateNaissance}}</p>
+              <p id="modal_date_naiss_parent" class="card-text">{{parentSelectionnee?.dateNaissance}}</p>
             </div>
           </div>
 

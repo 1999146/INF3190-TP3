@@ -1,6 +1,7 @@
 import { Inscription } from "./parent";
 import { IInscriptionParent, IInscriptionEnfant, IEnfant, IParent } from "./interface-json/interface-parent";
 import { IGabaritProgramme, ISession, IProgramme, ISemaine } from "./interface-json/interface-session";
+import inscriptionParent from "src/data/inscription-parent";
 
 export class Join {
   static getSessionById(sessions: ISession[], sessionId: string): ISession | undefined {
@@ -86,6 +87,13 @@ export class Join {
       if (inscriptionParent.idParent == idParent) inscriptionsParentAuth.push(inscriptionParent);
     }
     return inscriptionsParentAuth;
+  }
+
+  static getInscriptionParentActuelle(inscriptionsParents: IInscriptionParent[], idSession: string): IInscriptionParent | undefined {
+    for (let inscriptionParent of inscriptionsParents) {
+      if(inscriptionParent.idSession == idSession) return inscriptionParent;
+    }
+    return undefined;
   }
 
   //pour admin

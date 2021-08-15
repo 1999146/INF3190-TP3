@@ -18,9 +18,10 @@ import { SectionParentInscriptionComponent } from './page-parent-tableau/section
 import { TableauAdminComponent } from './tableau-admin/tableau-admin.component';
 import { TableauAdminModalComponent } from './tableau-admin-modal/tableau-admin-modal.component';
 import {ModalModifierProfilComponent} from "./page-parent-tableau/section-parent-profil/modal-modifier-profil/modal-modifier-profil.component";
-import { LoginFormComponent } from './login-form/login-form.component';
+import { LoginFormComponent } from './header/login-form/login-form.component';
 import { SectionEnfantsAChargeComponent } from './page-parent-tableau/section-enfants-a-charge/section-enfants-a-charge.component';
 import { FicheEnfantComponent } from './page-parent-tableau/section-enfants-a-charge/fiche-enfant/fiche-enfant.component';
+import { ModalAjouterEnfantComponent } from './page-parent-tableau/section-enfants-a-charge/modal-ajouter-enfant/modal-ajouter-enfant.component';
 
 const appRoutes: Routes = [
   { path: '', component:  PageAccueilComponent},
@@ -49,6 +50,7 @@ const appRoutes: Routes = [
     LoginFormComponent,
     SectionEnfantsAChargeComponent,
     FicheEnfantComponent,
+    ModalAjouterEnfantComponent,
   ],
   imports: [
     BrowserModule,
