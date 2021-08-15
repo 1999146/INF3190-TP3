@@ -1,3 +1,4 @@
 <h1>Tableau de bord des parents</h1>
-<app-section-parent-profil></app-section-parent-profil>
+<app-section-parent-profil [parent]="parent"></app-section-parent-profil>
+<app-section-enfants-a-charge [enfants]="parent.enfants" [adresse]="parent.adresse"></app-section-enfants-a-charge>
 <app-section-parent-inscription></app-section-parent-inscription>

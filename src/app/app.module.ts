@@ -9,7 +9,7 @@ import { PageAccueilComponent } from './page-accueil/page-accueil.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PageContactComponent } from './page-contact/page-contact.component';
 import { AuthService } from "./services/auth.service";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PageDescriptionProgrammesComponent } from './page-description-programmes/page-description-programmes.component';
 import { PageInscriptionParentComponent } from './page-inscription-parent/page-inscription-parent.component';
 import { PageParentTableauComponent } from './page-parent-tableau/page-parent-tableau.component';
@@ -17,7 +17,11 @@ import { SectionParentProfilComponent } from './page-parent-tableau/section-pare
 import { SectionParentInscriptionComponent } from './page-parent-tableau/section-parent-inscription/section-parent-inscription.component';
 import { TableauAdminComponent } from './tableau-admin/tableau-admin.component';
 import { TableauAdminModalComponent } from './tableau-admin-modal/tableau-admin-modal.component';
-import {ModalModifierProfilComponent} from "./page-parent-tableau/modal-modifier-profil/modal-modifier-profil.component";
+import {ModalModifierProfilComponent} from "./page-parent-tableau/section-parent-profil/modal-modifier-profil/modal-modifier-profil.component";
+import { LoginFormComponent } from './header/login-form/login-form.component';
+import { SectionEnfantsAChargeComponent } from './page-parent-tableau/section-enfants-a-charge/section-enfants-a-charge.component';
+import { FicheEnfantComponent } from './page-parent-tableau/section-enfants-a-charge/fiche-enfant/fiche-enfant.component';
+import { ModalAjouterEnfantComponent } from './page-parent-tableau/section-enfants-a-charge/modal-ajouter-enfant/modal-ajouter-enfant.component';
 
 const appRoutes: Routes = [
   { path: '', component:  PageAccueilComponent},
@@ -43,12 +47,17 @@ const appRoutes: Routes = [
     TableauAdminComponent,
     TableauAdminModalComponent,
     ModalModifierProfilComponent,
+    LoginFormComponent,
+    SectionEnfantsAChargeComponent,
+    FicheEnfantComponent,
+    ModalAjouterEnfantComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     AuthService

@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { IParent } from 'src/app/classes/interface-json/interface-parent';
-import { Parent, Enfant } from '../../classes/parent';
 import { AuthService } from "../../services/auth.service";
 
 
@@ -11,6 +10,7 @@ import { AuthService } from "../../services/auth.service";
 })
 export class SectionParentProfilComponent implements OnInit {
 
+  @Input()
   parent!: IParent;
 
   constructor(public authService: AuthService) {
@@ -18,7 +18,6 @@ export class SectionParentProfilComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.parent = this.authService.parent;
   }
 
 }

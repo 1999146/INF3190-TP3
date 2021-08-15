@@ -6,18 +6,22 @@
 <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="modifierProfil" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
-      <form>
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
         <div class="modal-header">
           <h5 class="modal-title">Modifier Profil</h5>
-          <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
         </div>
 
         <div class="modal-body">
 
             <div class="row pt-2">
               <div class="col text-center">
-                <input accept="image/*" id="image" (change)="onLoadFile($event)" style="display: none" type="file"/>
-                <label class="form-label" for="image" style="cursor: pointer">
+                <input accept="image/*"
+                       id="uploadHomer"
+                       name="image" (change)="onLoadFile($event)"
+                       style="display: none"
+                       type="file"
+                       ngModel/>
+                <label class="form-label" for="uploadHomer" style="cursor: pointer">
                   <img class="rounded" id="uploadHomerImg" src="{{parent.urlPhoto}}" width="150"/>
                   <p>Photo de profil</p>
                   <span class="erreur">
@@ -29,12 +33,12 @@
             <div class="row px-2">
               <div class="col">
                 <label class="form-label" for="prenom">Prénom</label>
-                <input class="form-control" id="prenom" type="text" value="{{parent.prenom}}"/>
+                <input class="form-control" id="prenom" name="prenom" type="text" [(ngModel)]="parent.prenom" required/>
                 <span class="erreur"></span>
               </div>
               <div class="col">
                 <label class="form-label" for="nom">Nom</label>
-                <input class="form-control" id="nom" type="text" value="{{parent.nom}}"/>
+                <input class="form-control" id="nom" name="nom" type="text" [(ngModel)]="parent.nom" required/>
                 <span class="erreur"></span>
               </div>
             </div>
@@ -42,19 +46,19 @@
             <div class="row p-2">
               <div class="col">
                 <label class="form-label" for="email">Email</label>
-                <input class="form-control" id="email" type="email" value="{{parent.courriel}}"/>
+                <input class="form-control" id="email" name="email" type="email" [(ngModel)]="parent.courriel" required/>
                 <span class="erreur"></span>
               </div>
               <div class="col">
-                <label class="form-label" for="dateNaissance">Date de naissance</label>
-                <input class="form-control" id="dateNaissance" type="date" value="{{parent.dateNaissance}}"/>
+                <label class="form-label" for="ddn">Date de naissance</label>
+                <input class="form-control" id="ddn" name="dateNaissance" type="date" [(ngModel)]="parent.dateNaissance" required/>
                 <span class="erreur"></span>
               </div>
             </div>
 
             <div class="form-group p-2">
               <label class="form-label" for="adresse">Adresse complète</label>
-              <textarea class="form-control" id="adresse">{{parent.adresse}}</textarea>
+              <textarea class="form-control" id="adresse" name="adresse" [(ngModel)]="parent.adresse" required></textarea>
               <span class="erreur"></span>
             </div>
 
@@ -68,17 +72,15 @@
               </div>
               <div class="col">
                 <label class="form-label" for="password">Changer mot de passe</label>
-                <input class="form-control" id="password" placeholder="" type="password"/>
+                <input class="form-control" id="password"name="password" placeholder="" type="password" ngModel/>
                 <span class="erreur"></span>
               </div>
             </div>
         </div>
 
         <div class="modal-footer">
-          <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Fermer</button>
-          <input class="btn btn-dark" type="submit" value="Modifier">
+          <input class="btn btn-dark" type="submit" value="Modifier" data-bs-dismiss="modal" [disabled]="f.invalid">
         </div>
-
       </form>
     </div>
   </div>

@@ -176,7 +176,19 @@ export class SectionParentInscriptionComponent implements OnInit {
     let inscriptionEnfant: IInscriptionEnfant | undefined = Join.getInscriptionEnfant(this.inscriptionsParents, this.idSessionActuelle, semaine.id, enfant.id);
     if (inscriptionEnfant == undefined && idProgramme != "") {
       inscriptionEnfant = new InscriptionEnfant(enfant.id, idProgramme, semaine.id);
-      this.getInscriptionsEnfants()?.push(inscriptionEnfant);
+      let inscriptionsEnfants: IInscriptionEnfant[] | undefined = this.getInscriptionsEnfants();
+      if (inscriptionsEnfants != undefined) inscriptionsEnfants.push(inscriptionEnfant);
+      else {
+        let inscriptionParent: IInscriptionParent | undefined = Join.getInscriptionParentActuelle(this.inscriptionsParents, this.idSessionActuelle);
+        if (inscriptionParent != undefined) {
+          inscriptionParent.inscriptionsEnfants = new Array<InscriptionEnfant>();
+          inscriptionParent.inscriptionsEnfants.push(inscriptionEnfant);
+        } else {
+          let inscriptionParent: IInscriptionParent = new InscriptionParent(this.parent.id, this.idSessionActuelle);
+          inscriptionParent.inscriptionsEnfants.push(inscriptionEnfant);
+          this.inscriptionsParents.push(inscriptionParent);
+        }
+      }
     } else if (inscriptionEnfant != undefined && idProgramme != "") {
       inscriptionEnfant.estInscrit = true;
     } else if (inscriptionEnfant != undefined && idProgramme == "") {

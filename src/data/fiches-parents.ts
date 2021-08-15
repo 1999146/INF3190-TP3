@@ -3,7 +3,7 @@ export default
   {
    "id":"homer",
    "username":"homer",
-   "password":"beignes",
+   "password":"beignes!",
    "nom":"Simpson",
    "prenom":"Homer",
    "courriel":"simpson.homer@gmail.com",
@@ -32,7 +32,7 @@ export default
   {
    "id":"ned",
    "username":"ned",
-   "password":"jesus",
+   "password":"jesus!",
    "nom":"Flanders",
    "prenom":"Ned",
    "courriel":"flanders.ned@gmail.com",
