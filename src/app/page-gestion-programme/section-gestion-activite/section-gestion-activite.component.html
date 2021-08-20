@@ -20,20 +20,30 @@
   </div>
 
   <div class="card-body">
-    <div class="collapse" id="collapseActivite">
-    <!-- Regroupement des activités par type -->
-      <div class="card my-2">
-        <div class="card-body">
-          <h2>type->getNom()</h2>
-          <hr />
-          <!-- Pastilles activites -->
-            <p>
-              <span class="badge rounded-pill bg-secondary">activite->getNom()</span>
-            </p>
-          <!-- Fin pastilles activites -->
-        </div>
+
+    <div class="card my-2">
+      <div class="card-body">
+        <h2>{{typeActivites[0].nom}}</h2>
+        <hr/>
+        <ng-container *ngFor="let activite of this.getActivitesByType(typeActivites[0].id)">
+          <span class="badge rounded-pill bg-light border mx-1 text-dark">{{activite.nom}}</span>
+        </ng-container>
       </div>
-  <!-- Fin regroupement des activités par type -->
+    </div>
+
+    <div class="collapse" id="collapseActivite">
+      <ng-container *ngFor="let typeActivite of typeActivites">
+        <div *ngIf="typeActivite != typeActivites[0]" class="card my-2">
+          <div class="card-body">
+            <h2>{{typeActivite.nom}}</h2>
+            <hr/>
+            <ng-container *ngFor="let activite of this.getActivitesByType(typeActivite.id)">
+              <span class="badge rounded-pill bg-light border mx-1 text-dark">{{activite.nom}}</span>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+
     </div>
 
     <p class="text-center">
