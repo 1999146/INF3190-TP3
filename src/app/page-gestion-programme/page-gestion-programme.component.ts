@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { ISession } from '../classes/interface-json/interface-session';
 
 @Component({
   selector: 'app-page-gestion-programme',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageGestionProgrammeComponent implements OnInit {
 
-  constructor() { }
+  sessions: ISession[] | undefined = undefined;
+
+  constructor(public authService: AuthService, private router: Router) {
+    if (!authService.isAuth || !authService.isAdmin) this.router.navigate(['']);
+  }
 
   ngOnInit(): void {
+    this.sessions = this.authService.sessions;
   }
 
 }

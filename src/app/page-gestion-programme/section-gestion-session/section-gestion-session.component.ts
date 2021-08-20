@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ISession } from 'src/app/classes/interface-json/interface-session';
 
 @Component({
   selector: 'app-section-gestion-session',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SectionGestionSessionComponent implements OnInit {
 
+  @Input() sessions!: ISession[] | undefined;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.sessions = undefined;
   }
 
 }

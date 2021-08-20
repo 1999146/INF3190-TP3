@@ -1,51 +1,64 @@
-      <!--Sessions-->
-      <div class="card my-3">
-        <div class="card-header">
-          <div class="row mb-2 mt-2">
-            <div class="col-6">
-              <h2 class="mb-0">Sessions</h2>
-            </div>
-            <div class="col-6 d-flex align-items-end justify-content-end">
-              <button
-                type="button"
-                class="btn btn-secondary btn-sm"
-                data-bs-toggle="modal"
-                data-bs-target="#creerSessionModal"
-              >
-                Ajouter
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
+<!--Sessions-->
+<div class="card my-3">
 
-          <div class="collapse" id="collapseSession">
+  <div class="card-header">
+    <div class="row mb-2 mt-2">
+      <div class="col-6">
+        <h2 class="mb-0">Sessions</h2>
+      </div>
+      <div class="col-6 d-flex align-items-end justify-content-end">
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          data-bs-toggle="modal"
+          data-bs-target="#creerSessionModal"
+        >
+          Ajouter
+        </button>
+      </div>
+    </div>
+  </div>
 
-            <div class="card my-2">
-              <div class="card-body">
-                <h3 class="session-titre mb-0">session->getNom()</h3>
-                <div class="session-description col-10 mb-3">
-                  session->getDescription()
-                </div>
-              </div>
-            </div>
+  <div class="card-body">
 
-          </div>
-          
-          <p class="text-center">
-            <button
-              class="btn btn-secondary mt-3"
-              id="sessionVoirPlus"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseSession"
-              aria-expanded="false"
-              aria-controls="collapseSession"
-              data-text = "Voir les sessions"
-            >
-              Voir les sessions
-            </button>
-          </p>
+    <div *ngIf="sessions != undefined" class="card my-2">
+      <div class="card-body">
+        <h3 class="session-titre mb-0">{{sessions[0].nom}}</h3>
+        <div class="session-description col-10 mb-3">
+          {{sessions[0].description}}
         </div>
       </div>
+    </div>
+
+    <div *ngIf="sessions != undefined" class="collapse" id="collapseSession">
+      <ng-container *ngFor="let session of sessions">
+        <div *ngIf="session != sessions[0]" class="card my-2">
+          <div class="card-body">
+            <h3 class="session-titre mb-0">{{session.nom}}</h3>
+            <div class="session-description col-10 mb-3">
+              {{session.description}}
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <p *ngIf="sessions != undefined" class="text-center">
+      <button
+        class="btn btn-secondary mt-3"
+        id="sessionVoirPlus"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseSession"
+        aria-expanded="false"
+        aria-controls="collapseSession"
+        data-text = "Voir les sessions"
+      >
+        Voir les sessions
+      </button>
+    </p>
+    
+  </div>
+
+</div>
 <!--Fin Sessions-->
