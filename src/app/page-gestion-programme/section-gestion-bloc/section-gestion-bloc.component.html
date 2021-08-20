@@ -1,1 +1,51 @@
-<p>section-gestion-bloc works!</p>
+<!--Bloc Activités-->
+<div class="card my-3">
+  <div class="card-header">
+    <div class="row mb-2 mt-2">
+      <div class="col-6">
+        <h2 class="mb-0">Blocs d'activité</h2>
+      </div>
+      <div class="col-6 d-flex align-items-end justify-content-end">
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          data-bs-toggle="modal"
+          data-bs-target="#creerBlocActiviteModal"
+        >
+          Ajouter
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+
+    <div class="collapse" id="collapseBlocActivite">
+
+      <div class="card my-2">
+        <div class="card-body">
+          <h2>blocActivite->getNom()</h2>
+          <hr/>
+          <p>
+          <span class="badge rounded-pill bg-secondary">activite->getNom()</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+    <p class="text-center">
+      <button
+        class="btn btn-secondary mt-3"
+        id="blocActiviteVoirPlus"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseBlocActivite"
+        aria-expanded="false"
+        aria-controls="collapseBlocActivite"
+        data-text = "Voir les blocs d'activités"
+      >
+        Voir les blocs d'activités
+      </button>
+    </p>
+  </div>
+</div>
+<!--Fin Bloc Activités-->

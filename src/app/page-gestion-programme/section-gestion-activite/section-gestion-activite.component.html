@@ -1,1 +1,57 @@
-<p>section-gestion-activite works!</p>
+<!--Activité-->
+<div class="card my-3">
+
+  <div class="card-header">
+    <div class="row mb-2 mt-2">
+      <div class="col-6">
+        <h2 class="mb-0">Activités</h2>
+      </div>
+      <div class="col-6 d-flex align-items-end justify-content-end">
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          data-bs-toggle="modal"
+          data-bs-target="#creerActiviteModal"
+        >
+          Ajouter
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="collapse" id="collapseActivite">
+    <!-- Regroupement des activités par type -->
+      <div class="card my-2">
+        <div class="card-body">
+          <h2>type->getNom()</h2>
+          <hr />
+          <!-- Pastilles activites -->
+            <p>
+              <span class="badge rounded-pill bg-secondary">activite->getNom()</span>
+            </p>
+          <!-- Fin pastilles activites -->
+        </div>
+      </div>
+  <!-- Fin regroupement des activités par type -->
+    </div>
+
+    <p class="text-center">
+      <button
+        class="btn btn-secondary mt-3"
+        id="activiteVoirPlus"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseActivite"
+        aria-expanded="false"
+        aria-controls="collapseActivite"
+        data-text = "Voir les activités"
+      >
+        Voir les activités 
+      </button>
+    </p>
+  </div>
+
+</div>
+<!--Fin Activité-->
+
