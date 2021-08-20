@@ -18,16 +18,29 @@
           </div>
         </div>
         <div class="card-body">
-        <div class="collapse" id="collapseTypeActivite">
 
           <div class="card my-2">
             <div class="card-body">
-              <h2>typeActivite->getNom()</h2>
+              <h2>{{typeActivites[0].nom}}</h2>
               <hr />
               <h4>Description:</h4>
-              <p class="mt-3">typeActivite->getDescription()</p>
+              <p class="mt-3">{{typeActivites[0].description}}</p>
             </div>
           </div>
+
+        <div class="collapse" id="collapseTypeActivite">
+
+          <ng-container *ngFor="let typeActivite of typeActivites">
+            <div *ngIf="typeActivite != typeActivites[0]" class="card my-2">
+              <div class="card-body">
+                <h2>{{typeActivite.nom}}</h2>
+                <hr />
+                <h4>Description:</h4>
+                <p class="mt-3">{{typeActivite.description}}</p>
+              </div>
+            </div>
+          </ng-container>
+          
 
         </div>
         </div>

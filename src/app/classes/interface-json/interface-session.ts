@@ -29,6 +29,17 @@
 
   // Activite
 
+  export interface IHorrairePrograme {
+    idProgramme: string;
+    horraires: IHorraire[];
+  }
+
+  export interface IHorraire {
+    idActivitesProg: string;
+    plageHoraire: number;
+    duree: number;
+  }
+
   export interface IActivite {
     id: string;
     nom: string;

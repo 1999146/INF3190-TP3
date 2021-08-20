@@ -13,7 +13,6 @@ export class SectionGestionSessionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.sessions = undefined;
   }
 
 }

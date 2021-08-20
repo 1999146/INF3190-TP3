@@ -5,9 +5,10 @@ import fichesParentsJson from "../../data/fiches-parents";
 import gabaritProgrammeJson from "../../data/gabarit-programmes";
 import sessionsJson from "../../data/sessions";
 import inscriptionParentJson from "../../data/inscription-parent";
+import typeActivitesJson from "../../data/activite-type";
 
 import { IParent, IInscriptionParent } from "../classes/interface-json/interface-parent";
-import { IGabaritProgramme, ISession } from "../classes/interface-json/interface-session";
+import { IGabaritProgramme, ISession, ITypeActivite } from "../classes/interface-json/interface-session";
 import { Join } from "../classes/methode-join";
 
 let parents: IParent[] = fichesParentsJson;
@@ -22,12 +23,14 @@ export class AuthService {
   inscriptionsParents: IInscriptionParent[] = Join.getInscriptionsParents(inscriptionsParents, this.parent.id);
   gabaritProgrammes: IGabaritProgramme[] = gabaritProgrammeJson;
   sessions: ISession[] = sessionsJson;
+  typeActivites!: ITypeActivite[];
 
   signIn(username: string, password: string) {
     if (username == "admin" && password == "admin!") {
       this.isAuth = true;
       this.isAdmin = true;
       this.inscriptionsParents = inscriptionsParents;
+      this.typeActivites = typeActivitesJson;
     } else {
       if(!this.verifyPassword(username, password)){
         //Connexion refusé, rediriger avec message d'erreur
