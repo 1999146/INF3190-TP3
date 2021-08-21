@@ -3,11 +3,10 @@ import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
 import { Join } from "../classes/methode-join";
 import fichesParentsJson from "../../data/fiches-parents";
-import {IEnfant, IInscriptionParent, IParent} from "../classes/interface-json/interface-parent";
+import {IEnfant, IParent} from "../classes/interface-json/interface-parent";
 import {Enfant, Inscription, InscriptionParent} from "../classes/parent";
-import {IGabaritProgramme, IProgramme, ISession} from "../classes/interface-json/interface-session";
-import {applySourceSpanToExpressionIfNeeded} from "@angular/compiler/src/output/output_ast";
-import {Session} from "../classes/session";
+import {IGabaritProgramme, ISession} from "../classes/interface-json/interface-session";
+import { sortTable } from "../util/sortTable";
 
 @Component({
   selector: 'app-tableau-admin',
@@ -15,6 +14,7 @@ import {Session} from "../classes/session";
   styleUrls: ['./tableau-admin.component.scss']
 })
 export class TableauAdminComponent implements OnInit {
+
 
   inscriptionsParents!: InscriptionParent[];
   inscriptions!: Inscription[];
@@ -25,6 +25,8 @@ export class TableauAdminComponent implements OnInit {
   inscriptionSelectionnee!: Inscription;
   parentSelectionnee!: IParent;
   enfantSelectionnee!: IEnfant | undefined;
+  sortedBy!: string;
+  sortAscendent = false;
 
   constructor(public authService: AuthService, private router: Router) {
     if (!authService.isAuth){
@@ -34,7 +36,9 @@ export class TableauAdminComponent implements OnInit {
       this.inscriptions = Join.getInscriptions(this.inscriptionsParents);
       this.sessions = this.authService.sessions;
       this.programmes = this.authService.gabaritProgrammes;
+
     }
+
   }
 
   getNomParent(idParent: string){
@@ -64,7 +68,6 @@ export class TableauAdminComponent implements OnInit {
 
   getNomProgramme(idProgramme: string){
     let codeProgramme = "G" + idProgramme.charAt(1);
-   console.log(codeProgramme);
     return Join.getGabaritProgrammeById(this.programmes, codeProgramme)?.titre;
   }
 
@@ -97,5 +100,16 @@ export class TableauAdminComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
   }
+  orderBy(header:string){
+    if(this.sortedBy === header){
+      this.sortAscendent = !this.sortAscendent;
+    }else{
+      this.sortAscendent = true;
+    }
+    sortTable(this.inscriptions, header, this.sortAscendent);
+    this.sortedBy = header;
+  }
+
 }

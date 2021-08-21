@@ -4,12 +4,12 @@
   <table class="table table-striped table-hover">
     <thead>
     <tr class = "table-dark">
-      <th>Enfant</th>
-      <th>Parent</th>
-      <th>Session</th>
-      <th>Programme</th>
-      <th>Semaine</th>
-      <th>Payé</th>
+      <th class="clicable" (click)='orderBy("idEnfant")'>Enfant</th>
+      <th class="clicable" (click)='orderBy("idParent")'>Parent</th>
+      <th class="clicable" (click)='orderBy("idSession")'>Session</th>
+      <th class="clicable" (click)='orderBy("idProgramme")'>Programme</th>
+      <th class="clicable" (click)='orderBy("idSemaine")'>Semaine</th>
+      <th class="clicable" (click)='orderBy("estPaye")'>Payé</th>
     </tr>
     </thead>
     <tbody>
