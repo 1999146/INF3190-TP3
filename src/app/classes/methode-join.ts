@@ -1,6 +1,6 @@
 import { Inscription } from "./parent";
 import { IInscriptionParent, IInscriptionEnfant, IEnfant, IParent } from "./interface-json/interface-parent";
-import { IGabaritProgramme, ISession, IProgramme, ISemaine, IActivite, ITypeActivite, IHorairePrograme } from "./interface-json/interface-session";
+import { IGabaritProgramme, ISession, IProgramme, ISemaine, IActivite, ITypeActivite, IHorairePrograme, IBlocActivite } from "./interface-json/interface-session";
 
 export class Join {
 
@@ -138,6 +138,16 @@ export class Join {
     else return inscriptionEnfant.estInscrit;
   }
 
+  static estActiviteOuBloc(blocActivites: IBlocActivite[], activites: IActivite[], idActiviteProg: string): string | undefined {
+    for (let bloc of blocActivites) {
+      if (bloc.id == idActiviteProg) return "Bloc";
+    }
+    for (let activite of activites) {
+      if (activite.id == idActiviteProg) return "Activité";
+    }
+    return undefined;
+  }
+
 
 
 
@@ -212,6 +222,16 @@ export class Join {
   static getHoraireProgrammeById(horrairesProgrammes: IHorairePrograme[], idProgramme: string): IHorairePrograme | undefined {
     for (let horrairePrograme of horrairesProgrammes) {
       if (horrairePrograme.idProgramme == idProgramme) return horrairePrograme;
+    }
+    return undefined;
+  }
+
+  static getActiviteOuBlocById(blocActivites: IBlocActivite[], activites: IActivite[], idActiviteProg: string): IBlocActivite | IActivite | undefined {
+    for (let bloc of blocActivites) {
+      if (bloc.id == idActiviteProg) return bloc;
+    }
+    for (let activite of activites) {
+      if (activite.id == idActiviteProg) return activite;
     }
     return undefined;
   }
