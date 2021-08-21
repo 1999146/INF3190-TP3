@@ -29,6 +29,7 @@ import { SectionGestionBlocComponent } from './page-gestion-programme/section-ge
 import { SectionGestionTypeComponent } from './page-gestion-programme/section-gestion-type/section-gestion-type.component';
 import { SectionGestionActiviteComponent } from './page-gestion-programme/section-gestion-activite/section-gestion-activite.component';
 import {ModalModifierEnfantComponent} from "./page-parent-tableau/section-enfants-a-charge/fiche-enfant/modal-modifier-enfant/modal-modifier-enfant.component";
+import {NotFoundComponent} from "./not-found/not-found.component";
 // import { NotFoundComponent } from './not-found/not-found.component';
 
 const appRoutes: Routes = [
@@ -39,7 +40,7 @@ const appRoutes: Routes = [
   { path: 'tableauBordParent', component:  PageParentTableauComponent},
   { path: 'tableauAdmin', component: TableauAdminComponent},
   { path: 'gestionProgramme', component: PageGestionProgrammeComponent},
-  // {path: '404', component: NotFoundComponent},
+   {path: '404', component: NotFoundComponent},
   {path: '**', redirectTo: '/404'}
 ];
 
