@@ -1,4 +1,4 @@
-import { IActivite, IBlocActivite, ITypeActivite, IHorraire, ISemaine, ISession, IProgramme, IGabaritProgramme } from "./interface-json/interface-session";
+import { IActivite, IBlocActivite, ITypeActivite, IHoraire, ISemaine, ISession, IProgramme, IGabaritProgramme } from "./interface-json/interface-session";
 
 // Session
 
@@ -81,13 +81,13 @@ export class GabaritProgramme implements IGabaritProgramme {
 
 // Activite
 
-export class HorrairePrograme {
+export class HorairePrograme {
   idProgramme: string;
-  horraires: IHorraire[];
+  horraires: IHoraire[];
 
   constructor (
       idProgramme: string,
-      horraires: IHorraire[]
+      horraires: IHoraire[]
   ) {
     this.idProgramme = idProgramme;
     this.horraires = horraires;
@@ -95,7 +95,7 @@ export class HorrairePrograme {
 
 }
 
-export class Horraire implements IHorraire {
+export class Horaire implements IHoraire {
   public idActivitesProg: string;
   public plageHoraire: number;
   public duree: number;

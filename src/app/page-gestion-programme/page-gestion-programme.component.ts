@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { IActivite, IBlocActivite, IGabaritProgramme, IHorraire, IHorrairePrograme, IProgramme, ISession, ITypeActivite } from '../classes/interface-json/interface-session';
+import { IActivite, IBlocActivite, IGabaritProgramme, IHoraire, IHorairePrograme, IProgramme, ISession, ITypeActivite } from '../classes/interface-json/interface-session';
 
 @Component({
   selector: 'app-page-gestion-programme',
@@ -10,13 +10,13 @@ import { IActivite, IBlocActivite, IGabaritProgramme, IHorraire, IHorraireProgra
 })
 export class PageGestionProgrammeComponent implements OnInit {
 
-  sessions: ISession[] | undefined = undefined;
+  sessions!: ISession[];
   gabaritProgrammes!: IGabaritProgramme[];
   typeActivites!: ITypeActivite[];
   activites!: IActivite[];
   blocActivites!: IBlocActivite[];
   programmes!: IProgramme[];
-  horrairesProgrammes!: IHorrairePrograme[];
+  horrairesProgrammes!: IHorairePrograme[];
 
   constructor(public authService: AuthService, private router: Router) {
     if (!authService.isAuth || !authService.isAdmin) this.router.navigate(['']);

@@ -10,7 +10,7 @@ import programmesJson from "src/data/programmes";
 import horrairesProgrammeJson from "src/data/programme-horraire";
 
 import { IParent, IInscriptionParent } from "../classes/interface-json/interface-parent";
-import { IActivite, IBlocActivite, IGabaritProgramme, IHorrairePrograme, IProgramme, ISession, ITypeActivite } from "../classes/interface-json/interface-session";
+import { IActivite, IBlocActivite, IGabaritProgramme, IHorairePrograme, IProgramme, ISession, ITypeActivite } from "../classes/interface-json/interface-session";
 import { Join } from "../classes/methode-join";
 
 let parents: IParent[] = fichesParentsJson;
@@ -29,7 +29,7 @@ export class AuthService {
   activites!: IActivite[];
   blocActivites!: IBlocActivite[];
   programmes: IProgramme[] = programmesJson;
-  horrairesProgrammes!: IHorrairePrograme[];
+  horrairesProgrammes!: IHorairePrograme[];
 
   signIn(username: string, password: string) {
     if (username == "admin" && password == "admin!") {

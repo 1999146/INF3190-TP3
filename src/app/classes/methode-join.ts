@@ -1,18 +1,9 @@
 import { Inscription } from "./parent";
 import { IInscriptionParent, IInscriptionEnfant, IEnfant, IParent } from "./interface-json/interface-parent";
-import { IGabaritProgramme, ISession, IProgramme, ISemaine, IActivite, ITypeActivite } from "./interface-json/interface-session";
-import inscriptionParent from "src/data/inscription-parent";
+import { IGabaritProgramme, ISession, IProgramme, ISemaine, IActivite, ITypeActivite, IHorairePrograme } from "./interface-json/interface-session";
 
-export class Join <T> {
-  static getSessionById(sessions: ISession[], sessionId: string): ISession | undefined {
-    for (let session of sessions) if (sessionId == session.id) return session;
-    return undefined; // remplacer undefined
-  }
+export class Join {
 
-  static getGabaritProgrammeById(gabaritProgrammes: IGabaritProgramme[], idGabaritProgramme: string): IGabaritProgramme | undefined {
-    for (let gabarit of gabaritProgrammes) if (idGabaritProgramme == gabarit.id) return gabarit;
-    return undefined;
-  }
 
   static getInscriptionsEnfants(inscriptionsParents: IInscriptionParent[], idSessionActuelle: string): IInscriptionEnfant[] | undefined {
     for (let inscriptionParent of inscriptionsParents) {
@@ -27,24 +18,6 @@ export class Join <T> {
       for(let inscriptionEnfant of inscriptionsEnfants) {
         if (inscriptionEnfant.idEnfant == idEnfant && inscriptionEnfant.idSemaine == idSemaine) return inscriptionEnfant;
       }
-    }
-    return undefined;
-  }
-
-  // static getProgrammeById(session: ISession, idSemaine: string, idProgramme: string): IProgramme | undefined {
-  //   for (let semaine of session.semaines) {
-  //     if (semaine.id == idSemaine) {
-  //       for (let programme of semaine.programmes) {
-  //         if (idProgramme == programme.id) return programme;
-  //       }
-  //     }
-  //   }
-  //   return undefined;
-  // }
-
-  static getProgrammeById(programmes: IProgramme[], idProgramme: string): IProgramme | undefined {
-    for (let programme of programmes) {
-      if (programme.id == idProgramme) return programme;
     }
     return undefined;
   }
@@ -103,7 +76,6 @@ export class Join <T> {
     return undefined;
   }
 
-  //pour admin
   static getInscriptions(inscriptionsParents: IInscriptionParent[]): Inscription[] {
     let inscriptions: Inscription[] = new Array<Inscription>();
     for (let inscriptionParent of inscriptionsParents) {
@@ -119,6 +91,18 @@ export class Join <T> {
       }
     }
     return inscriptions;
+  }
+
+  static getSessionsDuProgramme(sessions: ISession[], idProgramme: string): ISemaine[] {
+    let semaines: ISemaine[] = [];
+    for (let session of sessions) {
+      for (let semaine of session.semaines) {
+        for (let idProgrammeSemaie of semaine.idProgrammes) {
+          if (idProgrammeSemaie == idProgramme) semaines.push(semaine);
+        }
+      }
+    }
+    return semaines;
   }
 
   static estInscriptionPaye(inscriptionsParents: IInscriptionParent[], idSession: string, idSemaine: string, idEnfant: string): boolean {
@@ -154,9 +138,33 @@ export class Join <T> {
     else return inscriptionEnfant.estInscrit;
   }
 
+
+
+
+
+
+  // GET BY ID
+
+  static getSessionById(sessions: ISession[], sessionId: string): ISession | undefined {
+    for (let session of sessions) if (sessionId == session.id) return session;
+    return undefined; // remplacer undefined
+  }
+
+  static getGabaritProgrammeById(gabaritProgrammes: IGabaritProgramme[], idGabaritProgramme: string): IGabaritProgramme | undefined {
+    for (let gabarit of gabaritProgrammes) if (idGabaritProgramme == gabarit.id) return gabarit;
+    return undefined;
+  }
+
   static getSemaineById(session: ISession, idSemaine: string): ISemaine | undefined {
     for (let semaine of session.semaines) {
       if (semaine.id == idSemaine) return semaine;
+    }
+    return undefined;
+  }
+
+  static getProgrammeById(programmes: IProgramme[], idProgramme: string): IProgramme | undefined {
+    for (let programme of programmes) {
+      if (programme.id == idProgramme) return programme;
     }
     return undefined;
   }
@@ -190,9 +198,23 @@ export class Join <T> {
     return undefined;
   }
 
-  
+  static getSessionDuProgramme(sessions: ISession[], idProgramme: string): ISession | undefined {
+    for (let session of sessions) {
+      for (let semaine of session.semaines) {
+        for (let idProgrammeSemaie of semaine.idProgrammes) {
+          if (idProgrammeSemaie == idProgramme) return session;
+        }
+      }
+    }
+    return undefined;
+  }
 
-  
+  static getHoraireProgrammeById(horrairesProgrammes: IHorairePrograme[], idProgramme: string): IHorairePrograme | undefined {
+    for (let horrairePrograme of horrairesProgrammes) {
+      if (horrairePrograme.idProgramme == idProgramme) return horrairePrograme;
+    }
+    return undefined;
+  }
 
 
 }

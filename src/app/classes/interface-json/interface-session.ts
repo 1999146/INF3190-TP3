@@ -29,12 +29,12 @@
 
   // Activite
 
-  export interface IHorrairePrograme {
+  export interface IHorairePrograme {
     idProgramme: string;
-    horraires: IHorraire[];
+    horraires: IHoraire[];
   }
 
-  export interface IHorraire {
+  export interface IHoraire {
     idActivitesProg: string;
     plageHoraire: number;
     duree: number;
