@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, Form, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
+import {Enfant, Parent} from '../classes/parent';
+import {AuthService} from "../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-page-inscription-parent',
@@ -9,7 +12,8 @@ import {AbstractControl, Form, FormBuilder, FormControl, FormGroup, ValidationEr
 export class PageInscriptionParentComponent implements OnInit {
   formInscription!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, private routeur: Router) {
   }
 
   ngOnInit(): void {
@@ -20,11 +24,11 @@ export class PageInscriptionParentComponent implements OnInit {
     this.formInscription = this.formBuilder.group({
       prenom: ['', Validators.required],
       nom: ['', Validators.required],
-      email: ['', [
+      courriel: ['', [
         Validators.required,
         Validators.email
       ]],
-      ddn: ['', [
+      dateNaissance: ['', [
         Validators.required,
         this.estDateFuture()
       ]],
@@ -38,11 +42,24 @@ export class PageInscriptionParentComponent implements OnInit {
         Validators.minLength(5),
         Validators.pattern(/[^a-zA-Z0-9]/)
       ]],
+      urlPhoto: '' //updater
     })
   }
 
   inscription(): void {
-    console.log("inscription tentee");
+    const infosParent = this.formInscription.value;
+    let nouveauParent = new Parent(
+      infosParent.username,
+      infosParent.password,
+      infosParent.nom,
+      infosParent.prenom,
+      infosParent.courriel,
+      infosParent.adresse,
+      infosParent.dateNaissance,
+      infosParent.urlPhoto,
+      );
+    this.auth.addParent(nouveauParent);
+    this.routeur.navigate(['tableauBordParent']);
   }
 
   estDateFuture() {
@@ -77,12 +94,12 @@ export class PageInscriptionParentComponent implements OnInit {
     return this.formInscription.controls['nom'];
   }
 
-  get email() {
-    return this.formInscription.controls['email'];
+  get courriel() {
+    return this.formInscription.controls['courriel'];
   }
 
-  get ddn() {
-    return this.formInscription.controls['ddn'];
+  get dateNaissance() {
+    return this.formInscription.controls['dateNaissance'];
   }
 
   get adresse() {

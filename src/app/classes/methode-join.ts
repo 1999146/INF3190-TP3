@@ -1,6 +1,6 @@
 import { Inscription } from "./parent";
 import { IInscriptionParent, IInscriptionEnfant, IEnfant, IParent } from "./interface-json/interface-parent";
-import { IGabaritProgramme, ISession, IProgramme, ISemaine, IActivite, ITypeActivite, IHorairePrograme } from "./interface-json/interface-session";
+import { IGabaritProgramme, ISession, IProgramme, ISemaine, IActivite, ITypeActivite, IHorairePrograme, IBlocActivite } from "./interface-json/interface-session";
 
 export class Join {
 
@@ -138,6 +138,16 @@ export class Join {
     else return inscriptionEnfant.estInscrit;
   }
 
+  static estActiviteOuBloc(blocActivites: IBlocActivite[], activites: IActivite[], idActiviteProg: string): string | undefined {
+    for (let bloc of blocActivites) {
+      if (bloc.id == idActiviteProg) return "Bloc";
+    }
+    for (let activite of activites) {
+      if (activite.id == idActiviteProg) return "Activité";
+    }
+    return undefined;
+  }
+
 
 
 
@@ -155,9 +165,27 @@ export class Join {
     return undefined;
   }
 
+  static getGabaritProgrammeByIdProgramme(programmes: IProgramme[], gabaritProgrammes: IGabaritProgramme[], idProgramme: string): IGabaritProgramme | undefined {
+    let programme = Join.getProgrammeById(programmes, idProgramme);
+    let gabaritProgramme = undefined;
+    if (programme != undefined) {
+      gabaritProgramme = Join.getGabaritProgrammeById(gabaritProgrammes, programme.idGabaritProgramme);
+    }
+    return (gabaritProgramme != undefined)? gabaritProgramme : undefined;
+  }
+
   static getSemaineById(session: ISession, idSemaine: string): ISemaine | undefined {
     for (let semaine of session.semaines) {
       if (semaine.id == idSemaine) return semaine;
+    }
+    return undefined;
+  }
+
+  static findSemaineById(sessions: ISession[], idSemaine: string): ISemaine | undefined {
+    for (let session of sessions) {
+      for (let semaine of session.semaines) {
+        if (semaine.id == idSemaine) return semaine;
+      }
     }
     return undefined;
   }
@@ -209,9 +237,19 @@ export class Join {
     return undefined;
   }
 
-  static getHoraireProgrammeById(horrairesProgrammes: IHorairePrograme[], idProgramme: string): IHorairePrograme | undefined {
-    for (let horrairePrograme of horrairesProgrammes) {
-      if (horrairePrograme.idProgramme == idProgramme) return horrairePrograme;
+  static getHoraireProgrammeById(horairesProgrammes: IHorairePrograme[], idProgramme: string): IHorairePrograme | undefined {
+    for (let horairePrograme of horairesProgrammes) {
+      if (horairePrograme.idProgramme == idProgramme) return horairePrograme;
+    }
+    return undefined;
+  }
+
+  static getActiviteOuBlocById(blocActivites: IBlocActivite[], activites: IActivite[], idActiviteProg: string): IBlocActivite | IActivite | undefined {
+    for (let bloc of blocActivites) {
+      if (bloc.id == idActiviteProg) return bloc;
+    }
+    for (let activite of activites) {
+      if (activite.id == idActiviteProg) return activite;
     }
     return undefined;
   }

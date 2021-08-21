@@ -7,7 +7,7 @@ import typeActivitesJson from "src/data/activite-type";
 import activitesJson from "src/data/activites";
 import blocActivitesJson from "src/data/activite-bloc";
 import programmesJson from "src/data/programmes";
-import horrairesProgrammeJson from "src/data/programme-horraire";
+import horairesProgrammeJson from "src/data/programme-horaire";
 
 import { IParent, IInscriptionParent } from "../classes/interface-json/interface-parent";
 import { IActivite, IBlocActivite, IGabaritProgramme, IHorairePrograme, IProgramme, ISession, ITypeActivite } from "../classes/interface-json/interface-session";
@@ -22,6 +22,7 @@ export class AuthService {
   indiceParent: number = 0;
 
   parent!: IParent;
+  parents!: IParent[];
   inscriptionsParents!: IInscriptionParent[];
   gabaritProgrammes: IGabaritProgramme[] = gabaritProgrammeJson;
   sessions: ISession[] = sessionsJson;
@@ -29,7 +30,7 @@ export class AuthService {
   activites!: IActivite[];
   blocActivites!: IBlocActivite[];
   programmes: IProgramme[] = programmesJson;
-  horrairesProgrammes!: IHorairePrograme[];
+  horairesProgrammes!: IHorairePrograme[];
 
   signIn(username: string, password: string) {
     if (username == "admin" && password == "admin!") {
@@ -40,7 +41,8 @@ export class AuthService {
       this.typeActivites = typeActivitesJson;
       this.activites = activitesJson;
       this.blocActivites = blocActivitesJson;
-      this.horrairesProgrammes = horrairesProgrammeJson;
+      this.horairesProgrammes = horairesProgrammeJson;
+      this.parents = fichesParentsJson;
     } else {
       if(!this.verifyPassword(username, password)){
         //Connexion refusé, rediriger avec message d'erreur
@@ -77,6 +79,9 @@ export class AuthService {
     this.inscriptionsParents = Join.getInscriptionsParents(inscriptionsParents, this.parent.id)
   }
 
-
+  addParent(parent: IParent) {
+    this.parent = parent;
+    this.isAuth = true;
+  }
 
 }

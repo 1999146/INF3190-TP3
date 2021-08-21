@@ -1,3 +1,4 @@
+import { Random } from "../random";
 import { IActivite, IBlocActivite, ITypeActivite, IHoraire, ISemaine, ISession, IProgramme, IGabaritProgramme } from "./interface-json/interface-session";
 
 // Session
@@ -11,17 +12,20 @@ export class Session implements ISession {
   public semaines: Array<Semaine> = new Array<Semaine>();
 
   public constructor(
-      id: string,
       nom: string,
       description: string,
       dateDebut: string,
       dateFin: string
   ) {
-    this.id = id;
+    this.id = "session" + Random.randomID();
     this.nom = nom;
     this.description = description;
     this.dateDebut = dateDebut;
     this.dateFin = dateFin;
+    this.semaines = [];
+    for (let i = 1; i <= 15; i++) {
+      this.semaines.push(new Semaine(i));
+    }
   }
   
 }
@@ -32,11 +36,11 @@ export class Semaine implements ISemaine {
   public idProgrammes: Array<string> = new Array<string>();
 
   constructor(
-      id: string,
       noSemaine: number
   ) {
-    this.id = id;
+    this.id = "semaine" + Random.randomID();
     this.noSemaine = noSemaine;
+    this.idProgrammes = [];
   };
 
 }
@@ -48,12 +52,11 @@ export class Programme implements IProgramme {
   public prix: number;
 
   constructor(
-    id: string,
     gabaritProgramme: string,
     animateur: string,
     prix: number,
   ) {
-    this.id = id;
+    this.id = "programme" + Random.randomID();
     this.idGabaritProgramme = gabaritProgramme;
     this.animateur = animateur;
     this.prix = prix;
@@ -67,11 +70,10 @@ export class GabaritProgramme implements IGabaritProgramme {
   public description: string;
 
   constructor(
-      id: string,
       titre: string,
       description: string
   ) {
-    this.id = id;
+    this.id = "gabarit" + Random.randomID();
     this.titre = titre;
     this.description = description;
   }
@@ -82,15 +84,15 @@ export class GabaritProgramme implements IGabaritProgramme {
 // Activite
 
 export class HorairePrograme {
-  idProgramme: string;
-  horraires: IHoraire[];
+  public idProgramme: string;
+  public horaires: IHoraire[];
 
   constructor (
       idProgramme: string,
-      horraires: IHoraire[]
+      horaires: IHoraire[]
   ) {
     this.idProgramme = idProgramme;
-    this.horraires = horraires;
+    this.horaires = horaires;
   }
 
 }
@@ -118,11 +120,10 @@ export class Activite implements IActivite {
   public idTypeActivite: string;
 
   public constructor(
-      id: string, 
       nom: string, 
       idTypeActivite: string
     ) {
-    this.id = id;
+    this.id = "activite" + Random.randomID();
     this.nom = nom;
     this.idTypeActivite = idTypeActivite;
   }
@@ -136,12 +137,11 @@ export class BlocActivite implements IBlocActivite {
   public idTypeActivites: Array<string>;
 
   public constructor(
-      id: string, 
       nom: string, 
       idActivites: Array<string>, 
       idTypeActivites: Array<string>
     ) {
-    this.id = id;
+    this.id = "bloc" + Random.randomID();
     this.nom = nom;
     this.idActivites = idActivites;
     this.idTypeActivites = idTypeActivites;
@@ -155,11 +155,10 @@ export class TypeActivite implements ITypeActivite {
   public description: string;
 
   public constructor(
-      id: string,
       nom: string, 
       description: string
   ) {
-    this.id = id;
+    this.id = "type" + Random.randomID();
     this.nom = nom;
     this.description = description;
   }

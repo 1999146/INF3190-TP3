@@ -16,7 +16,7 @@ export class PageGestionProgrammeComponent implements OnInit {
   activites!: IActivite[];
   blocActivites!: IBlocActivite[];
   programmes!: IProgramme[];
-  horrairesProgrammes!: IHorairePrograme[];
+  horairesProgrammes!: IHorairePrograme[];
 
   constructor(public authService: AuthService, private router: Router) {
     if (!authService.isAuth || !authService.isAdmin) this.router.navigate(['']);
@@ -29,7 +29,7 @@ export class PageGestionProgrammeComponent implements OnInit {
     this.activites = this.authService.activites;
     this.blocActivites = this.authService.blocActivites;
     this.programmes = this.authService.programmes;
-    this.horrairesProgrammes = this.authService.horrairesProgrammes;
+    this.horairesProgrammes = this.authService.horairesProgrammes;
   }
 
 }

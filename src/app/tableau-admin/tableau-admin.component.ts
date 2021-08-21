@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../services/auth.service";
-import {Router} from "@angular/router";
+import { AuthService } from "../services/auth.service";
+import { Router } from "@angular/router";
 import { Join } from "../classes/methode-join";
-import fichesParentsJson from "../../data/fiches-parents";
-import {IEnfant, IParent} from "../classes/interface-json/interface-parent";
-import {Enfant, Inscription, InscriptionParent} from "../classes/parent";
-import {IGabaritProgramme, ISession} from "../classes/interface-json/interface-session";
+import { IEnfant, IParent } from "../classes/interface-json/interface-parent";
+import { Enfant, Inscription } from "../classes/parent";
+import { IGabaritProgramme, IProgramme, ISession } from "../classes/interface-json/interface-session";
 import { sortTable } from "../util/sortTable";
 
 @Component({
@@ -15,38 +14,39 @@ import { sortTable } from "../util/sortTable";
 })
 export class TableauAdminComponent implements OnInit {
 
-
-  inscriptionsParents!: InscriptionParent[];
   inscriptions!: Inscription[];
-  parents: IParent[] = fichesParentsJson;
+  parents!: IParent[];
   enfants!: Enfant[];
   sessions!: ISession[];
-  programmes!: IGabaritProgramme[];
-  inscriptionSelectionnee!: Inscription;
+  gabaritProgrammes!: IGabaritProgramme[];
+  programmes!: IProgramme[];
+
+  inscriptionSelectionnee: Inscription | undefined = undefined;
   parentSelectionnee!: IParent;
   enfantSelectionnee!: IEnfant | undefined;
   sortedBy!: string;
   sortAscendent = false;
 
   constructor(public authService: AuthService, private router: Router) {
-    if (!authService.isAuth){
-      this.router.navigate(['']);
-    }else{
-      this.inscriptionsParents = authService.inscriptionsParents;
-      this.inscriptions = Join.getInscriptions(this.inscriptionsParents);
-      this.sessions = this.authService.sessions;
-      this.programmes = this.authService.gabaritProgrammes;
-
-    }
-
+    if (!authService.isAuth) this.router.navigate(['']);
   }
 
-  getNomParent(idParent: string){
+  ngOnInit(): void {
+    this.inscriptions = Join.getInscriptions(this.authService.inscriptionsParents);
+    this.sessions = this.authService.sessions;
+    this.gabaritProgrammes = this.authService.gabaritProgrammes;
+    this.parents = this.authService.parents;
+    this.programmes = this.authService.programmes;
+  }
+
+
+
+  getNomParent(idParent: string): string {
     let parent = this.getParentById(idParent);
     return parent?.nom + ", " + parent?.prenom;
   }
 
-  getNomEnfant(idParent:string, idEnfant: string){
+  getNomEnfant(idParent:string, idEnfant: string): string {
     let parent = this.getParentById(idParent);
     if(parent != undefined){
       for (let enfant of parent.enfants) {
@@ -58,25 +58,24 @@ export class TableauAdminComponent implements OnInit {
     return "";
   }
 
-  getNomSession(idSession: string){
-    return Join.getSessionById(this.sessions, idSession)?.nom;
+  getNomSession(idSession: string): string {
+    let session = Join.getSessionById(this.sessions, idSession);
+    return (session != undefined)? session.nom : "";
   }
 
-  getSemaine(idSemaine: string){
-    return "Semaine " + idSemaine.charAt(1);
+  getSemaine(idSemaine: string): string{
+    let semaine = Join.findSemaineById(this.sessions, idSemaine);
+    return (semaine != undefined)? ("Semaine " + semaine.noSemaine) : "";
   }
 
-  getNomProgramme(idProgramme: string){
-    let codeProgramme = "G" + idProgramme.charAt(1);
-    return Join.getGabaritProgrammeById(this.programmes, codeProgramme)?.titre;
+  getNomProgramme(idProgramme: string): string {
+    let gabaritProgramme = Join.getGabaritProgrammeByIdProgramme(this.programmes, this.gabaritProgrammes, idProgramme);
+    return (gabaritProgramme != undefined)? gabaritProgramme.titre : "undefined";
   }
 
-  getNomProgrammeModal(idProgramme: string | undefined){
-    if(idProgramme !== null && idProgramme !== undefined){
-      let codeProgramme = "G" + idProgramme.charAt(1);
-      return Join.getGabaritProgrammeById(this.programmes, codeProgramme)?.titre;
-    }
-    return "";
+  getNomProgrammeModal(): string {
+    return (this.inscriptionSelectionnee != undefined)? 
+    this.getNomProgramme(this.inscriptionSelectionnee.idProgramme) : "undefined";
   }
 
   getParentById(idParent: string){
@@ -99,9 +98,6 @@ export class TableauAdminComponent implements OnInit {
       });
     }
 
-    ngOnInit(): void {
-
-  }
   orderBy(header:string){
     if(this.sortedBy === header){
       this.sortAscendent = !this.sortAscendent;
