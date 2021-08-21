@@ -1,3 +1,4 @@
+import { Random } from "../random";
 import { IEnfant, IParent, IInscriptionEnfant, IInscriptionParent } from "./interface-json/interface-parent";
 
 // Parent
@@ -15,7 +16,6 @@ export class Parent implements IParent{
   public enfants: Enfant[] = new Array<Enfant>();
 
   public constructor(
-      id: string,
       username: string,
       password: string,
       nom: string, 
@@ -25,7 +25,7 @@ export class Parent implements IParent{
       dateNaissance: string, 
       urlPhoto: string, 
     ) {
-    this.id = id;
+    this.id = "parent" + Random.randomID();
     this.username = username;
     this.password = password;
     this.nom = nom;
@@ -34,6 +34,7 @@ export class Parent implements IParent{
     this.adresse = adresse;
     this.dateNaissance = dateNaissance;
     this.urlPhoto = urlPhoto;
+    this.enfants = [];
   }
   
 }
@@ -47,14 +48,13 @@ export class Enfant implements IEnfant {
   public note: string;
 
   public constructor(
-      id: string,
       nom: string,
       prenom: string,
       dateNaissance: string,
       urlPhoto: string,
       note: string
   ) {
-    this.id = id;
+    this.id = "enfant" + Random.randomID();
     this.nom = nom;
     this.prenom = prenom;
     this.dateNaissance = dateNaissance;

@@ -68,11 +68,11 @@
                   </thead>
     
                   <tbody>
-                    <tr *ngFor="let horraire of getHoraire(programme)">
-                      <th scope="row">{{horraire.plageHoraire}}</th>
-                      <td>{{estBlocOuActivite(horraire.idActivitesProg)}} - {{getNomActivite(horraire.idActivitesProg)}}</td>
-                      <td>{{horraire.duree}} heures</td>
-                      <td>{{getHeure(programme, horraire)}}</td>
+                    <tr *ngFor="let horaire of getHoraire(programme)">
+                      <th scope="row">{{horaire.plageHoraire}}</th>
+                      <td>{{estBlocOuActivite(horaire.idActivitesProg)}} - {{getNomActivite(horaire.idActivitesProg)}}</td>
+                      <td>{{horaire.duree}} heures</td>
+                      <td>{{getHeure(programme, horaire)}}</td>
                     </tr>
                   </tbody>
     

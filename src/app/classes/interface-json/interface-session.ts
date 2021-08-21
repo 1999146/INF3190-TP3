@@ -31,7 +31,7 @@
 
   export interface IHorairePrograme {
     idProgramme: string;
-    horraires: IHoraire[];
+    horaires: IHoraire[];
   }
 
   export interface IHoraire {

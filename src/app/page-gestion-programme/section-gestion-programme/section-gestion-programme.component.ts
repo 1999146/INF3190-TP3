@@ -12,7 +12,7 @@ export class SectionGestionProgrammeComponent implements OnInit {
 
   @Input() sessions!: ISession[];
   @Input() programmes!: IProgramme[];
-  @Input() horrairesProgrammes!: IHorairePrograme[];
+  @Input() horairesProgrammes!: IHorairePrograme[];
   @Input() gabaritProgrammes!: IGabaritProgramme[];
 
   @Input() activites!: IActivite[];
@@ -22,13 +22,13 @@ export class SectionGestionProgrammeComponent implements OnInit {
   heure: number = 8;
 
   constructor() { 
-    // this.horraireProgrammes.push(
-    //   new HorrairePrograme(
+    // this.horaireProgrammes.push(
+    //   new HorairePrograme(
     //     "P0_S21", [
-    //       new Horraire("4531818738713327", 1, 2), 
-    //       new Horraire("7129264949321758", 2, 2), 
-    //       new Horraire("2175904346409182", 3, 2), 
-    //       new Horraire("7731215965469501", 4, 2), 
+    //       new Horaire("4531818738713327", 1, 2), 
+    //       new Horaire("7129264949321758", 2, 2), 
+    //       new Horaire("2175904346409182", 3, 2), 
+    //       new Horaire("7731215965469501", 4, 2), 
     //     ]
     //   )
     // );
@@ -59,8 +59,8 @@ export class SectionGestionProgrammeComponent implements OnInit {
   }
 
   getHoraire(programme: IProgramme): IHoraire[] {
-    let horrairePrograme = Join.getHoraireProgrammeById(this.horrairesProgrammes, programme.id);
-    return (horrairePrograme != undefined)? horrairePrograme.horraires : [];
+    let horairePrograme = Join.getHoraireProgrammeById(this.horairesProgrammes, programme.id);
+    return (horairePrograme != undefined)? horairePrograme.horaires : [];
   }
 
   estBlocOuActivite(idActivite: string): string {
@@ -73,20 +73,20 @@ export class SectionGestionProgrammeComponent implements OnInit {
     return (activite != undefined)? activite.nom : "undefined";
   }
 
-  getHeure(programme: IProgramme, horraire: IHoraire): string {
+  getHeure(programme: IProgramme, horaire: IHoraire): string {
     let affichage: string = "";
-    let horraires = this.getHoraire(programme);
+    let horaires = this.getHoraire(programme);
 
     affichage = affichage.concat(this.heure.toString());
     affichage = affichage.concat("h");
     
-    this.heure += horraire.duree;
+    this.heure += horaire.duree;
 
     affichage = affichage.concat(" à ");
     affichage = affichage.concat(this.heure.toString());
     affichage = affichage.concat("h");
 
-    if (horraire == horraires[(horraires.length - 1)]) {
+    if (horaire == horaires[(horaires.length - 1)]) {
       this.heure = 8;
     }
 
