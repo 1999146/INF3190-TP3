@@ -22,13 +22,9 @@ import { LoginFormComponent } from './header/login-form/login-form.component';
 import { SectionEnfantsAChargeComponent } from './page-parent-tableau/section-enfants-a-charge/section-enfants-a-charge.component';
 import { FicheEnfantComponent } from './page-parent-tableau/section-enfants-a-charge/fiche-enfant/fiche-enfant.component';
 import { ModalAjouterEnfantComponent } from './page-parent-tableau/section-enfants-a-charge/modal-ajouter-enfant/modal-ajouter-enfant.component';
-import { PageGestionProgrammeComponent } from './page-gestion-programme/page-gestion-programme.component';
-import { SectionGestionSessionComponent } from './page-gestion-programme/section-gestion-session/section-gestion-session.component';
-import { SectionGestionProgrammeComponent } from './page-gestion-programme/section-gestion-programme/section-gestion-programme.component';
-import { SectionGestionBlocComponent } from './page-gestion-programme/section-gestion-bloc/section-gestion-bloc.component';
-import { SectionGestionTypeComponent } from './page-gestion-programme/section-gestion-type/section-gestion-type.component';
-import { SectionGestionActiviteComponent } from './page-gestion-programme/section-gestion-activite/section-gestion-activite.component';
-// import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { ModalModifierEnfantComponent } from './page-parent-tableau/section-enfants-a-charge/fiche-enfant/modal-modifier-enfant/modal-modifier-enfant.component';
 
 const appRoutes: Routes = [
   { path: '', component:  PageAccueilComponent},
@@ -37,8 +33,7 @@ const appRoutes: Routes = [
   { path: 'inscriptionParent', component:  PageInscriptionParentComponent},
   { path: 'tableauBordParent', component:  PageParentTableauComponent},
   { path: 'tableauAdmin', component: TableauAdminComponent},
-  { path: 'gestionProgramme', component: PageGestionProgrammeComponent},
-  // {path: '404', component: NotFoundComponent},
+  {path: '404', component: NotFoundComponent},
   {path: '**', redirectTo: '/404'}
 ];
 
@@ -61,13 +56,8 @@ const appRoutes: Routes = [
     SectionEnfantsAChargeComponent,
     FicheEnfantComponent,
     ModalAjouterEnfantComponent,
-    PageGestionProgrammeComponent,
-    SectionGestionSessionComponent,
-    SectionGestionProgrammeComponent,
-    SectionGestionBlocComponent,
-    SectionGestionTypeComponent,
-    SectionGestionActiviteComponent,
-    // NotFoundComponent,
+    NotFoundComponent,
+    ModalModifierEnfantComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,9 +65,11 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })

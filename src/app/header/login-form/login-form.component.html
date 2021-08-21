@@ -10,7 +10,7 @@
              formControlName="password" placeholder="Mot de passe" name="password"/>
     </div>
     <div><button type="submit" [disabled]="loginForm.invalid" class="btn btn-secondary me-2">Connexion</button></div>
-    <div><a class="btn btn-secondary me-2" routerLink="inscriptionParent">Inscription</a></div>
+    <div><a class="btn btn-dark me-2" routerLink="inscriptionParent">Inscription</a></div>
   </form>
   <div *ngIf="!username.dirty && !password.dirty" id="flash" class="erreur">{{erreur}}</div>
 </span>

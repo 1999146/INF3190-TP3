@@ -18,12 +18,12 @@ export class Parent implements IParent{
       id: string,
       username: string,
       password: string,
-      nom: string, 
-      prenom: string, 
-      courriel: string, 
-      adresse: string, 
-      dateNaissance: string, 
-      urlPhoto: string, 
+      nom: string,
+      prenom: string,
+      courriel: string,
+      adresse: string,
+      dateNaissance: string,
+      urlPhoto: string,
     ) {
     this.id = id;
     this.username = username;
@@ -35,7 +35,7 @@ export class Parent implements IParent{
     this.dateNaissance = dateNaissance;
     this.urlPhoto = urlPhoto;
   }
-  
+
 }
 
 export class Enfant implements IEnfant {
@@ -98,7 +98,7 @@ export class InscriptionEnfant implements IInscriptionEnfant {
     this.estPaye = false;
     this.estInscrit = true;
   }
-  
+
 }
 
 // pour admin
@@ -126,5 +126,5 @@ export class Inscription {
     this.idParent = idParent;
     this.idSession = idSession;
   }
-  
+
 }

@@ -4,17 +4,14 @@
         <h2 class="mb-0">{{ enfant.nom }}, {{ enfant.prenom }}</h2>
       </div>
       <div class="col-6 d-flex align-items-end justify-content-end">
-        <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modifierEnfant">
-          <i class="fas fa-pen"></i>
-          Modifier {{enfant.prenom}}
-        </button>
+        <app-modal-modifier-enfant [enfant]="enfant"></app-modal-modifier-enfant>
       </div>
     </div>
   </div>
   <div class="card-body">
     <div class="row">
       <div class="col">
-        <img src={{enfant.urlPhoto}} height="160rem" alt="" />
+        <img id="{{enfant.id}}" src="{{enfant.urlPhoto}}" height="160rem" />
       </div>
       <div class="col">
         <h6 class="mb-0 card-title">Nom</h6>
