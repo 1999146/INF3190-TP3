@@ -34,6 +34,8 @@ import { ModalCreerTypeComponent } from './page-gestion-programme/section-gestio
 import { ModalCreerBlocComponent } from './page-gestion-programme/section-gestion-bloc/modal-creer-bloc/modal-creer-bloc.component';
 import { ModalCreerProgrammeComponent } from './page-gestion-programme/section-gestion-programme/modal-creer-programme/modal-creer-programme.component';
 import { ModalCreerSessionComponent } from './page-gestion-programme/section-gestion-session/modal-creer-session/modal-creer-session.component';
+import { HttpClientModule} from "@angular/common/http";
+// import { NotFoundComponent } from './not-found/not-found.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 const appRoutes: Routes = [
@@ -87,6 +89,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     AuthService

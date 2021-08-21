@@ -12,11 +12,22 @@ import horairesProgrammeJson from "src/data/programme-horaire";
 import { IParent, IInscriptionParent } from "../classes/interface-json/interface-parent";
 import { IActivite, IBlocActivite, IGabaritProgramme, IHorairePrograme, IProgramme, ISession, ITypeActivite } from "../classes/interface-json/interface-session";
 import { Join } from "../classes/methode-join";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Injectable} from "@angular/core";
+import Axios from 'axios';
 
 let parents: IParent[] = fichesParentsJson;
 let inscriptionsParents: IInscriptionParent[] = inscriptionParentJson;
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+}
 
+@Injectable()
 export class AuthService {
+
+  constructor(private http:HttpClient) {
+  }
+
   isAuth: boolean = false;
   isAdmin: boolean = false;
   indiceParent: number = 0;
@@ -84,4 +95,14 @@ export class AuthService {
     this.isAuth = true;
   }
 
+  log() {
+    console.log("sadfa")
+    // console.log(this.http.get('http://localhost:3000/'));
+    // console.log(this.http.get('/log/'));
+    // console.log(this.http.get('https://testimonialapi.toolcarton.com/api'))
+
+    const axios =  Axios;
+    console.log(axios.get('/log/'))
+
+  }
 }
