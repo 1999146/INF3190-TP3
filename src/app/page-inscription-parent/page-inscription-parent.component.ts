@@ -49,7 +49,6 @@ export class PageInscriptionParentComponent implements OnInit {
   inscription(): void {
     const infosParent = this.formInscription.value;
     let nouveauParent = new Parent(
-      "nouveauParent",
       infosParent.username,
       infosParent.password,
       infosParent.nom,
