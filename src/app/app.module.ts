@@ -28,7 +28,7 @@ import { SectionGestionProgrammeComponent } from './page-gestion-programme/secti
 import { SectionGestionBlocComponent } from './page-gestion-programme/section-gestion-bloc/section-gestion-bloc.component';
 import { SectionGestionTypeComponent } from './page-gestion-programme/section-gestion-type/section-gestion-type.component';
 import { SectionGestionActiviteComponent } from './page-gestion-programme/section-gestion-activite/section-gestion-activite.component';
-import {ModalModifierEnfantComponent} from "./page-parent-tableau/section-enfants-a-charge/fiche-enfant/modal-modifier-enfant/modal-modifier-enfant.component";
+import { ModalModifierEnfantComponent } from "./page-parent-tableau/section-enfants-a-charge/fiche-enfant/modal-modifier-enfant/modal-modifier-enfant.component";
 import { ModalCreerActiviteComponent } from './page-gestion-programme/section-gestion-activite/modal-creer-activite/modal-creer-activite.component';
 import { ModalCreerTypeComponent } from './page-gestion-programme/section-gestion-type/modal-creer-type/modal-creer-type.component';
 import { ModalCreerBlocComponent } from './page-gestion-programme/section-gestion-bloc/modal-creer-bloc/modal-creer-bloc.component';
@@ -44,8 +44,8 @@ const appRoutes: Routes = [
   { path: 'tableauBordParent', component:  PageParentTableauComponent},
   { path: 'tableauAdmin', component: TableauAdminComponent},
   { path: 'gestionProgramme', component: PageGestionProgrammeComponent},
-   {path: '404', component: NotFoundComponent},
-  {path: '**', redirectTo: '/404'}
+  { path: '404', component: NotFoundComponent},
+  { path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({
@@ -79,7 +79,7 @@ const appRoutes: Routes = [
     ModalCreerProgrammeComponent,
     ModalCreerSessionComponent,
     ModalModifierEnfantComponent,
-    // NotFoundComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,14 +7,7 @@
         <h2 class="mb-0">Activités</h2>
       </div>
       <div class="col-6 d-flex align-items-end justify-content-end">
-        <button
-          type="button"
-          class="btn btn-secondary btn-sm"
-          data-bs-toggle="modal"
-          data-bs-target="#creerActiviteModal"
-        >
-          Ajouter
-        </button>
+        <app-modal-creer-activite [typeActivites]="typeActivites" [activites]="activites"></app-modal-creer-activite>
       </div>
     </div>
   </div>
@@ -34,6 +27,7 @@
     </div>
 
     <div class="collapse" id="collapseActivite">
+
       <ng-container *ngFor="let typeActivite of typeActivites">
         <div *ngIf="typeActivite != typeActivites[0]" class="card my-2">
           <div class="card-body">

@@ -1,1 +1,60 @@
-<p>modal-creer-activite works!</p>
+
+<button
+  type="button"
+  class="btn btn-secondary btn-sm"
+  data-bs-toggle="modal"
+  data-bs-target="#creerActiviteModal"
+>
+  Ajouter
+</button>
+
+<!-- Modal Activite Debut -->
+<div
+  class="modal fade"
+  id="creerActiviteModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Créer une activité</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form #activiteForm="ngForm" (ngSubmit)="ajouterActivite(activiteForm)">
+
+          <div>
+            <div class="form-group">
+              <label class="col-form-label">Nom de l'activité :*</label>
+              <input ngModel required type="text" class="form-control" name="nom"/>
+            </div>
+          </div>
+
+          <div>
+            <div class="form-group">
+              <label class="col-form-label">Type d'activité :*</label>
+              <select ngModel required class="form-control" name="idTypeActivite">
+                <ng-container *ngFor="let typeActivite of typeActivites">
+                  <option [value]="typeActivite.id">{{typeActivite.nom}}</option>
+                </ng-container>
+              </select>
+            </div>
+          </div>
+          
+          <div class="modal-footer mt-4">
+            <button type="button" class="btn btn-light border" data-bs-dismiss="modal">
+              Fermer
+            </button>
+            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Créer</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FIN Modal Activite -->
