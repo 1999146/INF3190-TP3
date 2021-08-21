@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ITypeActivite } from 'src/app/classes/interface-json/interface-session';
+import { TypeActivite } from 'src/app/classes/session';
 
 @Component({
   selector: 'app-modal-creer-type',
@@ -20,7 +21,13 @@ export class ModalCreerTypeComponent implements OnInit {
   ajouterType(f: NgForm): void {
     // console.log(JSON.stringify(this.typeActivites));
     let typeActivite = f.value as ITypeActivite;
-    if (this.valeurRemplies(typeActivite)) this.typeActivites.unshift(typeActivite);
+    if (this.valeurRemplies(typeActivite)) {
+      let newType = new TypeActivite (
+        typeActivite.nom, 
+        typeActivite.description
+      );
+      this.typeActivites.unshift(newType);
+    } 
     // else document.getElementById("modalType")?.click();
   }
 

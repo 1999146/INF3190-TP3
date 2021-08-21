@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { IActivite, ITypeActivite } from 'src/app/classes/interface-json/interface-session';
+import { Activite } from 'src/app/classes/session';
 
 @Component({
   selector: 'app-modal-creer-activite',
@@ -19,7 +20,13 @@ export class ModalCreerActiviteComponent implements OnInit {
 
   ajouterActivite(f: NgForm) {
     let activite = f.value as IActivite;
-    if (this.valeurRemplies(activite)) this.activites.unshift(activite);
+    if (this.valeurRemplies(activite)) {
+      let newActivite = new Activite(
+        activite.nom,
+        activite.idTypeActivite
+      );
+      this.activites.unshift(newActivite);
+    } 
   }
 
   valeurRemplies(activite: any): boolean {
