@@ -1,0 +1,14 @@
+::ffff:127.0.0.1 - - [21/Aug/2021:18:43:23 +0000] "GET /log/ HTTP/1.1" 304 - "http://localhost:4200/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36"
+::1 - - [21/Aug/2021:18:43:25 +0000] "GET /asdfasdf HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36"
+GET /asdfasdf 304 - - 2.842 ms
+GET /log/ 200 25 - 4.042 ms
+GET /asdfasdf 304 - - 4.299 ms
+GET /asdfasdf 304 - - 3.829 ms
+GET /asdfasdf 304 - - 0.613 ms
+GET /log/ 200 25 - 0.627 ms
+GET /log/ 304 - - 0.305 ms
+GET /log/ 304 - - 0.352 ms
+GET /log/ 304 - - 0.390 ms
+GET /log/ 304 - - 0.316 ms
+GET /log/ 304 - - 0.299 ms
+GET /log/ 304 - - 0.427 ms
