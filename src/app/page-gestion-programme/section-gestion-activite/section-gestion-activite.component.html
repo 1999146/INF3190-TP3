@@ -23,11 +23,13 @@
 
     <div class="card my-2">
       <div class="card-body">
-        <h2>{{typeActivites[0].nom}}</h2>
-        <hr/>
-        <ng-container *ngFor="let activite of this.getActivitesByType(typeActivites[0].id)">
-          <span class="badge rounded-pill bg-light border mx-1 text-dark">{{activite.nom}}</span>
-        </ng-container>
+        <h3 class="mb-0">{{typeActivites[0].nom}}</h3>
+        <hr class="mt-1"/>
+        <div class="mb-3">
+          <ng-container *ngFor="let activite of this.getActivitesByType(typeActivites[0].id)">
+            <span class="badge rounded-pill bg-light border mx-1 text-dark">{{activite.nom}}</span>
+          </ng-container>
+        </div>
       </div>
     </div>
 
@@ -35,11 +37,13 @@
       <ng-container *ngFor="let typeActivite of typeActivites">
         <div *ngIf="typeActivite != typeActivites[0]" class="card my-2">
           <div class="card-body">
-            <h2>{{typeActivite.nom}}</h2>
-            <hr/>
-            <ng-container *ngFor="let activite of this.getActivitesByType(typeActivite.id)">
-              <span class="badge rounded-pill bg-light border mx-1 text-dark">{{activite.nom}}</span>
-            </ng-container>
+            <h3 class="mb-0">{{typeActivite.nom}}</h3>
+            <hr class="mt-1"/>
+            <div class="mb-3">
+              <ng-container *ngFor="let activite of this.getActivitesByType(typeActivite.id)">
+                <span class="badge rounded-pill bg-light border mx-1 text-dark">{{activite.nom}}</span>
+              </ng-container>
+            </div>
           </div>
         </div>
       </ng-container>

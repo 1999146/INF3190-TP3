@@ -49,7 +49,7 @@
   export interface IBlocActivite {
     id: string;
     nom: string;
-    activites: IActivite[];
+    idActivites: string[];
     idTypeActivites: string[];
   }
 

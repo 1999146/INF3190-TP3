@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { IActivite, IGabaritProgramme, ISession, ITypeActivite } from '../classes/interface-json/interface-session';
+import { IActivite, IBlocActivite, IGabaritProgramme, ISession, ITypeActivite } from '../classes/interface-json/interface-session';
 
 @Component({
   selector: 'app-page-gestion-programme',
@@ -14,6 +14,7 @@ export class PageGestionProgrammeComponent implements OnInit {
   gabaritProgrammes!: IGabaritProgramme[];
   typeActivites!: ITypeActivite[];
   activites!: IActivite[];
+  blocActivites!: IBlocActivite[];
 
   constructor(public authService: AuthService, private router: Router) {
     if (!authService.isAuth || !authService.isAdmin) this.router.navigate(['']);
@@ -24,6 +25,7 @@ export class PageGestionProgrammeComponent implements OnInit {
     this.gabaritProgrammes = this.authService.gabaritProgrammes;
     this.typeActivites = this.authService.typeActivites;
     this.activites = this.authService.activites;
+    this.blocActivites = this.authService.blocActivites;
   }
 
 }
