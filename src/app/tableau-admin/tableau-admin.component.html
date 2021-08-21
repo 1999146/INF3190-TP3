@@ -1,15 +1,33 @@
 <p id="showTableauAdmin"></p>
 <h1>Tableau Admin</h1>
 <div class="container">
-  <table class="table table-striped table-hover">
+  <table class="table table-striped table-hover table-sortable">
     <thead>
     <tr class = "table-dark">
-      <th class="clicable" (click)='orderBy("idEnfant")'>Enfant</th>
-      <th class="clicable" (click)='orderBy("idParent")'>Parent</th>
-      <th class="clicable" (click)='orderBy("idSession")'>Session</th>
-      <th class="clicable" (click)='orderBy("idProgramme")'>Programme</th>
-      <th class="clicable" (click)='orderBy("idSemaine")'>Semaine</th>
-      <th class="clicable" (click)='orderBy("estPaye")'>Payé</th>
+      <th [ngClass]="{'clicable': true,
+      'desc': sortedBy== 'idEnfant' && sortAscendent,
+      'asc': sortedBy== 'idEnfant' && !sortAscendent}"
+          (click)='orderBy("idEnfant")'>Enfant</th>
+      <th [ngClass]="{'clicable': true,
+       'desc': sortedBy== 'idParent' && sortAscendent,
+        'asc': sortedBy== 'idParent' && !sortAscendent}"
+          (click)='orderBy("idParent")'>Parent</th>
+      <th [ngClass]="{'clicable': true,
+       'desc': sortedBy== 'idSession' && sortAscendent,
+        'asc': sortedBy== 'idEnfant' && !sortAscendent}"
+          (click)='orderBy("idSession")'>Session</th>
+      <th [ngClass]="{'clicable': true,
+       'desc': sortedBy== 'idProgramme' && sortAscendent,
+        'asc': sortedBy== 'idProgramme' && !sortAscendent}"
+          (click)='orderBy("idProgramme")'>Programme</th>
+      <th [ngClass]="{'clicable': true,
+       'desc': sortedBy== 'idSemaine' && sortAscendent,
+        'asc': sortedBy== 'idSemaine' && !sortAscendent}"
+          (click)='orderBy("idSemaine")'>Semaine</th>
+      <th [ngClass]="{'clicable': true,
+       'desc': sortedBy== 'estPaye' && sortAscendent,
+        'asc': sortedBy== 'estPaye' && !sortAscendent}"
+          (click)='orderBy("estPaye")'>Payé</th>
     </tr>
     </thead>
     <tbody>
