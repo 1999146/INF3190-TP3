@@ -6,14 +6,7 @@
               <h2 class="mb-0">Types d'activité</h2>
             </div>
             <div class="col-6 d-flex align-items-end justify-content-end">
-              <button
-                type="button"
-                class="btn btn-secondary btn-sm"
-                data-bs-toggle="modal"
-                data-bs-target="#creerTypeModal"
-              >
-                Ajouter
-              </button>
+              <app-modal-creer-type [typeActivites]="typeActivites" ></app-modal-creer-type>
             </div>
           </div>
         </div>
@@ -55,3 +48,5 @@
           </p>
         </div>
       <!--Fin Type d'activité-->
+
+
