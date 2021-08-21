@@ -2,7 +2,7 @@ export default
 [
   {
     "idProgramme": "P0_S21",
-    "horraires": [
+    "horaires": [
       {
         "idActivitesProg": "4531818738713327",
         "plageHoraire": 1,
@@ -27,7 +27,7 @@ export default
   },
   {
     "idProgramme": "P0_S20",
-    "horraires": [
+    "horaires": [
       {
         "idActivitesProg": "7129264949321758",
         "plageHoraire": 1,
@@ -52,7 +52,7 @@ export default
   },
   {
     "idProgramme": "P1_S20",
-    "horraires": [
+    "horaires": [
       {
         "idActivitesProg": "446500223453832",
         "plageHoraire": 1,
@@ -62,7 +62,7 @@ export default
   },
   {
     "idProgramme": "P1_S21",
-    "horraires": [
+    "horaires": [
       {
         "idActivitesProg": "446500223453832",
         "plageHoraire": 1,
@@ -77,7 +77,7 @@ export default
   },
   {
     "idProgramme": "P1_S22",
-    "horraires": [
+    "horaires": [
       {
         "idActivitesProg": "446500223453832",
         "plageHoraire": 1,

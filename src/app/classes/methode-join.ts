@@ -237,9 +237,9 @@ export class Join {
     return undefined;
   }
 
-  static getHoraireProgrammeById(horrairesProgrammes: IHorairePrograme[], idProgramme: string): IHorairePrograme | undefined {
-    for (let horrairePrograme of horrairesProgrammes) {
-      if (horrairePrograme.idProgramme == idProgramme) return horrairePrograme;
+  static getHoraireProgrammeById(horairesProgrammes: IHorairePrograme[], idProgramme: string): IHorairePrograme | undefined {
+    for (let horairePrograme of horairesProgrammes) {
+      if (horairePrograme.idProgramme == idProgramme) return horairePrograme;
     }
     return undefined;
   }

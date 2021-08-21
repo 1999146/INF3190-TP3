@@ -85,14 +85,14 @@ export class GabaritProgramme implements IGabaritProgramme {
 
 export class HorairePrograme {
   public idProgramme: string;
-  public horraires: IHoraire[];
+  public horaires: IHoraire[];
 
   constructor (
       idProgramme: string,
-      horraires: IHoraire[]
+      horaires: IHoraire[]
   ) {
     this.idProgramme = idProgramme;
-    this.horraires = horraires;
+    this.horaires = horaires;
   }
 
 }
