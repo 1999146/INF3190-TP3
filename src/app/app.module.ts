@@ -28,6 +28,11 @@ import { SectionGestionProgrammeComponent } from './page-gestion-programme/secti
 import { SectionGestionBlocComponent } from './page-gestion-programme/section-gestion-bloc/section-gestion-bloc.component';
 import { SectionGestionTypeComponent } from './page-gestion-programme/section-gestion-type/section-gestion-type.component';
 import { SectionGestionActiviteComponent } from './page-gestion-programme/section-gestion-activite/section-gestion-activite.component';
+import { ModalCreerActiviteComponent } from './page-gestion-programme/section-gestion-activite/modal-creer-activite/modal-creer-activite.component';
+import { ModalCreerTypeComponent } from './page-gestion-programme/section-gestion-type/modal-creer-type/modal-creer-type.component';
+import { ModalCreerBlocComponent } from './page-gestion-programme/section-gestion-bloc/modal-creer-bloc/modal-creer-bloc.component';
+import { ModalCreerProgrammeComponent } from './page-gestion-programme/section-gestion-programme/modal-creer-programme/modal-creer-programme.component';
+import { ModalCreerSessionComponent } from './page-gestion-programme/section-gestion-session/modal-creer-session/modal-creer-session.component';
 // import { NotFoundComponent } from './not-found/not-found.component';
 
 const appRoutes: Routes = [
@@ -67,6 +72,11 @@ const appRoutes: Routes = [
     SectionGestionBlocComponent,
     SectionGestionTypeComponent,
     SectionGestionActiviteComponent,
+    ModalCreerActiviteComponent,
+    ModalCreerTypeComponent,
+    ModalCreerBlocComponent,
+    ModalCreerProgrammeComponent,
+    ModalCreerSessionComponent,
     // NotFoundComponent,
   ],
   imports: [
