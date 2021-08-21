@@ -51,7 +51,7 @@
 
               <select *ngIf="estEnCours(semaine.noSemaine) && !estPaye(semaine.id, enfant.id) && estInscrit(semaine.id, enfant.id)" name="" class="form-control" id="" (change)="inscrire(semaine, enfant, $event)">
                 <option selected [value]="">{{getNomGabaritProgrammeInscrit(semaine.id, enfant.id)}} ({{getPrixProgrammeInscrit(semaine.id, enfant.id)}}.00$)</option>
-                <ng-container *ngFor="let programme of semaine.programmes">
+                <ng-container *ngFor="let programme of getProgrammes(semaine)">
                   <ng-container *ngIf="getGabaritProgrammeById(programme.idGabaritProgramme) != getGabaritProgrammeInscrit(semaine.id, enfant.id)">
                     <option [value]="programme.id">
                       {{getNomGabaritProgrammeById(programme.idGabaritProgramme)}} ({{programme.prix}}.00$)
@@ -63,7 +63,7 @@
 
               <select *ngIf="estEnCours(semaine.noSemaine) && !estPaye(semaine.id, enfant.id) && !estInscrit(semaine.id, enfant.id)" name="" class="form-control" id="" (change)="inscrire(semaine, enfant, $event)">
                 <option  selected value="">Aucun</option>
-                <option *ngFor="let programme of semaine.programmes" [value]="programme.id">
+                <option *ngFor="let programme of getProgrammes(semaine)" [value]="programme.id">
                   {{getNomGabaritProgrammeById(programme.idGabaritProgramme)}} ({{programme.prix}}.00$)
                 </option>
               </select>

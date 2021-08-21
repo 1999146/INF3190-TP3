@@ -3,7 +3,7 @@ import { IInscriptionParent, IInscriptionEnfant, IEnfant, IParent } from "./inte
 import { IGabaritProgramme, ISession, IProgramme, ISemaine, IActivite, ITypeActivite } from "./interface-json/interface-session";
 import inscriptionParent from "src/data/inscription-parent";
 
-export class Join {
+export class Join <T> {
   static getSessionById(sessions: ISession[], sessionId: string): ISession | undefined {
     for (let session of sessions) if (sessionId == session.id) return session;
     return undefined; // remplacer undefined
@@ -31,21 +31,28 @@ export class Join {
     return undefined;
   }
 
-  static getProgrammeById(session: ISession, idSemaine: string, idProgramme: string): IProgramme | undefined {
-    for (let semaine of session.semaines) {
-      if (semaine.id == idSemaine) {
-        for (let programme of semaine.programmes) {
-          if (idProgramme == programme.id) return programme;
-        }
-      }
+  // static getProgrammeById(session: ISession, idSemaine: string, idProgramme: string): IProgramme | undefined {
+  //   for (let semaine of session.semaines) {
+  //     if (semaine.id == idSemaine) {
+  //       for (let programme of semaine.programmes) {
+  //         if (idProgramme == programme.id) return programme;
+  //       }
+  //     }
+  //   }
+  //   return undefined;
+  // }
+
+  static getProgrammeById(programmes: IProgramme[], idProgramme: string): IProgramme | undefined {
+    for (let programme of programmes) {
+      if (programme.id == idProgramme) return programme;
     }
     return undefined;
   }
 
-  static getProgrammeInscrit(session: ISession, inscriptionsParents: IInscriptionParent[], idSemaine: string, idEnfant: string): IProgramme | undefined {
+  static getProgrammeInscrit(session: ISession, inscriptionsParents: IInscriptionParent[], programmes: IProgramme[], idSemaine: string, idEnfant: string): IProgramme | undefined {
     let inscriptionEnfant: IInscriptionEnfant | undefined = Join.getInscriptionEnfant(inscriptionsParents, session.id, idSemaine, idEnfant);
     if (inscriptionEnfant != undefined) {
-      return Join.getProgrammeById(session, idSemaine, inscriptionEnfant.idProgramme);
+      return Join.getProgrammeById(programmes, inscriptionEnfant.idProgramme);
     }
     return undefined;
   }
@@ -54,6 +61,7 @@ export class Join {
       session: ISession, 
       gabaritProgrammes: IGabaritProgramme[], 
       inscriptionsParents: IInscriptionParent[], 
+      programmes: IProgramme[],
       idSemaine: string, 
       idEnfant: string
     ): IGabaritProgramme | undefined {
@@ -66,8 +74,7 @@ export class Join {
     );
     if (inscriptionEnfant != undefined) {
       let programme: IProgramme | undefined = this.getProgrammeById(
-        session, 
-        idSemaine, 
+        programmes,
         inscriptionEnfant.idProgramme
       );
       if (programme != undefined) {
@@ -182,6 +189,8 @@ export class Join {
     }
     return undefined;
   }
+
+  
 
   
 

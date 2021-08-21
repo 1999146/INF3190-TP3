@@ -10,7 +10,7 @@
   export interface ISemaine {
     id: string;
     noSemaine: number;
-    programmes: IProgramme[];
+    idProgrammes: string[];
   }
 
   export interface IProgramme {
