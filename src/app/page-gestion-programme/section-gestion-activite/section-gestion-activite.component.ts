@@ -17,7 +17,7 @@ export class SectionGestionActiviteComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(JSON.stringify(this.getActivitesByType(this.typeActivites[0].id)));
+    // console.log(JSON.stringify(this.getActivitesByType(this.typeActivites[0].id)));
   }
 
   getActivitesByType(idType: string): IActivite[] {

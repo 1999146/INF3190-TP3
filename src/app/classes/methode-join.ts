@@ -1,6 +1,6 @@
 import { Inscription } from "./parent";
 import { IInscriptionParent, IInscriptionEnfant, IEnfant, IParent } from "./interface-json/interface-parent";
-import { IGabaritProgramme, ISession, IProgramme, ISemaine, IActivite } from "./interface-json/interface-session";
+import { IGabaritProgramme, ISession, IProgramme, ISemaine, IActivite, ITypeActivite } from "./interface-json/interface-session";
 import inscriptionParent from "src/data/inscription-parent";
 
 export class Join {
@@ -168,6 +168,22 @@ export class Join {
     }
     return activitesDuType;
   }
+
+  static getActiviteById(activites: IActivite[], idActivite: string): IActivite | undefined {
+    for (let activite of activites) {
+      if (activite.id == idActivite) return activite;
+    }
+    return undefined;
+  }
+
+  static getTypeActiviteById(typeActivites: ITypeActivite[], idTypeActivite: string): ITypeActivite | undefined {
+    for (let typeActivite of typeActivites) {
+      if (typeActivite.id == idTypeActivite) return typeActivite;
+    }
+    return undefined;
+  }
+
+  
 
 
 }

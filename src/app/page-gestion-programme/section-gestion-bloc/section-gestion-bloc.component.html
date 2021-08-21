@@ -19,19 +19,48 @@
   </div>
   <div class="card-body">
 
-    <div class="collapse" id="collapseBlocActivite">
-
-      <div class="card my-2">
-        <div class="card-body">
-          <h2>blocActivite->getNom()</h2>
-          <hr/>
-          <p>
-          <span class="badge rounded-pill bg-secondary">activite->getNom()</span>
-          </p>
+    <div class="card my-2">
+      <div class="card-body">
+        <span>
+          <h3 style="display: inline;" class="mb-0">{{blocActivites[0].nom}}</h3>
+        </span>
+        <span class="mx-2"></span>
+        <ng-container *ngFor="let typeActivite of getTypeActivites(blocActivites[0])">
+          <span class="mx-1">{{typeActivite.nom}}</span>
+        </ng-container>
+        <hr class="mt-1"/>
+        <div class="mb-3">
+          <ng-container *ngFor="let activite of getActivites(blocActivites[0])">
+            <span class="badge rounded-pill bg-light border mx-1 text-dark">{{activite.nom}}</span>
+          </ng-container>
         </div>
       </div>
+    </div>
+
+    <div class="collapse" id="collapseBlocActivite">
+
+      <ng-container *ngFor="let bloc of blocActivites">
+        <div *ngIf="bloc != blocActivites[0]" class="card my-2">
+          <div class="card-body">
+            <span>
+              <h3 style="display: inline;" class="mb-0">{{bloc.nom}}</h3>
+            </span>
+            <span class="mx-2"></span>
+            <ng-container *ngFor="let typeActivite of getTypeActivites(bloc)">
+              <span class="mx-1">{{typeActivite.nom}}</span>
+            </ng-container>
+            <hr class="mt-1"/>
+            <div class="mb-3">
+              <ng-container *ngFor="let activite of getActivites(bloc)">
+                <span class="badge rounded-pill bg-light border mx-1 text-dark">{{activite.nom}}</span>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </ng-container>
 
     </div>
+
     <p class="text-center">
       <button
         class="btn btn-secondary mt-3"
