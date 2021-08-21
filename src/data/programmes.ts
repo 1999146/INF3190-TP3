@@ -1,5 +1,4 @@
 export default [
-
   {
     id: 'P0_S20',
     idGabaritProgramme: 'G0',
