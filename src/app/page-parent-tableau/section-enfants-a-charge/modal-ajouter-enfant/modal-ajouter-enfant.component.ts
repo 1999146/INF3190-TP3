@@ -10,8 +10,10 @@ import {IEnfant} from "../../../classes/interface-json/interface-parent";
 export class ModalAjouterEnfantComponent implements OnInit {
 
   @Input() enfants: IEnfant[] = [];
+  fileToUpload: File | null = null;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
@@ -20,6 +22,7 @@ export class ModalAjouterEnfantComponent implements OnInit {
    *Charger la photo de profil
    **/
   onLoadFile(event: any): void {
+    this.fileToUpload = event.target.files.item(0);
     let image = document.getElementById(event.target.id + "Img");
     // @ts-ignore
     image.src = URL.createObjectURL(event.target.files[0]);
@@ -27,11 +30,11 @@ export class ModalAjouterEnfantComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     this.enfants.push({
-      id: "randomId",
+      id: 'enfantPhoto' + this.enfants.length + 1,
       nom: form.value['nomEnfant'],
       prenom: form.value['prenomEnfant'],
       dateNaissance: form.value['dateNaissanceEnfant'],
-      urlPhoto: form.value['photoEnfant'],
+      urlPhoto: 'assets/img/profil.png',
       note: ""
     });
   }

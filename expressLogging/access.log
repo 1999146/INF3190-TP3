@@ -12,3 +12,7 @@ GET /log/ 304 - - 0.390 ms
 GET /log/ 304 - - 0.316 ms
 GET /log/ 304 - - 0.299 ms
 GET /log/ 304 - - 0.427 ms
+GET /log/ 304 - - 0.293 ms
+GET /log/ 304 - - 0.265 ms
+GET /log/ 304 - - 0.354 ms
+GET /log/ 304 - - 0.271 ms
