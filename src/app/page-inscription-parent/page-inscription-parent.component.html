@@ -26,6 +26,7 @@
             id="uploadProfil"
             (change)="onLoadFile($event)"
             style="display: none"
+            formControlName="urlPhoto"
           />
           <label
             for="uploadProfil"
@@ -56,24 +57,25 @@
       </div>
       <div class="row p-2">
         <div class="col">
-          <label for="email" class="form-label">Email</label>
+          <label for="courriel" class="form-label">Courriel</label>
           <span class="erreur"> *</span>
-          <ul *ngIf="email.dirty && (email.invalid && !email.errors?.required)">
-            <li *ngIf="email.errors?.email" class="erreur">
+          <input type="courriel" id="courriel" class="form-control" name="courriel" id="inputEmail3" formControlName="courriel"/>
+          <ul class="errValid" *ngIf="courriel.dirty && (courriel.invalid && !courriel.errors?.required)">
+            <li *ngIf="courriel.errors?.email" class="erreur">
               Entrez un courriel valide.
             </li>
           </ul>
-          <input type="email" id="email" class="form-control" name="email" id="inputEmail3" formControlName="email"/>
         </div>
         <div class="col">
-          <label for="ddn" class="form-label">Date de naissance</label>
+          <label for="dateNaissance" class="form-label">Date de naissance</label>
           <span class="erreur"> *</span>
-          <ul *ngIf="ddn.dirty && (ddn.invalid && !ddn.errors?.required)">
-            <li *ngIf="ddn.errors?.estDateFuture" class="erreur">
+          <input type="date" id="dateNaissance" name="dateNaissance" class="form-control"
+                 formControlName="dateNaissance"/>
+          <ul class="errValid" *ngIf="dateNaissance.dirty && (dateNaissance.invalid && !dateNaissance.errors?.required)">
+            <li *ngIf="dateNaissance.errors?.estDateFuture" class="erreur">
               La date de naissance doit être dans le passé.
             </li>
           </ul>
-          <input type="date" id="ddn" name="dateNaissance" class="form-control" formControlName="ddn"/>
         </div>
       </div>
       <div class="form-group p-2">
@@ -86,26 +88,26 @@
         <div class="col">
           <label for="usernameInscription" class="form-label">Nom d'utilisateur</label>
           <span class="erreur"> *</span>
-          <ul *ngIf="username.dirty && (username.invalid && !username.errors?.required)">
+          <input type="text" id="usernameInscription" name="username" class="form-control" formControlName="username"/>
+          <ul class="errValid" *ngIf="username.dirty && (username.invalid && !username.errors?.required)">
             <li *ngIf="username.hasError('pattern')" class="erreur">
               Le nom d'utilisateur doit contenir seulement des caracteres alphanumeriques non-accentués
             </li>
           </ul>
-          <input type="text" id="usernameInscription" name="username" class="form-control" formControlName="username"/>
         </div>
         <div class="col">
           <label for="passwordInscription" class="form-label">Mot de passe</label>
           <span class="erreur"> *</span>
-          <ul *ngIf="password.dirty && password.invalid" class="erreur">
+          <input type="password" id="passwordInscription" name="password" minlength="6" class="form-control"
+                 formControlName="password"/>
+          <ul class="errValid" *ngIf="password.dirty && password.invalid" class="erreur">
             <li *ngIf="password.hasError('minlength')">
-              Le mot de passe doit avoir au moins 5 caracteres
+              Le mot de passe doit avoir au moins 6 caracteres
             </li>
             <li *ngIf="password.hasError('pattern')">
               Le mot de passe doit contenir au moins un caractere spécial
             </li>
           </ul>
-          <input type="password" id="passwordInscription" name="password" minlength="6" class="form-control"
-                 formControlName="password"/>
         </div>
       </div>
       <div class="row m-3">

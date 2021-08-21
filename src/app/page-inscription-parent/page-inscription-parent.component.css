@@ -1,3 +1,7 @@
 .ng-invalid.ng-touched{
   border-color: red;
 }
+
+.errValid {
+  margin-top: 0.5rem !important;
+}
