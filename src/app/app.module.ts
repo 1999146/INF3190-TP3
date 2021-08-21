@@ -28,6 +28,7 @@ import { SectionGestionProgrammeComponent } from './page-gestion-programme/secti
 import { SectionGestionBlocComponent } from './page-gestion-programme/section-gestion-bloc/section-gestion-bloc.component';
 import { SectionGestionTypeComponent } from './page-gestion-programme/section-gestion-type/section-gestion-type.component';
 import { SectionGestionActiviteComponent } from './page-gestion-programme/section-gestion-activite/section-gestion-activite.component';
+import {ModalModifierEnfantComponent} from "./page-parent-tableau/section-enfants-a-charge/fiche-enfant/modal-modifier-enfant/modal-modifier-enfant.component";
 // import { NotFoundComponent } from './not-found/not-found.component';
 
 const appRoutes: Routes = [
@@ -67,6 +68,7 @@ const appRoutes: Routes = [
     SectionGestionBlocComponent,
     SectionGestionTypeComponent,
     SectionGestionActiviteComponent,
+    ModalModifierEnfantComponent,
     // NotFoundComponent,
   ],
   imports: [

@@ -1,8 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {IEnfant} from "../../../classes/interface-json/interface-parent";
-import {HttpClient} from "@angular/common/http";
-import {Observable, Subject} from "rxjs";
 
 @Component({
   selector: 'app-modal-ajouter-enfant',
@@ -14,7 +12,7 @@ export class ModalAjouterEnfantComponent implements OnInit {
   @Input() enfants: IEnfant[] = [];
   fileToUpload: File | null = null;
 
-  constructor(private httpClient: HttpClient) {
+  constructor() {
   }
 
   ngOnInit(): void {
