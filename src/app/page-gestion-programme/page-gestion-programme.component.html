@@ -1,7 +1,7 @@
 <h1>Gestion des programmes</h1>
 
 <app-section-gestion-session [sessions]="sessions"></app-section-gestion-session>
-<app-section-gestion-programme></app-section-gestion-programme>
+<app-section-gestion-programme [sessions]="sessions" [programmes]="programmes" [horrairesProgrammes]="horrairesProgrammes"></app-section-gestion-programme>
 <app-section-gestion-bloc [typeActivites]="typeActivites" [activites]="activites" [blocActivites]="blocActivites" ></app-section-gestion-bloc>
 <app-section-gestion-type [typeActivites]="typeActivites"></app-section-gestion-type>
 <app-section-gestion-activite [typeActivites]="typeActivites" [activites]="activites"></app-section-gestion-activite>

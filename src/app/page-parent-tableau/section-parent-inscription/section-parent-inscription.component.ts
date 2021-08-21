@@ -24,6 +24,8 @@ export class SectionParentInscriptionComponent implements OnInit {
 
   gabaritProgrammes!: IGabaritProgramme[];
   sessions!: ISession[];
+  programmes!: IProgramme[];
+
   idSessionActuelle!: string;
   selectAjoutPanier!: IProgramme;
 
@@ -40,6 +42,7 @@ export class SectionParentInscriptionComponent implements OnInit {
     this.sessions = this.authService.sessions;
     this.idSessionActuelle = this.sessions[0].id;
     this.inscriptionsParents = this.authService.inscriptionsParents;
+    this.programmes = this.authService.programmes;
   }
 
   estEnCours(noSemaine: number): boolean {
@@ -106,6 +109,7 @@ export class SectionParentInscriptionComponent implements OnInit {
       this.getSessionActuelle(), 
       this.gabaritProgrammes, 
       this.inscriptionsParents, 
+      this.programmes,
       idSemaine, 
       idEnfant
     );
@@ -118,6 +122,7 @@ export class SectionParentInscriptionComponent implements OnInit {
       this.getSessionActuelle(), 
       this.gabaritProgrammes, 
       this.inscriptionsParents, 
+      this.programmes,
       idSemaine, 
       idEnfant
     );
@@ -150,7 +155,7 @@ export class SectionParentInscriptionComponent implements OnInit {
   }
 
   getPrixProgrammeInscrit(idSemaine: string, idEnfant: string): number {
-    let programme: IProgramme | undefined = Join.getProgrammeInscrit(this.getSessionActuelle(), this.inscriptionsParents, idSemaine, idEnfant);
+    let programme: IProgramme | undefined = Join.getProgrammeInscrit(this.getSessionActuelle(), this.inscriptionsParents, this.programmes, idSemaine, idEnfant);
     if (programme != undefined) return programme.prix;
     return 0;
   }
@@ -160,7 +165,7 @@ export class SectionParentInscriptionComponent implements OnInit {
     let inscriptionsEnfants: IInscriptionEnfant[] | undefined = Join.getInscriptionsEnfants(this.inscriptionsParents, this.idSessionActuelle);
     if (inscriptionsEnfants != undefined) {
       for (let inscriptionEnfant of inscriptionsEnfants) {
-        let programme: IProgramme | undefined = Join.getProgrammeById(this.getSessionActuelle(), inscriptionEnfant.idSemaine, inscriptionEnfant.idProgramme);
+        let programme: IProgramme | undefined = Join.getProgrammeById(this.programmes, inscriptionEnfant.idProgramme);
         if (programme != undefined && this.estAuPanier(inscriptionEnfant)) total += programme.prix;
       }
     }
@@ -218,6 +223,14 @@ export class SectionParentInscriptionComponent implements OnInit {
     console.log("payer");
   }
 
+  getProgrammes(semaine: ISemaine): IProgramme[] {
+    let programmes: IProgramme[] = [];
+    for (let idProgramme of semaine.idProgrammes) {
+      let programme = Join.getProgrammeById(this.programmes, idProgramme);
+      if (programme != undefined) programmes.push(programme);
+    }
+    return programmes;
+  }
 
 
 

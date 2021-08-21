@@ -6,9 +6,11 @@ import inscriptionParentJson from "src/data/inscription-parent";
 import typeActivitesJson from "src/data/activite-type";
 import activitesJson from "src/data/activites";
 import blocActivitesJson from "src/data/activite-bloc";
+import programmesJson from "src/data/programmes";
+import horrairesProgrammeJson from "src/data/programme-horraire";
 
 import { IParent, IInscriptionParent } from "../classes/interface-json/interface-parent";
-import { IActivite, IBlocActivite, IGabaritProgramme, ISession, ITypeActivite } from "../classes/interface-json/interface-session";
+import { IActivite, IBlocActivite, IGabaritProgramme, IHorrairePrograme, IProgramme, ISession, ITypeActivite } from "../classes/interface-json/interface-session";
 import { Join } from "../classes/methode-join";
 
 let parents: IParent[] = fichesParentsJson;
@@ -26,6 +28,8 @@ export class AuthService {
   typeActivites!: ITypeActivite[];
   activites!: IActivite[];
   blocActivites!: IBlocActivite[];
+  programmes: IProgramme[] = programmesJson;
+  horrairesProgrammes!: IHorrairePrograme[];
 
   signIn(username: string, password: string) {
     if (username == "admin" && password == "admin!") {
@@ -36,6 +40,7 @@ export class AuthService {
       this.typeActivites = typeActivitesJson;
       this.activites = activitesJson;
       this.blocActivites = blocActivitesJson;
+      this.horrairesProgrammes = horrairesProgrammeJson;
     } else {
       if(!this.verifyPassword(username, password)){
         //Connexion refusé, rediriger avec message d'erreur
