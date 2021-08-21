@@ -17,7 +17,7 @@ import { SectionParentProfilComponent } from './page-parent-tableau/section-pare
 import { SectionParentInscriptionComponent } from './page-parent-tableau/section-parent-inscription/section-parent-inscription.component';
 import { TableauAdminComponent } from './tableau-admin/tableau-admin.component';
 import { TableauAdminModalComponent } from './tableau-admin-modal/tableau-admin-modal.component';
-import {ModalModifierProfilComponent} from "./page-parent-tableau/section-parent-profil/modal-modifier-profil/modal-modifier-profil.component";
+import { ModalModifierProfilComponent } from "./page-parent-tableau/section-parent-profil/modal-modifier-profil/modal-modifier-profil.component";
 import { LoginFormComponent } from './header/login-form/login-form.component';
 import { SectionEnfantsAChargeComponent } from './page-parent-tableau/section-enfants-a-charge/section-enfants-a-charge.component';
 import { FicheEnfantComponent } from './page-parent-tableau/section-enfants-a-charge/fiche-enfant/fiche-enfant.component';
@@ -29,8 +29,12 @@ import { SectionGestionBlocComponent } from './page-gestion-programme/section-ge
 import { SectionGestionTypeComponent } from './page-gestion-programme/section-gestion-type/section-gestion-type.component';
 import { SectionGestionActiviteComponent } from './page-gestion-programme/section-gestion-activite/section-gestion-activite.component';
 import {ModalModifierEnfantComponent} from "./page-parent-tableau/section-enfants-a-charge/fiche-enfant/modal-modifier-enfant/modal-modifier-enfant.component";
-import {NotFoundComponent} from "./not-found/not-found.component";
-// import { NotFoundComponent } from './not-found/not-found.component';
+import { ModalCreerActiviteComponent } from './page-gestion-programme/section-gestion-activite/modal-creer-activite/modal-creer-activite.component';
+import { ModalCreerTypeComponent } from './page-gestion-programme/section-gestion-type/modal-creer-type/modal-creer-type.component';
+import { ModalCreerBlocComponent } from './page-gestion-programme/section-gestion-bloc/modal-creer-bloc/modal-creer-bloc.component';
+import { ModalCreerProgrammeComponent } from './page-gestion-programme/section-gestion-programme/modal-creer-programme/modal-creer-programme.component';
+import { ModalCreerSessionComponent } from './page-gestion-programme/section-gestion-session/modal-creer-session/modal-creer-session.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const appRoutes: Routes = [
   { path: '', component:  PageAccueilComponent},
@@ -69,6 +73,11 @@ const appRoutes: Routes = [
     SectionGestionBlocComponent,
     SectionGestionTypeComponent,
     SectionGestionActiviteComponent,
+    ModalCreerActiviteComponent,
+    ModalCreerTypeComponent,
+    ModalCreerBlocComponent,
+    ModalCreerProgrammeComponent,
+    ModalCreerSessionComponent,
     ModalModifierEnfantComponent,
     // NotFoundComponent,
   ],
