@@ -22,6 +22,7 @@ export class AuthService {
   indiceParent: number = 0;
 
   parent!: IParent;
+  parents!: IParent[];
   inscriptionsParents!: IInscriptionParent[];
   gabaritProgrammes: IGabaritProgramme[] = gabaritProgrammeJson;
   sessions: ISession[] = sessionsJson;
@@ -41,6 +42,7 @@ export class AuthService {
       this.activites = activitesJson;
       this.blocActivites = blocActivitesJson;
       this.horrairesProgrammes = horrairesProgrammeJson;
+      this.parents = fichesParentsJson;
     } else {
       if(!this.verifyPassword(username, password)){
         //Connexion refusé, rediriger avec message d'erreur

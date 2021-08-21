@@ -165,9 +165,27 @@ export class Join {
     return undefined;
   }
 
+  static getGabaritProgrammeByIdProgramme(programmes: IProgramme[], gabaritProgrammes: IGabaritProgramme[], idProgramme: string): IGabaritProgramme | undefined {
+    let programme = Join.getProgrammeById(programmes, idProgramme);
+    let gabaritProgramme = undefined;
+    if (programme != undefined) {
+      gabaritProgramme = Join.getGabaritProgrammeById(gabaritProgrammes, programme.idGabaritProgramme);
+    }
+    return (gabaritProgramme != undefined)? gabaritProgramme : undefined;
+  }
+
   static getSemaineById(session: ISession, idSemaine: string): ISemaine | undefined {
     for (let semaine of session.semaines) {
       if (semaine.id == idSemaine) return semaine;
+    }
+    return undefined;
+  }
+
+  static findSemaineById(sessions: ISession[], idSemaine: string): ISemaine | undefined {
+    for (let session of sessions) {
+      for (let semaine of session.semaines) {
+        if (semaine.id == idSemaine) return semaine;
+      }
     }
     return undefined;
   }
