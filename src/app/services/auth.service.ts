@@ -77,6 +77,9 @@ export class AuthService {
     this.inscriptionsParents = Join.getInscriptionsParents(inscriptionsParents, this.parent.id)
   }
 
-
+  addParent(parent: IParent) {
+    this.parent = parent;
+    this.isAuth = true;
+  }
 
 }
