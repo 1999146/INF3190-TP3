@@ -14,7 +14,7 @@
           (click)='orderBy("idParent")'>Parent</th>
       <th [ngClass]="{'clicable': true,
        'desc': sortedBy== 'idSession' && sortAscendent,
-        'asc': sortedBy== 'idEnfant' && !sortAscendent}"
+        'asc': sortedBy== 'idSession' && !sortAscendent}"
           (click)='orderBy("idSession")'>Session</th>
       <th [ngClass]="{'clicable': true,
        'desc': sortedBy== 'idProgramme' && sortAscendent,
