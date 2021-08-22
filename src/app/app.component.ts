@@ -7,5 +7,9 @@ import {Component, ViewEncapsulation} from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent{
+
+  constructor() {
+  }
+
   title = 'INF3190-TP3';
 }

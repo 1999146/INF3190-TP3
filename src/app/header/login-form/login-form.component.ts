@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AppComponent} from "../../app.component";
+import {MessageService} from "../../services/message.service";
 
 @Component({
   selector: 'app-login-form',
@@ -12,7 +14,7 @@ export class LoginFormComponent implements OnInit {
   erreur!: string;
   loginForm!: FormGroup;
 
-  constructor(public authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(public authService: AuthService, private router: Router, private formBuilder: FormBuilder, private MessageService: MessageService) {
   }
 
   ngOnInit(): void {
@@ -32,9 +34,11 @@ export class LoginFormComponent implements OnInit {
 
     if (this.authService.isAuth && !this.authService.isAdmin) {
       //Parent
+      this.MessageService.setMsgGlobal("Vous êtes maintenant connecté en tant que parent!");
       this.router.navigate(['tableauBordParent']);
     } else if (this.authService.isAuth && this.authService.isAdmin) {
       //Admin
+      this.MessageService.setMsgGlobal("Vous êtes maintenant connecté en tant qu'Admin!");
       this.router.navigate(['tableauAdmin']);
     } else {
       //Invalide
