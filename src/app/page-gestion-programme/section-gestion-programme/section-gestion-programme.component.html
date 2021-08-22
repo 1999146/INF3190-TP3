@@ -6,7 +6,15 @@
         <h2 class="mb-0">Programmes</h2>
       </div>
       <div class="col-6 d-flex align-items-end justify-content-end">
-        <app-modal-creer-programme></app-modal-creer-programme>
+        <app-modal-creer-programme 
+          [sessions]="sessions" 
+          [programmes]="programmes" 
+          [horairesProgrammes]="horairesProgrammes" 
+          [gabaritProgrammes]="gabaritProgrammes" 
+          [typeActivites]="typeActivites" 
+          [activites]="activites" 
+          [blocActivites]="blocActivites">
+        </app-modal-creer-programme>
       </div>
     </div>
   </div>

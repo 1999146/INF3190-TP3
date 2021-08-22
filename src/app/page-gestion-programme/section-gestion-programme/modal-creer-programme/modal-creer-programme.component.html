@@ -34,24 +34,27 @@ Ajouter
           <label for="message-text" class="col-form-label">Gabarit de programme :</label>
           <div class="mb-2">
 
-
-                <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="gabaritProgramme"
-                  />
-                  <label class="form-check-label" for="<?=$gabaritProgramme->getId() ?>">
-                    <?=$gabaritProgramme->getTitre() ?>
-                  </label>
-                </div>
-
+            <div *ngFor="let gabarit of gabaritProgrammes">
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="gabaritProgramme"
+                />
+                <label class="form-check-label">
+                  {{gabarit.titre}}
+                </label>
+              </div>
+            </div>
+                
+            <div>
               <label for="message-text" class="col-form-label">Session :</label>
               <select class="form-control" name="session">
-                <option disabled selected>Session</option>
-                <option value="<?=$session->getId()?>"><?=$session->getNom()?></option>
+                <option *ngFor="let session of sessions">{{session.nom}}</option>
               </select>
+            </div>
 
+            <div>
               <label for="message-text" class="col-form-label">Numéros de semaine :</label>
               <div>
                 <div class="form-check form-check-inline px-0">
@@ -228,11 +231,14 @@ Ajouter
                   >
                 </div>
               </div>
+            </div>
 
-              <div class="form-group">
-                <label for="message-text" class="col-form-label">Animateurs :</label>
-                <textarea class="form-control" id="message-text" name="animateurs"></textarea>
-              </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Animateurs :</label>
+              <textarea class="form-control" id="message-text" name="animateurs"></textarea>
+            </div>
+
+            <div>
               <hr />
               <h5>Activités</h5>
 
@@ -240,19 +246,18 @@ Ajouter
                 <input type="hidden" name="nbActivitesProgramme" id="nbActivitesProgramme">
               </div>
 
-
-            <div id="ajouterProgrammeForm"></div>
-            
-            <div class="col-md-12 text-center margin-auto mt-3">
-              <button class="btn btn-secondary" id="rmActiviteProg" hidden="true">
-                Retirer une activite -
-              </button>
-              <button class="btn btn-secondary" id="addActiviteProgramme">
-                Ajouter une activité +
-              </button>
+              <div class="col-md-12 text-center margin-auto mt-3">
+                <button class="btn btn-secondary" id="rmActiviteProg" hidden="true">
+                  Retirer une activite -
+                </button>
+                <button class="btn btn-secondary" id="addActiviteProgramme">
+                  Ajouter une activité +
+                </button>
+              </div>
             </div>
 
             <div class="col-5 mt-3">
+              <hr />
               <label for="prix" class="col-form-label">Prix :</label>
               <div class="input-group">
                 <span class="input-group-text">$</span>
@@ -261,17 +266,13 @@ Ajouter
               </div>
             </div>
 
-        </div>
-      
+          </div>
 
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-light border"
-              data-bs-dismiss="modal"
-          >Fermer
+            <button type="button" class="btn btn-light border" data-bs-dismiss="modal">
+              Fermer
             </button>
-            <button type="submit" class="btn btn-secondary">Créer</button>
+            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Créer</button>
           </div>
 
         </form>

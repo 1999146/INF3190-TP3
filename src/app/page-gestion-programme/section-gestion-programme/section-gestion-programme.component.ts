@@ -22,16 +22,6 @@ export class SectionGestionProgrammeComponent implements OnInit {
   heure: number = 8;
 
   constructor() { 
-    // this.horaireProgrammes.push(
-    //   new HorairePrograme(
-    //     "P0_S21", [
-    //       new Horaire("4531818738713327", 1, 2), 
-    //       new Horaire("7129264949321758", 2, 2), 
-    //       new Horaire("2175904346409182", 3, 2), 
-    //       new Horaire("7731215965469501", 4, 2), 
-    //     ]
-    //   )
-    // );
   }
 
   ngOnInit(): void {
