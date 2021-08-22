@@ -13,6 +13,7 @@ import { IParent, IInscriptionParent } from "../classes/interface-json/interface
 import { IActivite, IBlocActivite, IGabaritProgramme, IHorairePrograme, IProgramme, ISession, ITypeActivite } from "../classes/interface-json/interface-session";
 import { Join } from "../classes/methode-join";
 import {Injectable} from "@angular/core";
+import {LoggerService} from "./logger.service";
 
 let parents: IParent[] = fichesParentsJson;
 let inscriptionsParents: IInscriptionParent[] = inscriptionParentJson;
@@ -20,7 +21,7 @@ let inscriptionsParents: IInscriptionParent[] = inscriptionParentJson;
 @Injectable()
 export class AuthService {
 
-  constructor() {
+  constructor(private logger: LoggerService) {
   }
 
   isAuth: boolean = false;
@@ -49,13 +50,16 @@ export class AuthService {
       this.blocActivites = blocActivitesJson;
       this.horairesProgrammes = horairesProgrammeJson;
       this.parents = fichesParentsJson;
+      this.logger.log(new Date().toString() + " : Connection Admin");
     } else {
       if(!this.verifyPassword(username, password)){
         //Connexion refusé, rediriger avec message d'erreur
         console.log("connexion refusee");
+        this.logger.log(new Date().toString() + " : Connection refuse");
       }else{
         this.logParent(username);
         this.isAuth = true;
+        this.logger.log(new Date().toString() + " : Connection Parent " + username);
       }
     }
   }
