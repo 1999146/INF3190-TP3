@@ -24,6 +24,9 @@ La gestion se divise en 2 sections.
 Les données sont stockés dans des fichiers json pour la démonstration. Les identifiants de connexion pour tester les comptes parents sont dans `data/fiches-parents.ts`.
 Par exemple, pour Homer Simpson, le nom d'utilisateur est `homer` et le mot de passe est `beignes!`.
 
+### Jouralisation
+Les logs sont envoyés à une base de données noSql sur firebase, puisque nous n'avons pas de serveur backend.
+
 ### Serveur de développement
 
 Exécuter `ng serve` Pour obtenir un serveur de développement. Allez à `http://localhost:4200/`. L'application recharge tout seule si le code source est changé.
