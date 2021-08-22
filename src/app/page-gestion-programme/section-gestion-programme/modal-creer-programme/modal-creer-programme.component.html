@@ -40,6 +40,8 @@ Ajouter
                   class="form-check-input"
                   type="radio"
                   name="gabaritProgramme"
+                  [value]="gabarit.id"
+                  [(ngModel)]="newProgramme.idGabaritProgramme"
                 />
                 <label class="form-check-label">
                   {{gabarit.titre}}
@@ -49,8 +51,8 @@ Ajouter
                 
             <div>
               <label for="message-text" class="col-form-label">Session :</label>
-              <select class="form-control" name="session">
-                <option *ngFor="let session of sessions">{{session.nom}}</option>
+              <select class="form-control" name="session" [(ngModel)]="idSession">
+                <option *ngFor="let session of sessions" [value]="session.id">{{session.nom}}</option>
               </select>
             </div>
 
@@ -65,6 +67,7 @@ Ajouter
                     name="semaine1"
                     value="1"
                     autocomplete="off"
+                    (click)="ajouterProgramme(1)"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-1"
                     >01</label
@@ -76,6 +79,7 @@ Ajouter
                     name="semaine2"
                     value="2"
                     autocomplete="off"
+                    (click)="ajouterProgramme(2)"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-2"
                     >02</label
@@ -87,6 +91,7 @@ Ajouter
                     name="semaine3"
                     value="3"
                     autocomplete="off"
+                    (click)="ajouterProgramme(3)"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-3"
                     >03</label
@@ -98,6 +103,7 @@ Ajouter
                     name="semaine4"
                     value="4"
                     autocomplete="off"
+                    (click)="ajouterProgramme(4)"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-4"
                     >04</label
@@ -109,6 +115,7 @@ Ajouter
                     name="semaine5"
                     value="5"
                     autocomplete="off"
+                    (click)="ajouterProgramme(5)"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-5"
                     >05</label
@@ -123,6 +130,7 @@ Ajouter
                     name="semaine6"
                     value="6"
                     autocomplete="off"
+                    (click)="ajouterProgramme(6)"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-6"
                     >06</label
@@ -134,6 +142,7 @@ Ajouter
                     name="semaine7"
                     value="7"
                     autocomplete="off"
+                    (click)="ajouterProgramme(7)"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-7"
                     >07</label
@@ -145,6 +154,7 @@ Ajouter
                     name="semaine8"
                     value="8"
                     autocomplete="off"
+                    (click)="ajouterProgramme(8)"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-8"
                     >08</label
@@ -156,6 +166,7 @@ Ajouter
                     name="semaine9"
                     value="9"
                     autocomplete="off"
+                    (click)="ajouterProgramme(9)"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-9"
                     >09</label
@@ -167,6 +178,7 @@ Ajouter
                     name="semaine10"
                     value="10"
                     autocomplete="off"
+                    (click)="ajouterProgramme(10)"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-10"
                     >10</label
@@ -181,6 +193,7 @@ Ajouter
                     name="semaine11"
                     value="11"
                     autocomplete="off"
+                    (click)="ajouterProgramme(11)"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-11"
                     >11</label
@@ -192,6 +205,7 @@ Ajouter
                     name="semaine12"
                     value="12"
                     autocomplete="off"
+                    (click)="ajouterProgramme(12)"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-12"
                     >12</label
@@ -203,6 +217,7 @@ Ajouter
                     name="semaine13"
                     value="13"
                     autocomplete="off"
+                    (click)="ajouterProgramme(13)"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-13"
                     >13</label
@@ -214,6 +229,7 @@ Ajouter
                     name="semaine14"
                     value="14"
                     autocomplete="off"
+                    (click)="ajouterProgramme(14)"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-14"
                     >14</label
@@ -225,6 +241,7 @@ Ajouter
                     name="semaine15"
                     value="15"
                     autocomplete="off"
+                    (click)="ajouterProgramme(15)"
                   />
                   <label class="btn btn-outline-secondary" for="btn-check-15"
                     >15</label
@@ -235,10 +252,10 @@ Ajouter
 
             <div class="form-group">
               <label for="message-text" class="col-form-label">Animateurs :</label>
-              <textarea class="form-control" id="message-text" name="animateurs"></textarea>
+              <textarea ngModel class="form-control" id="message-text" name="animateurs" [(ngModel)]="newProgramme.animateur"></textarea>
             </div>
 
-            <div>
+            <!-- <div>
               <hr />
               <h5>Activités</h5>
 
@@ -254,29 +271,27 @@ Ajouter
                   Ajouter une activité +
                 </button>
               </div>
-            </div>
+            </div> -->
 
             <div class="col-5 mt-3">
-              <hr />
               <label for="prix" class="col-form-label">Prix :</label>
               <div class="input-group">
                 <span class="input-group-text">$</span>
-                <input type="text" class="form-control" aria-label="Prix" name="prix" id="prix">
+                <input type="text" class="form-control" aria-label="Prix" name="prix" id="prix" [(ngModel)]="newProgramme.prix">
                 <span class="input-group-text">.00</span>
               </div>
             </div>
 
           </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-light border" data-bs-dismiss="modal">
-              Fermer
-            </button>
-            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Créer</button>
-          </div>
-
         </form>
       </div> 
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light border" data-bs-dismiss="modal">
+          Fermer
+        </button>
+        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal" (click)="enregistrerProgramme()">Créer</button>
+      </div>
 
     </div>
   </div>
