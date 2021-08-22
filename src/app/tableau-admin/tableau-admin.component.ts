@@ -6,6 +6,7 @@ import { IEnfant, IParent } from "../classes/interface-json/interface-parent";
 import { Enfant, Inscription } from "../classes/parent";
 import { IGabaritProgramme, IProgramme, ISession } from "../classes/interface-json/interface-session";
 import { sortTable } from "../util/sortTable";
+import {LoggerService} from "../services/logger.service";
 
 @Component({
   selector: 'app-tableau-admin',
@@ -27,8 +28,10 @@ export class TableauAdminComponent implements OnInit {
   sortedBy!: string;
   sortAscendent = false;
 
-  constructor(public authService: AuthService, private router: Router) {
-    if (!authService.isAuth) this.router.navigate(['']);
+  constructor(public authService: AuthService, private router: Router, private logger: LoggerService) {
+    if (!authService.isAuth) {
+      this.router.navigate(['']);
+    }
   }
 
   ngOnInit(): void {
@@ -74,7 +77,7 @@ export class TableauAdminComponent implements OnInit {
   }
 
   getNomProgrammeModal(): string {
-    return (this.inscriptionSelectionnee != undefined)? 
+    return (this.inscriptionSelectionnee != undefined)?
     this.getNomProgramme(this.inscriptionSelectionnee.idProgramme) : "undefined";
   }
 
