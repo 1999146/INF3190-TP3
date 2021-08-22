@@ -33,7 +33,7 @@
       </app-login-form>
 
 
-      <a *ngIf="authService.isAuth && authService.isAdmin" class="nav-link active" aria-current="page" routerLink="">
+      <a *ngIf="authService.isAuth && authService.isAdmin" class="nav-link active" aria-current="page" routerLink="gestionProgramme">
         Gérer les programmes
       </a>
       <a *ngIf="authService.isAuth && authService.isAdmin" class="nav-link active" aria-current="page" routerLink="tableauAdmin">
