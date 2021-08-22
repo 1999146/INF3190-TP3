@@ -9,6 +9,7 @@ import { PageAccueilComponent } from './page-accueil/page-accueil.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PageContactComponent } from './page-contact/page-contact.component';
 import { AuthService } from "./services/auth.service";
+import { MessageService } from "./services/message.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PageDescriptionProgrammesComponent } from './page-description-programmes/page-description-programmes.component';
 import { PageInscriptionParentComponent } from './page-inscription-parent/page-inscription-parent.component';
@@ -36,6 +37,7 @@ import { ModalCreerProgrammeComponent } from './page-gestion-programme/section-g
 import { ModalCreerSessionComponent } from './page-gestion-programme/section-gestion-session/modal-creer-session/modal-creer-session.component';
 import { HttpClientModule} from "@angular/common/http";
 import { NotFoundComponent } from './not-found/not-found.component';
+import { MessageComponent } from './message/message.component';
 
 const appRoutes: Routes = [
   { path: '', component:  PageAccueilComponent},
@@ -81,6 +83,7 @@ const appRoutes: Routes = [
     ModalCreerSessionComponent,
     ModalModifierEnfantComponent,
     NotFoundComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,7 +94,8 @@ const appRoutes: Routes = [
     HttpClientModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

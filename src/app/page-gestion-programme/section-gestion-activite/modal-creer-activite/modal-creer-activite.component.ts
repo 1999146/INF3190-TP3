@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { IActivite, ITypeActivite } from 'src/app/classes/interface-json/interface-session';
 import { Activite } from 'src/app/classes/session';
+import {MessageService} from "../../../services/message.service";
 
 @Component({
   selector: 'app-modal-creer-activite',
@@ -13,7 +14,7 @@ export class ModalCreerActiviteComponent implements OnInit {
   @Input() typeActivites!: ITypeActivite[];
   @Input() activites!: IActivite[];
 
-  constructor() { }
+  constructor(private MessageService:MessageService) { }
 
   ngOnInit(): void {
   }
@@ -26,7 +27,10 @@ export class ModalCreerActiviteComponent implements OnInit {
         activite.idTypeActivite
       );
       this.activites.unshift(newActivite);
-    } 
+      this.MessageService.setMsgGlobal("Activité ajouté avec succès!");
+    }else{
+      this.MessageService.setMsgErr("Formulaire invalide!");
+    }
   }
 
   valeurRemplies(activite: any): boolean {

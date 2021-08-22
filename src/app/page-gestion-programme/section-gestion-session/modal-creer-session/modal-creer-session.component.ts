@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Session } from 'src/app/classes/session'
 import { ISession } from 'src/app/classes/interface-json/interface-session';
+import {MessageService} from "../../../services/message.service";
 
 @Component({
   selector: 'app-modal-creer-session',
@@ -12,7 +13,7 @@ export class ModalCreerSessionComponent implements OnInit {
 
   @Input() sessions!: ISession[] | undefined;
 
-  constructor() { }
+  constructor(private MessageService:MessageService) { }
 
   ngOnInit(): void {
   }
@@ -23,17 +24,20 @@ export class ModalCreerSessionComponent implements OnInit {
     if (this.valeurRemplies(session)) {
       let newSession = new Session(
         session.nom,
-        session.description, 
-        session.dateDebut, 
+        session.description,
+        session.dateDebut,
         session.dateFin
       );
       this.sessions.unshift(newSession);
+      this.MessageService.setMsgGlobal("Session ajoutée avec succès!");
+    }else{
+      this.MessageService.setMsgErr("Formulaire invalide!");
     }
   }
 
   valeurRemplies(session: any): boolean {
-    return ( 
-      session.nom != "" && 
+    return (
+      session.nom != "" &&
       session.description != "" &&
       session.dateDebut != "" &&
       session.dateFin != "" &&

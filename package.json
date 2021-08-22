@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "concurrently \" node ./expressLogging/server.js\" \"ng serve -o --proxy-config proxy.config.json\"  ",
-    "startdemon" : "concurrently \"ng serve -o --proxy-config proxy.config.json\" \"cd expressLogging; nodemon ./server.js\" ",
+    "startdemon": "concurrently \"ng serve -o --proxy-config proxy.config.json\" \"cd expressLogging; nodemon ./server.js\" ",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

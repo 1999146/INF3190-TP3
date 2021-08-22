@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { IBlocActivite, IActivite, ITypeActivite } from 'src/app/classes/interface-json/interface-session';
 import { BlocActivite } from 'src/app/classes/session';
 import { Join } from 'src/app/classes/methode-join';
+import {MessageService} from "../../../services/message.service";
 
 @Component({
   selector: 'app-modal-creer-bloc',
@@ -19,7 +20,7 @@ export class ModalCreerBlocComponent implements OnInit {
 
   newBlocActivite!: IBlocActivite;
 
-  constructor() { }
+  constructor(private MessageService:MessageService) { }
 
   ngOnInit(): void {
     this.resetBloc();
@@ -36,7 +37,10 @@ export class ModalCreerBlocComponent implements OnInit {
     if (this.estValide()) {
       this.blocActivites.unshift(this.newBlocActivite);
       this.resetBloc();
-    } 
+      this.MessageService.setMsgGlobal("BLoc d'activité ajouté avec succès");
+    }else{
+      this.MessageService.setMsgErr("Formulaire invalide");
+    }
   }
 
   retirerActivite() {

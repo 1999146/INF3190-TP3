@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AuthService} from "../../../services/auth.service";
 import {NgForm} from "@angular/forms";
 import {IParent} from "../../../classes/interface-json/interface-parent";
+import {MessageService} from "../../../services/message.service";
 
 @Component({
   selector: 'app-modal-modifier-profil',
@@ -12,7 +13,7 @@ export class ModalModifierProfilComponent implements OnInit {
 
   @Input() parent!: IParent;
 
-  constructor() {
+  constructor(private MessageService:MessageService) {
 
   }
 
@@ -29,7 +30,7 @@ export class ModalModifierProfilComponent implements OnInit {
   };
 
   onSubmit(form: NgForm) {
-
+      this.MessageService.setMsgGlobal("Votre profil a bien été modifié");
   }
 
 }

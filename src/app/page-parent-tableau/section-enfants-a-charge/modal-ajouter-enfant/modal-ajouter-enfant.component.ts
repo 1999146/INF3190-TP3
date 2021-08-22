@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {IEnfant} from "../../../classes/interface-json/interface-parent";
+import {MessageService} from "../../../services/message.service";
 
 @Component({
   selector: 'app-modal-ajouter-enfant',
@@ -12,7 +13,7 @@ export class ModalAjouterEnfantComponent implements OnInit {
   @Input() enfants: IEnfant[] = [];
   fileToUpload: File | null = null;
 
-  constructor() {
+  constructor(private MessageService:MessageService) {
   }
 
   ngOnInit(): void {
@@ -37,5 +38,6 @@ export class ModalAjouterEnfantComponent implements OnInit {
       urlPhoto: 'assets/img/profil.png',
       note: ""
     });
+    this.MessageService.setMsgGlobal("Votre enfant a bien été ajouté");
   }
 }
