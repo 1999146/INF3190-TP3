@@ -20,7 +20,6 @@ export class ModalCreerTypeComponent implements OnInit {
   }
 
   ajouterType(f: NgForm): void {
-    // console.log(JSON.stringify(this.typeActivites));
     let typeActivite = f.value as ITypeActivite;
     if (this.valeurRemplies(typeActivite)) {
       let newType = new TypeActivite (

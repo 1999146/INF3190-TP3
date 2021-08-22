@@ -1,27 +1,33 @@
 # INF3190TP3
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
+Ce projet est généré avec [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
 
-## Development server
+## EQUIPE
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Membres
 
-## Code scaffolding
+**Etienne Comtois** : COME17029800  
+**Louis Roy Therrien** : ROYL20059103  
+**Alexandre Laurin** : LAUA23108205  
+**Mathieu Charbonneau** : CHAM25029407
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+### Administrateur
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+_Pour simuler une connection en tant qu'administrateur, authentifiez-vous à l'aide du nom d'utilisateur :_ `admin` et du mot de passe `admin!`  
+La gestion se divise en 2 sections.
 
-## Running unit tests
+- L'une permet la gestion des sessions, programmes, activités et types et blocs d'activité.
+- L'autre section donne accès à toutes les inscriptions et les comptes d'utilisateurs.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### BASE DE DONNÉE
+Les données sont stockés dans des fichiers json pour la démonstration. Les identifiants de connexion pour tester les comptes parents sont dans `data/fiches-parents.ts`.
+Par exemple, pour Homer Simpson, le nom d'utilisateur est `homer` et le mot de passe est `beignes!`.
 
-## Running end-to-end tests
+### Serveur de développement
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Exécuter `ng serve` Pour obtenir un serveur de développement. Allez à `http://localhost:4200/`. L'application recharge tout seule si le code source est changé.
 
-## Further help
+### Build
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Exécuter `ng build` pour construire le projet. Les fichiers du build seront dans `dist/`.
