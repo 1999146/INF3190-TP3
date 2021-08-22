@@ -1,1 +1,283 @@
-<p>modal-creer-programme works!</p>
+
+<button
+type="button"
+class="btn btn-secondary btn-sm"
+data-bs-toggle="modal"
+data-bs-target="#creerProgrammeModal"
+>
+Ajouter
+</button>
+
+  <!-- Modal Créer un programme -->
+<div
+  class="modal fade"
+  id="creerProgrammeModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Créer un programme</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="modal-body">
+        <form>
+          <label for="message-text" class="col-form-label">Gabarit de programme :</label>
+          <div class="mb-2">
+
+
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="gabaritProgramme"
+                  />
+                  <label class="form-check-label" for="<?=$gabaritProgramme->getId() ?>">
+                    <?=$gabaritProgramme->getTitre() ?>
+                  </label>
+                </div>
+
+              <label for="message-text" class="col-form-label">Session :</label>
+              <select class="form-control" name="session">
+                <option disabled selected>Session</option>
+                <option value="<?=$session->getId()?>"><?=$session->getNom()?></option>
+              </select>
+
+              <label for="message-text" class="col-form-label">Numéros de semaine :</label>
+              <div>
+                <div class="form-check form-check-inline px-0">
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-1"
+                    name="semaine1"
+                    value="1"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-1"
+                    >01</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-2"
+                    name="semaine2"
+                    value="2"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-2"
+                    >02</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-3"
+                    name="semaine3"
+                    value="3"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-3"
+                    >03</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-4"
+                    name="semaine4"
+                    value="4"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-4"
+                    >04</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-5"
+                    name="semaine5"
+                    value="5"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-5"
+                    >05</label
+                  >
+                </div>
+                <br />
+                <div class="form-check form-check-inline px-0 mt-1">
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-6"
+                    name="semaine6"
+                    value="6"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-6"
+                    >06</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-7"
+                    name="semaine7"
+                    value="7"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-7"
+                    >07</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-8"
+                    name="semaine8"
+                    value="8"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-8"
+                    >08</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-9"
+                    name="semaine9"
+                    value="9"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-9"
+                    >09</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-10"
+                    name="semaine10"
+                    value="10"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-10"
+                    >10</label
+                  >
+                </div>
+                <br />
+                <div class="form-check form-check-inline px-0 mt-1">
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-11"
+                    name="semaine11"
+                    value="11"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-11"
+                    >11</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-12"
+                    name="semaine12"
+                    value="12"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-12"
+                    >12</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-13"
+                    name="semaine13"
+                    value="13"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-13"
+                    >13</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-14"
+                    name="semaine14"
+                    value="14"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-14"
+                    >14</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="btn-check-15"
+                    name="semaine15"
+                    value="15"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-secondary" for="btn-check-15"
+                    >15</label
+                  >
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Animateurs :</label>
+                <textarea class="form-control" id="message-text" name="animateurs"></textarea>
+              </div>
+              <hr />
+              <h5>Activités</h5>
+
+              <div id="select-activite-programme">
+                <input type="hidden" name="nbActivitesProgramme" id="nbActivitesProgramme">
+              </div>
+
+
+            <div id="ajouterProgrammeForm"></div>
+            
+            <div class="col-md-12 text-center margin-auto mt-3">
+              <button class="btn btn-secondary" id="rmActiviteProg" hidden="true">
+                Retirer une activite -
+              </button>
+              <button class="btn btn-secondary" id="addActiviteProgramme">
+                Ajouter une activité +
+              </button>
+            </div>
+
+            <div class="col-5 mt-3">
+              <label for="prix" class="col-form-label">Prix :</label>
+              <div class="input-group">
+                <span class="input-group-text">$</span>
+                <input type="text" class="form-control" aria-label="Prix" name="prix" id="prix">
+                <span class="input-group-text">.00</span>
+              </div>
+            </div>
+
+        </div>
+      
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-light border"
+              data-bs-dismiss="modal"
+          >Fermer
+            </button>
+            <button type="submit" class="btn btn-secondary">Créer</button>
+          </div>
+
+        </form>
+      </div> 
+
+    </div>
+  </div>
+</div>
+    <!--FIN Modal Créer un programme -->
