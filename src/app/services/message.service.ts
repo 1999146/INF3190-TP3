@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class MessageService {
 
   msgGlobal!: string | undefined;
+  msgErr!: string | undefined;
 
   constructor() { }
 
@@ -17,5 +18,11 @@ export class MessageService {
     this.msgGlobal = msg;
     await this.sleep(5000);
     this.msgGlobal = undefined;
+  }
+
+  async setMsgErr(msg:string){
+    this.msgErr = msg;
+    await this.sleep(5000);
+    this.msgErr = undefined;
   }
 }

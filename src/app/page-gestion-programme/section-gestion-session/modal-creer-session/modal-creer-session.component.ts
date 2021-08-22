@@ -29,8 +29,10 @@ export class ModalCreerSessionComponent implements OnInit {
         session.dateFin
       );
       this.sessions.unshift(newSession);
+      this.MessageService.setMsgGlobal("Session ajoutée avec succès!");
+    }else{
+      this.MessageService.setMsgErr("Formulaire invalide!");
     }
-    this.MessageService.setMsgGlobal("Session ajoutée avec succès!");
   }
 
   valeurRemplies(session: any): boolean {

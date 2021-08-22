@@ -1,3 +1,7 @@
 <div *ngIf="MessageService.msgGlobal" class="alert alert-success alert-dismissible fade show" role="alert">
   {{MessageService.msgGlobal}}
 </div>
+
+<div *ngIf="MessageService.msgErr" class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{MessageService.msgErr}}
+</div>
