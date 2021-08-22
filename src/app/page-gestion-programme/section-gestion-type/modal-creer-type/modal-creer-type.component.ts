@@ -28,9 +28,11 @@ export class ModalCreerTypeComponent implements OnInit {
         typeActivite.description
       );
       this.typeActivites.unshift(newType);
+      this.MessageService.setMsgGlobal("Type d'activité ajouté avec succès!");
+    }else{
+      this.MessageService.setMsgErr("Formulaire invalide!");
     }
-    // else document.getElementById("modalType")?.click();
-    this.MessageService.setMsgGlobal("Type d'activité ajouté avec succès!");
+
   }
 
   valeurRemplies(typeActivite: any): boolean {

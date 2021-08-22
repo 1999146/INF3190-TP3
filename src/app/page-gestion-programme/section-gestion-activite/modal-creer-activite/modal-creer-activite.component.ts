@@ -27,8 +27,10 @@ export class ModalCreerActiviteComponent implements OnInit {
         activite.idTypeActivite
       );
       this.activites.unshift(newActivite);
+      this.MessageService.setMsgGlobal("Activité ajouté avec succès!");
+    }else{
+      this.MessageService.setMsgErr("Formulaire invalide!");
     }
-    this.MessageService.setMsgGlobal("Activité ajouté avec succès!");
   }
 
   valeurRemplies(activite: any): boolean {
