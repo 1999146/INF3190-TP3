@@ -25,7 +25,10 @@ Les données sont stockés dans des fichiers json pour la démonstration. Les id
 Par exemple, pour Homer Simpson, le nom d'utilisateur est `homer` et le mot de passe est `beignes!`.
 
 ### Journalisation
-Les logs sont envoyés à une base de données noSql sur firebase, puisque nous n'avons pas de serveur backend.
+Les logs sont envoyés à une base de données noSql sur Firebase, puisque nous n'avons pas de serveur backend.
+Pour tester les logs, vous pouvez créer un projet Firebase et une "Realtime Database". Il suffit de modifier l'url dans le LoggerService pour mettre celui de votre projet de test et ajouter `logs.json` à la fin de l'url.
+![Firebase](src/assets/img/capture.png)
+
 
 ### Serveur de développement
 
