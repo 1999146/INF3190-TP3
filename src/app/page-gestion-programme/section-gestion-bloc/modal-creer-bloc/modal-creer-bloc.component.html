@@ -1,1 +1,97 @@
-<p>modal-creer-bloc works!</p>
+
+<button
+  type="button"
+  class="btn btn-secondary btn-sm"
+  data-bs-toggle="modal"
+  data-bs-target="#creerBlocActiviteModal"
+>
+  Ajouter
+</button>
+
+
+<!-- Modal Créer un bloc d'activité -->
+<div
+class="modal fade"
+id="creerBlocActiviteModal"
+data-bs-backdrop="static"
+data-bs-keyboard="false"
+tabindex="-1"
+>
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Créer un bloc d'activité</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="modal-body">
+
+      <form>
+
+        <div class="form-group">
+          <label for="nomBlocActivite" class="col-form-label">Nom du bloc d'activité:</label>
+          <input ngModel type="text" class="form-control" name="nom" [(ngModel)]="newBlocActivite.nom"/>
+        </div>
+
+        <hr />
+        <h5>Types d'activités</h5>
+
+        <ng-container *ngFor="let typeActivite of typeActivites; let i = index;">
+          <div class="form-check form-check-inline mt-2">
+            <input ngModel class="form-check-input type-activite" type="checkbox" name="idTypeActivite" (click)="ajouterType(typeActivite.id)"/>
+            <label class="form-check-label">{{typeActivite.nom}}</label>
+          </div>
+        </ng-container>
+
+        <br>
+        <hr />
+        <h5>Activités</h5>
+
+        <div id="ajouterBlocActiviteForm">
+          <ng-container *ngFor="let activite of newBlocActivite.idActivites; let j = index;">
+            <select ngModel class="form-control" [(ngModel)]="newBlocActivite.idActivites[j]" name="idActivites">
+              <option class="mb-2" *ngFor="let activite of activitesTrie" [value]="activite.id">
+                {{activite.nom}}
+              </option>
+            </select>
+          </ng-container>
+        </div>
+
+        <div id="btnAjouterRetirerAct" class="col-md-12 text-center margin-auto mt-3">
+          
+          <ng-container *ngIf="newBlocActivite.idActivites.length > 1">
+            <button class="btn btn-secondary" id="rmActiviteBloc" (click)="retirerActivite()">
+              Retirer une activite -
+            </button>
+          </ng-container>
+
+          <ng-container *ngIf="newBlocActivite.idActivites.length < 6">
+            <button class="btn btn-secondary" id="addActiviteBloc" (click)="ajouterActivite()">
+              Ajouter une activité +
+            </button>
+          </ng-container>
+
+        </div>
+
+      </form>
+
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-light border"
+        data-bs-dismiss="modal"
+      >
+        Fermer
+      </button>
+      <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal" (click)="ajouterBloc()">Créer</button>
+
+    </div>
+  </div>
+</div>
+</div>
+<!-- FIN Modal Créer un bloc d'activité -->
