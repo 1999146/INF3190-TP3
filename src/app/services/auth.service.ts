@@ -55,7 +55,7 @@ export class AuthService {
       if(!this.verifyPassword(username, password)){
         //Connexion refusé, rediriger avec message d'erreur
         console.log("connexion refusee");
-        this.logger.log(new Date().toString() + " : Connection refuse");
+        this.logger.log(new Date().toString() + " : Connection refuse " + username);
       }else{
         this.logParent(username);
         this.isAuth = true;
